@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.10)
+project(Casino)
+
+set(CMAKE_CXX_STANDARD 17)
+
+# Include directories
+include_directories(headers)
+
+# Source files
+set(SOURCES
+    src/Casino.cpp
+    src/Player.cpp
+    src/GameSession.cpp
+    src/DiceGame.cpp
+    src/blackjack.cpp
+    main/main.cpp
+)
+
+# Create executable
+add_executable(casino_app ${SOURCES})
