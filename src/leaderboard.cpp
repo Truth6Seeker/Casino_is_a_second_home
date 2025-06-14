@@ -4,6 +4,9 @@
 #include <filesystem>
 
 Leaderboard::Leaderboard() : db(nullptr) {
+    // Create data directory if it doesn't exist
+    std::filesystem::create_directories("data");
+    dbPath = "data/leaderboard.db";
     openDB();
     createTableIfNotExists();
 }

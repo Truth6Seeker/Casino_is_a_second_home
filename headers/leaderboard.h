@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <filesystem>
 
 struct LeaderboardEntry {
     std::string name;
@@ -22,6 +23,6 @@ private:
     void closeDB();
     void createTableIfNotExists();
 
-    std::string dbPath = "./leaderboard.db";  // База данных создается в текущей директории
+    std::string dbPath;
     void* db; // sqlite3*
 }; 
