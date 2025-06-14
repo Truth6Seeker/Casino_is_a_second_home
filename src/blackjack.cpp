@@ -1,44 +1,41 @@
-// blackjack.cpp
 #include "blackjack.h"
 
-#include <cstdlib>
-#include <ctime>
 #include <iostream>
 #include <limits>
 
 #include "player.h"
 
+static void clearInputBuffer() {
+  std::cin.clear();
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
 Blackjack::Blackjack()
-    : dealerScore(0),
-      playerScore(0),
-      gameActive(false),
+    : gameActive(false),
       currentBet(0.0),
       useBasicStrategy(false),
       roundsPlayed(0),
       totalWagered(0.0),
-      totalWon(0.0) {
-  srand(time(0));
-}
+      totalWon(0.0) {}
 
 void Blackjack::startGame(std::shared_ptr<Player> player) {
   currentPlayer = player;
   gameActive = true;
+  deck.reset();  // Reset and shuffle the deck
   std::cout << "=== Blackjack Game Started ===\n";
-  // playRound(); // Удалено, чтобы не было двойного раунда
 }
 
 void Blackjack::playRound() {
   if (!gameActive) return;
 
   roundsPlayed++;
-  dealerScore = 0;
-  playerScore = 0;
   playerCards.clear();
+  dealerCards.clear();
 
   dealInitialCards();
   playerTurn();
 
-  if (playerScore <= 21) {
+  if (calculateHandValue(playerCards) <= 21) {
     dealerTurn();
     determineWinner();
   }
@@ -48,7 +45,6 @@ void Blackjack::playRound() {
 
 void Blackjack::endGame() { std::cout << "=== Blackjack Game Ended ===\n"; }
 
-// Остальные обязательные методы
 double Blackjack::getHouseEdge() const { return 0.05; }
 std::string Blackjack::getGameName() const { return "Blackjack"; }
 bool Blackjack::isGameActive() const { return gameActive; }
@@ -57,34 +53,31 @@ uint64_t Blackjack::getTotalRoundsPlayed() const { return roundsPlayed; }
 double Blackjack::getTotalAmountWagered() const { return totalWagered; }
 double Blackjack::getTotalAmountWon() const { return totalWon; }
 
-// Вспомогательные методы
 void Blackjack::dealInitialCards() {
-  int card1 = getCardValue();
-  int card2 = getCardValue();
-  playerCards.push_back(card1);
-  playerCards.push_back(card2);
-  playerScore = card1 + card2;
-  
-  dealerScore = getCardValue();
+  // Deal two cards to player
+  playerCards.push_back(deck.drawCard());
+  playerCards.push_back(deck.drawCard());
 
-  std::cout << "Your cards: " << card1 << " and " << card2 << " (Total: " << playerScore << ")\n";
-  std::cout << "Dealer shows: " << dealerScore << "\n";
+  // Deal two cards to dealer (one face up, one face down)
+  dealerCards.push_back(deck.drawCard());
+  dealerCards.push_back(deck.drawCard());
+
+  std::cout << "\nYour cards:\n";
+  displayCards(playerCards);
+  std::cout << "Total: " << calculateHandValue(playerCards) << "\n\n";
+
+  std::cout << "Dealer's cards:\n";
+  displayCards(dealerCards, true);  // Hide first card
+  std::cout << "Showing: " << calculateHandValue({dealerCards[1]}) << "\n";
 }
 
 void Blackjack::playerTurn() {
   if (useBasicStrategy) {
     // AI's turn
-    while (playerScore <= 21) {
-      bool isSoft = false;
-      for (int card : playerCards) {
-        if (card == 11) {
-          isSoft = true;
-          break;
-        }
-      }
-
+    while (calculateHandValue(playerCards) <= 21) {
       BasicStrategyAI::Action action = strategyAI.getAction(
-          playerScore, dealerScore, isSoft, canSplit());
+          calculateHandValue(playerCards), getDealerUpCard(),
+          isSoftHand(playerCards), canSplit());
 
       if (action == BasicStrategyAI::Action::STAND) {
         std::cout << "AI decides to stand\n";
@@ -92,9 +85,10 @@ void Blackjack::playerTurn() {
       }
 
       handleAIAction(action);
-      
-      if (playerScore > 21) {
-        std::cout << "AI busts with " << playerScore << "!\n";
+
+      if (calculateHandValue(playerCards) > 21) {
+        std::cout << "AI busts with " << calculateHandValue(playerCards)
+                  << "!\n";
         break;
       }
     }
@@ -102,58 +96,88 @@ void Blackjack::playerTurn() {
     // Human player's turn
     char choice;
     do {
-      std::cout << "Хотите взять ещё карту? (y/n): ";
+      std::cout << "\nYour cards:\n";
+      displayCards(playerCards);
+      std::cout << "Total: " << calculateHandValue(playerCards) << "\n\n";
+
+      std::cout << "Do you want to (H)it, (S)tand, (D)ouble down";
+      if (canSplit()) std::cout << ", s(P)lit";
+      std::cout << "? ";
+
       std::cin >> choice;
-      if (choice == 'y') {
-        int newCard = getCardValue();
-        playerCards.push_back(newCard);
-        playerScore += newCard;
-        std::cout << "Новая карта: " << newCard << " (Всего: " << playerScore << ")\n";
-        if (playerScore > 21) {
-          std::cout << "Перебор! Вы проиграли.\n";
+      choice = toupper(choice);
+
+      switch (choice) {
+        case 'H': {
+          playerCards.push_back(deck.drawCard());
+          std::cout << "You drew: " << playerCards.back().toSymbol() << "\n";
           break;
         }
+        case 'D': {
+          if (canDoubleDown()) {
+            currentBet *= 2;
+            playerCards.push_back(deck.drawCard());
+            std::cout << "You doubled down and drew: "
+                      << playerCards.back().toSymbol() << "\n";
+            return;  // End turn after doubling down
+          } else {
+            std::cout << "Cannot double down!\n";
+            continue;
+          }
+        }
+        case 'P': {
+          if (canSplit()) {
+            // TODO: Implement splitting
+            std::cout << "Splitting not implemented yet!\n";
+            continue;
+          } else {
+            std::cout << "Cannot split!\n";
+            continue;
+          }
+        }
+        case 'S':
+          return;
+        default:
+          std::cout << "Invalid choice!\n";
+          continue;
       }
-    } while (choice == 'y');
+
+      if (calculateHandValue(playerCards) > 21) {
+        std::cout << "Bust! You lose.\n";
+        break;
+      }
+    } while (choice != 'S');
   }
 }
 
 void Blackjack::handleAIAction(BasicStrategyAI::Action action) {
   switch (action) {
     case BasicStrategyAI::Action::HIT: {
-      int newCard = getCardValue();
-      playerCards.push_back(newCard);
-      playerScore += newCard;
-      std::cout << "AI hits and gets " << newCard << " (Total: " << playerScore << ")\n";
+      playerCards.push_back(deck.drawCard());
+      std::cout << "AI hits and gets " << playerCards.back().toSymbol() << "\n";
       break;
     }
     case BasicStrategyAI::Action::DOUBLE: {
       if (canDoubleDown()) {
-        int newCard = getCardValue();
-        playerCards.push_back(newCard);
-        playerScore += newCard;
         currentBet *= 2;
-        std::cout << "AI doubles down and gets " << newCard << " (Total: " << playerScore << ")\n";
+        playerCards.push_back(deck.drawCard());
+        std::cout << "AI doubles down and gets "
+                  << playerCards.back().toSymbol() << "\n";
       } else {
-        // If can't double, hit instead
-        int newCard = getCardValue();
-        playerCards.push_back(newCard);
-        playerScore += newCard;
-        std::cout << "AI hits and gets " << newCard << " (Total: " << playerScore << ")\n";
+        playerCards.push_back(deck.drawCard());
+        std::cout << "AI hits and gets " << playerCards.back().toSymbol()
+                  << "\n";
       }
       break;
     }
     case BasicStrategyAI::Action::SPLIT: {
-      // For simplicity, we'll just hit instead of implementing full split logic
+      // TODO: Implement splitting
       std::cout << "AI would split, but hitting instead\n";
-      int newCard = getCardValue();
-      playerCards.push_back(newCard);
-      playerScore += newCard;
-      std::cout << "AI hits and gets " << newCard << " (Total: " << playerScore << ")\n";
+      playerCards.push_back(deck.drawCard());
+      std::cout << "AI hits and gets " << playerCards.back().toSymbol() << "\n";
       break;
     }
     case BasicStrategyAI::Action::SURRENDER: {
-      // For simplicity, we'll just stand instead of implementing surrender
       std::cout << "AI would surrender, but standing instead\n";
       break;
     }
@@ -163,131 +187,152 @@ void Blackjack::handleAIAction(BasicStrategyAI::Action action) {
 }
 
 bool Blackjack::canSplit() const {
-  return playerCards.size() == 2 && playerCards[0] == playerCards[1];
+  return playerCards.size() == 2 &&
+         playerCards[0].getRank() == playerCards[1].getRank();
 }
 
 bool Blackjack::canDoubleDown() const {
-  return playerCards.size() == 2 && playerScore >= 9 && playerScore <= 11;
+  return playerCards.size() == 2 && calculateHandValue(playerCards) >= 9 &&
+         calculateHandValue(playerCards) <= 11;
 }
 
-int Blackjack::getPlayerScore() const {
-  return playerScore;
-}
-
-int Blackjack::getDealerUpCard() const {
-  return dealerScore;
-}
+int Blackjack::getDealerUpCard() const { return dealerCards[1].getValue(); }
 
 void Blackjack::dealerTurn() {
-  std::cout << "Дилер берёт карты...\n";
-  while (dealerScore < 17) {
-    dealerScore += getCardValue();
-  }
-  std::cout << "Счёт дилера: " << dealerScore << "\n";
-}
+  std::cout << "\nDealer's turn:\n";
+  displayCards(dealerCards);
+  std::cout << "Total: " << calculateHandValue(dealerCards) << "\n";
 
-void Blackjack::payout() {
-  double winnings = currentBet * 1.8;  // Pays 1.8x the bet
-  currentPlayer->deposit(winnings);
-  totalWon += winnings;
-  currentBet = 0;  // Reset bet after round
+  while (calculateHandValue(dealerCards) < 17) {
+    dealerCards.push_back(deck.drawCard());
+    std::cout << "Dealer draws: " << dealerCards.back().toSymbol() << "\n";
+    std::cout << "New total: " << calculateHandValue(dealerCards) << "\n";
+  }
 }
 
 void Blackjack::determineWinner() {
-  if (playerScore > 21) {
-    std::cout << "Вы проиграли.\n";
-  } else if (dealerScore > 21) {
-    std::cout << "Дилер перебрал! Вы выиграли.\n";
-    payout();
-  } else if (playerScore > dealerScore) {
-    std::cout << "Вы выиграли!\n";
-    payout();
-  } else if (playerScore == dealerScore) {
-    std::cout << "Ничья!\n";
+  int playerValue = calculateHandValue(playerCards);
+  int dealerValue = calculateHandValue(dealerCards);
+
+  std::cout << "\nFinal scores:\n";
+  std::cout << "Your cards:\n";
+  displayCards(playerCards);
+  std::cout << "Your total: " << playerValue << "\n\n";
+
+  std::cout << "Dealer's cards:\n";
+  displayCards(dealerCards);
+  std::cout << "Dealer's total: " << dealerValue << "\n\n";
+
+  if (playerValue > 21) {
+    std::cout << "You busted! Dealer wins.\n";
+    currentPlayer->withdraw(currentBet);
+    totalWon -= currentBet;
+  } else if (dealerValue > 21) {
+    std::cout << "Dealer busted! You win!\n";
+    currentPlayer->deposit(currentBet * 1.5);  // Blackjack pays 3:2
+    totalWon += currentBet * 1.5;
+  } else if (playerValue > dealerValue) {
+    std::cout << "You win!\n";
+    currentPlayer->deposit(currentBet);
+    totalWon += currentBet;
+  } else if (playerValue < dealerValue) {
+    std::cout << "Dealer wins.\n";
+    currentPlayer->withdraw(currentBet);
+    totalWon -= currentBet;
   } else {
-    std::cout << "Дилер выиграл.\n";
+    std::cout << "It's a tie!\n";
   }
 }
 
-int Blackjack::getCardValue() {
-  return (rand() % 10) + 1;  // Карты от 2 до 10
-}
+int Blackjack::calculateHandValue(const std::vector<Card>& cards) const {
+  int value = 0;
+  int numAces = 0;
 
-// Добавим метод для запроса ставки
-bool Blackjack::takeBet() {
-    double balance = currentPlayer->getBalance();
-    double betAmount;
-    while (true) {
-        std::cout << "Enter bet amount (0 to quit): $";
-        if (std::cin >> betAmount) {
-            if (betAmount == 0) {
-                std::cout << "Thanks for playing!\n";
-                gameActive = false;
-                return false;
-            }
-            if (betAmount > 0 && betAmount <= balance) {
-                break;
-            }
-        }
-        std::cout << "Invalid amount! Please enter a value between 0 and " << balance << "\n";
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    }
-    currentBet = betAmount;
-    currentPlayer->withdraw(currentBet);
-    totalWagered += currentBet;
-    return true;
-}
-
-// Изменим playRound, чтобы возвращать результат
-RoundResult Blackjack::playRoundWithResult() {
-    if (!gameActive) return RoundResult::LOSS;
-
-    roundsPlayed++;
-    dealerScore = 0;
-    playerScore = 0;
-    playerCards.clear();
-
-    if (!takeBet()) return RoundResult::EXIT;
-
-    dealInitialCards();
-    playerTurn();
-
-    if (playerScore > 21) {
-        std::cout << "Вы проиграли.\n";
-        currentBet = 0;
-        gameActive = false;
-        return RoundResult::LOSS;
-    }
-
-    dealerTurn();
-    RoundResult result = determineWinnerWithResult();
-    gameActive = false;
-    return result;
-}
-
-// Новый метод для определения результата и выплат
-RoundResult Blackjack::determineWinnerWithResult() {
-    if (dealerScore > 21) {
-        std::cout << "Дилер перебрал! Вы выиграли.\n";
-        currentPlayer->deposit(currentBet * 2);
-        totalWon += currentBet * 2;
-        currentBet = 0;
-        return RoundResult::WIN;
-    } else if (playerScore > dealerScore) {
-        std::cout << "Вы выиграли!\n";
-        currentPlayer->deposit(currentBet * 2);
-        totalWon += currentBet * 2;
-        currentBet = 0;
-        return RoundResult::WIN;
-    } else if (playerScore == dealerScore) {
-        std::cout << "Ничья! Ставка возвращена.\n";
-        currentPlayer->deposit(currentBet);
-        currentBet = 0;
-        return RoundResult::DRAW;
+  for (const Card& card : cards) {
+    if (card.getRank() == Rank::ACE) {
+      numAces++;
+      value += 11;
     } else {
-        std::cout << "Дилер выиграл.\n";
-        currentBet = 0;
-        return RoundResult::LOSS;
+      value += card.getValue();
     }
+  }
+
+  // Adjust for aces if needed
+  while (value > 21 && numAces > 0) {
+    value -= 10;  // Convert an ace from 11 to 1
+    numAces--;
+  }
+
+  return value;
+}
+
+bool Blackjack::isSoftHand(const std::vector<Card>& cards) const {
+  int value = 0;
+  int numAces = 0;
+
+  for (const Card& card : cards) {
+    if (card.getRank() == Rank::ACE) {
+      numAces++;
+      value += 11;
+    } else {
+      value += card.getValue();
+    }
+  }
+
+  return numAces > 0 && value <= 21;
+}
+
+void Blackjack::displayCards(const std::vector<Card>& cards,
+                             bool hideFirst) const {
+  for (size_t i = 0; i < cards.size(); ++i) {
+    if (i == 0 && hideFirst) {
+      std::cout << "[Hidden] ";
+    } else {
+      std::cout << cards[i].toSymbol() << " ";
+    }
+  }
+  std::cout << "\n";
+}
+
+RoundResult Blackjack::playRoundWithResult() {
+  if (!gameActive) return RoundResult::EXIT;
+
+  // Get bet amount
+  double betAmount;
+  while (true) {
+    std::cout << "Enter bet amount (0 to quit): $";
+    if (std::cin >> betAmount) {
+      if (betAmount == 0) {
+        return RoundResult::EXIT;
+      }
+      if (betAmount > 0 && betAmount <= currentPlayer->getBalance()) {
+        currentBet = betAmount;
+        totalWagered += betAmount;
+        break;
+      }
+    }
+    std::cout << "Invalid amount! Please enter between 0 and "
+              << currentPlayer->getBalance() << "\n";
+    clearInputBuffer();
+  }
+
+  playRound();
+  return determineWinnerWithResult();
+}
+
+RoundResult Blackjack::determineWinnerWithResult() {
+  int playerValue = calculateHandValue(playerCards);
+  int dealerValue = calculateHandValue(dealerCards);
+
+  if (playerValue > 21) {
+    return RoundResult::LOSS;
+  } else if (dealerValue > 21) {
+    return RoundResult::WIN;
+  } else if (playerValue > dealerValue) {
+    return RoundResult::WIN;
+  } else if (playerValue < dealerValue) {
+    return RoundResult::LOSS;
+  } else {
+    return RoundResult::DRAW;
+  }
 }

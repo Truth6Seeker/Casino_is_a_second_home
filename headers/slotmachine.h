@@ -1,66 +1,66 @@
 #pragma once
-#include "igame.h"
-#include "player.h"
-#include <vector>
+#include <map>
 #include <random>
 #include <string>
-#include <map>
+#include <vector>
 
-class SlotMachine : public IGame
-{
-public:
-    SlotMachine();
+#include "igame.h"
+#include "player.h"
 
-    // IGame interface implementation
-    void startGame(std::shared_ptr<Player> player) override;
-    void playRound() override;
-    void endGame() override;
-    double getHouseEdge() const override;
-    std::string getGameName() const override;
-    bool isGameActive() const override;
+class SlotMachine : public IGame {
+ public:
+  SlotMachine();
 
-    // Game statistics
-    uint64_t getTotalRoundsPlayed() const override;
-    double getTotalAmountWagered() const override;
-    double getTotalAmountWon() const override;
+  // IGame interface implementation
+  void startGame(std::shared_ptr<Player> player) override;
+  void playRound() override;
+  void endGame() override;
+  double getHouseEdge() const override;
+  std::string getGameName() const override;
+  bool isGameActive() const override;
 
-    // Slot machine specific methods
-    bool placeBet(double amount);
-    void spin();
-    double calculatePayout() const;
-    void displayReels() const;
+  // Game statistics
+  uint64_t getTotalRoundsPlayed() const override;
+  double getTotalAmountWagered() const override;
+  double getTotalAmountWon() const override;
 
-    // All-in functionality
-    void placeAllInBet();
+  // Slot machine specific methods
+  bool placeBet(double amount);
+  void spin();
+  double calculatePayout() const;
+  void displayReels() const;
 
-private:
-    std::shared_ptr<Player> currentPlayer;
-    bool gameActive;
-    double currentBet;
+  // All-in functionality
+  void placeAllInBet();
 
-    // Game statistics
-    uint64_t totalRounds;
-    double totalWagered;
-    double totalWon;
+ private:
+  std::shared_ptr<Player> currentPlayer;
+  bool gameActive;
+  double currentBet;
 
-    // Reel setup
-    static const int REEL_COUNT = 3;
-    static const int SYMBOLS_PER_REEL = 3;
-    std::vector<std::vector<std::string>> reels;
+  // Game statistics
+  uint64_t totalRounds;
+  double totalWagered;
+  double totalWon;
 
-    // Symbol definitions and payouts
-    std::vector<std::string> symbols = {"C", "L", "O", "S", "B", "7", "D"};
-    std::map<std::string, std::map<int, double>> payTable = {
-        {"D", {{3, 100.0}, {2, 10.0}}},       // Diamond
-        {"7", {{3, 50.0}, {2, 5.0}}},         // Seven
-        {"B", {{3, 20.0}, {2, 3.0}}},         // Bell
-        {"S", {{3, 15.0}, {2, 2.0}}},         // Star
-        {"O", {{3, 10.0}}},                   // Orange
-        {"L", {{3, 8.0}}},                    // Lemon
-        {"C", {{3, 5.0}, {2, 2.0}, {1, 1.0}}} // Cherry
-    };
+  // Reel setup
+  static const int REEL_COUNT = 3;
+  static const int SYMBOLS_PER_REEL = 3;
+  std::vector<std::vector<std::string>> reels;
 
-    // Random number generator
-    std::random_device rd;
-    std::mt19937 gen;
-}; 
+  // Symbol definitions and payouts
+  std::vector<std::string> symbols = {"C", "L", "O", "S", "B", "7", "D"};
+  std::map<std::string, std::map<int, double>> payTable = {
+      {"D", {{3, 100.0}, {2, 10.0}}},        // Diamond
+      {"7", {{3, 50.0}, {2, 5.0}}},          // Seven
+      {"B", {{3, 20.0}, {2, 3.0}}},          // Bell
+      {"S", {{3, 15.0}, {2, 2.0}}},          // Star
+      {"O", {{3, 10.0}}},                    // Orange
+      {"L", {{3, 8.0}}},                     // Lemon
+      {"C", {{3, 5.0}, {2, 2.0}, {1, 1.0}}}  // Cherry
+  };
+
+  // Random number generator
+  std::random_device rd;
+  std::mt19937 gen;
+};
