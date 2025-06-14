@@ -1,56 +1,105 @@
-// blackjack.cpp
 #include "blackjack.h"
-#include "player.h"
-#include <iostream>
+
+#include <algorithm>
+#include <cctype>
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
 
-Blackjack::Blackjack() : dealerScore(0),
-                         playerScore(0),
-                         gameActive(false),
-                         currentBet(0.0),
-                         roundsPlayed(0),
-                         totalWagered(0.0),
-                         totalWon(0.0)
-{
-    srand(time(0));
+#include "player.h"
+
+Blackjack::Blackjack()
+    : dealerScore(0),
+      playerScore(0),
+      gameActive(false),
+      currentBet(0.0),
+      roundsPlayed(0),
+      totalWagered(0.0),
+      totalWon(0.0) {
+  srand(static_cast<unsigned>(time(0)));
 }
 
-void Blackjack::startGame(std::shared_ptr<Player> player)
-{
-    currentPlayer = player;
-    gameActive = true;
-    std::cout << "=== Blackjack Game Started ===\n";
-    playRound();
-}
+int Blackjack::calculateHandScore(const std::vector<int>& hand) const {
+  int score = 0;
+  int aceCount = 0;
 
-void Blackjack::playRound()
-{
-    if (!gameActive)
-        return;
-
-    roundsPlayed++;
-    dealerScore = 0;
-    playerScore = 0;
-
-    dealInitialCards();
-    playerTurn();
-
-    if (playerScore <= 21)
-    {
-        dealerTurn();
-        determineWinner();
+  for (int card : hand) {
+    if (card == 1) {  // Ace
+      score += 11;
+      aceCount++;
+    } else if (card >= 10) {  // Face card
+      score += 10;
+    } else {
+      score += card;
     }
+  }
 
-    gameActive = false;
+  // Adjust for aces if over 21
+  while (score > 21 && aceCount > 0) {
+    score -= 10;
+    aceCount--;
+  }
+
+  return score;
 }
 
-void Blackjack::endGame()
-{
-    std::cout << "=== Blackjack Game Ended ===\n";
+std::string Blackjack::cardToString(int card) const {
+  switch (card) {
+    case 1:
+      return "A";
+    case 11:
+      return "J";
+    case 12:
+      return "Q";
+    case 13:
+      return "K";
+    default:
+      return std::to_string(card);
+  }
 }
 
-// Остальные обязательные методы
+void Blackjack::startGame(std::shared_ptr<Player> player) {
+  currentPlayer = player;
+  gameActive = true;
+}
+
+bool Blackjack::placeBet(double amount) {
+  if (!gameActive || !currentPlayer || amount <= 0) return false;
+
+  if (!currentPlayer->withdraw(amount)) return false;
+
+  currentBet = amount;
+  totalWagered += amount;
+  return true;
+}
+
+void Blackjack::playRound() {
+  if (!gameActive || currentBet <= 0) return;
+
+  roundsPlayed++;
+  dealerScore = 0;
+  playerScore = 0;
+  playerCards.clear();
+  dealerCards.clear();
+
+  dealInitialCards();
+  playerTurn();
+
+  if (playerScore <= 21) {
+    dealerTurn();
+    determineWinner();
+  } else {
+    std::cout << "Busted! You lose.\n";
+  }
+
+  currentBet = 0;
+}
+
+void Blackjack::endGame() {
+  gameActive = false;
+  std::cout << "=== Blackjack Game Ended ===\n";
+}
+
 double Blackjack::getHouseEdge() const { return 0.05; }
 std::string Blackjack::getGameName() const { return "Blackjack"; }
 bool Blackjack::isGameActive() const { return gameActive; }
@@ -59,84 +108,101 @@ uint64_t Blackjack::getTotalRoundsPlayed() const { return roundsPlayed; }
 double Blackjack::getTotalAmountWagered() const { return totalWagered; }
 double Blackjack::getTotalAmountWon() const { return totalWon; }
 
-// Вспомогательные методы
-void Blackjack::dealInitialCards()
-{
-    playerScore += getCardValue();
-    playerScore += getCardValue();
-    dealerScore += getCardValue();
-
-    std::cout << "Your cards: " << playerScore << "\n";
-    std::cout << "Dealer shows: " << dealerScore << "\n";
+void Blackjack::payout(double multiplier) {
+  double winnings = currentBet * multiplier;
+  currentPlayer->deposit(winnings);
+  totalWon += winnings;
 }
 
-void Blackjack::playerTurn()
-{
-    char choice;
-    do
-    {
-        std::cout << "Do you want to take another card? (y/n): ";
-        std::cin >> choice;
-        if (choice == 'y')
-        {
-            playerScore += getCardValue();
-            std::cout << "your count: " << playerScore << "\n";
-            if (playerScore > 21)
-            {
-                std::cout << "Overflow! You lose.\n";
-                break;
-            }
-        }
-    } while (choice == 'y');
+void Blackjack::dealInitialCards() {
+  // Deal player cards
+  playerCards.push_back(getCardValue());
+  playerCards.push_back(getCardValue());
+  playerScore = calculateHandScore(playerCards);
+
+  // Deal dealer cards
+  dealerCards.push_back(getCardValue());
+  dealerCards.push_back(getCardValue());
+  dealerScore = calculateHandScore(dealerCards);
+
+  std::cout << "\n--- New Round ---\n";
+  std::cout << "Your cards: ";
+  for (int card : playerCards) std::cout << cardToString(card) << " ";
+  std::cout << "= " << playerScore << "\n";
+
+  std::cout << "Dealer shows: " << cardToString(dealerCards[0]) << " and ?\n";
 }
 
-void Blackjack::dealerTurn()
-{
-    std::cout << "The Dealer pulls a new card...\n";
-    while (dealerScore < 17)
-    {
-        dealerScore += getCardValue();
+void Blackjack::playerTurn() {
+  char choice;
+  do {
+    std::cout << "\nYour hand: ";
+    for (int card : playerCards) std::cout << cardToString(card) << " ";
+    std::cout << "= " << playerScore << "\n";
+
+    std::cout << "Hit or Stand? (h/s): ";
+    std::cin >> choice;
+    choice = std::tolower(choice);
+
+    if (choice == 'h') {
+      int newCard = getCardValue();
+      playerCards.push_back(newCard);
+      playerScore = calculateHandScore(playerCards);
+      std::cout << "You drew: " << cardToString(newCard) << "\n";
+      std::cout << "New total: " << playerScore << "\n";
+
+      if (playerScore > 21) {
+        std::cout << "Busted!\n";
+        break;
+      }
     }
-    std::cout << "Dealer's count: " << dealerScore << "\n";
+  } while (choice == 'h' && playerScore <= 21);
 }
 
-void Blackjack::payout()
-{
-    {
-        double winnings = currentBet * 1.8; // Pays 1.8x the bet
-        currentPlayer->deposit(winnings);
-        totalWon += winnings;
+void Blackjack::dealerTurn() {
+  std::cout << "\nDealer's turn...\n";
+  std::cout << "Dealer's cards: ";
+  for (int card : dealerCards) std::cout << cardToString(card) << " ";
+  std::cout << "= " << dealerScore << "\n";
+
+  while (dealerScore < 17) {
+    int newCard = getCardValue();
+    dealerCards.push_back(newCard);
+    dealerScore = calculateHandScore(dealerCards);
+    std::cout << "Dealer draws: " << cardToString(newCard)
+              << " (Total: " << dealerScore << ")\n";
+
+    if (dealerScore > 21) {
+      std::cout << "Dealer busted!\n";
+      break;
     }
-    currentBet = 0; // Reset bet after round
+  }
 }
 
-void Blackjack::determineWinner()
-{
-    if (playerScore > 21)
-    {
-        std::cout << "You lost.\n";
-    }
-    else if (dealerScore > 21)
-    {
-        std::cout << "The Dealer was greedy! You won!.\n";
-        payout(); // Пример: выигрыш 50 монет
-    }
-    else if (playerScore > dealerScore)
-    {
-        std::cout << "You won!\n";
-        payout();
-    }
-    else if (playerScore == dealerScore)
-    {
-        std::cout << "It is a draw!\n";
-    }
-    else
-    {
-        std::cout << "The dealer won!.\n";
-    }
+void Blackjack::determineWinner() {
+  std::cout << "\n--- Results ---\n";
+  std::cout << "Your score: " << playerScore << "\n";
+  std::cout << "Dealer's score: " << dealerScore << "\n\n";
+
+  if (playerScore > 21) {
+    std::cout << "You busted! You lose.\n";
+  } else if (dealerScore > 21) {
+    std::cout << "Dealer busted! You win!\n";
+    payout(2.0);  // 1:1 payout
+  } else if (playerScore == 21 && playerCards.size() == 2) {
+    std::cout << "Blackjack! You win 3:2!\n";
+    payout(2.5);  // 3:2 payout
+  } else if (playerScore > dealerScore) {
+    std::cout << "You win!\n";
+    payout(2.0);  // 1:1 payout
+  } else if (playerScore == dealerScore) {
+    std::cout << "Push! It's a tie.\n";
+    payout(1.0);  // Return bet
+  } else {
+    std::cout << "Dealer wins!\n";
+  }
 }
 
-int Blackjack::getCardValue()
-{
-    return (rand() % 10) + 1; // Карты от 1 до 10
+int Blackjack::getCardValue() {
+  return (rand() % 13) + 1;  // Cards 1-13
 }
