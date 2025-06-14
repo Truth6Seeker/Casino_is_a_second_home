@@ -21,8 +21,7 @@ private:
     void openDB();
     void closeDB();
     void createTableIfNotExists();
-    std::string getProjectRootPath() const;
 
-    std::string dbPath;
+    std::string dbPath = "./leaderboard.db";  // База данных создается в текущей директории
     void* db; // sqlite3*
 }; 
