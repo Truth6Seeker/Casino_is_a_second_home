@@ -6,6 +6,7 @@
 #include <iostream>
 #include <limits>
 
+const double SECURITY_ALERT_BALANCE = 1000000.0;
 
 void clearInputBuffer()
 {
@@ -237,6 +238,16 @@ int main()
 
         // Показываем баланс после каждой игры
         std::cout << "\nYour current balance: $" << player->getBalance() << "\n";
+
+        // SECURITY ALERT
+        if (player->getBalance() >= SECURITY_ALERT_BALANCE) {
+            std::cout << "\n!!! SECURITY ALERT !!!\n";
+            std::cout << "Casino investigation started for player: " << player->getName() << "\n";
+            std::cout << "Reason: suspiciously high balance: $" << player->getBalance() << "\n";
+            leaderboard.addOrUpdatePlayer(player->getName(), player->getBalance(), session_wins, session_games_played);
+            std::cout << "Game session terminated due to investigation.\n";
+            return 0;
+        }
     }
 
     // Show final results
