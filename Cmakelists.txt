@@ -85,7 +85,6 @@ target_include_directories(slotmachine_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(slotmachine_test PRIVATE SQLite::SQLite3)
 add_test(NAME slotmachine_test COMMAND slotmachine_test)
 
-
 # DiceGame tests
 add_executable(dicegame_test
     tests/dicegame_test.cpp

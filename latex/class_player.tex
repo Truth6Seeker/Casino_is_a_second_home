@@ -1,0 +1,191 @@
+\doxysection{Player Class Reference}
+\hypertarget{class_player}{}\label{class_player}\index{Player@{Player}}
+
+
+Класс, представляющий игрока в казино  
+
+
+
+
+{\ttfamily \#include $<$player.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_a1c6b8a629956808aeeed5fc980258d88}{Player}} (const std\+::string \&player\+Name, uint32\+\_\+t player\+Age, double initial\+Balance=0.\+0)
+\begin{DoxyCompactList}\small\item\em Конструктор игрока \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_player_a73e4ff2d70e62ca7e3be1d9b4ad9de85}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Получить имя игрока \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{class_player_a8eab1adcc29896faf6f7ddc54eae1a47}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Получить ID игрока \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_player_a4494668b59618b48534aff21270bba97}{get\+Balance}} () const
+\begin{DoxyCompactList}\small\item\em Получить текущий баланс игрока \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{class_player_aa8e0b822f87987299cae96581d113536}{get\+Age}} () const
+\begin{DoxyCompactList}\small\item\em Получить возраст игрока \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_a7321d96c5797009ca8f271a2ff4b19c5}{is\+Verified}} () const
+\begin{DoxyCompactList}\small\item\em Проверить статус верификации игрока \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a36d0ca143869e7ab5b032ebcf6d4c54d}{deposit}} (double amount)
+\begin{DoxyCompactList}\small\item\em Пополнить баланс игрока \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_a2cc230757036c33ebc9b8cfc73dc3470}{withdraw}} (double amount)
+\begin{DoxyCompactList}\small\item\em Снять деньги с баланса игрока \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a7c9bbc6c38b35d64892d36b8b22f4331}{verify}} ()
+\begin{DoxyCompactList}\small\item\em Верифицировать игрока \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a82917017543c1a20d50edec9e65eec42}{display\+Info}} () const
+\begin{DoxyCompactList}\small\item\em Отобразить информацию об игроке \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс, представляющий игрока в казино 
+
+Этот класс хранит информацию об игроке, включая его личные данные, баланс и статус верификации. 
+
+\label{doc-constructors}
+\Hypertarget{class_player_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_player_a1c6b8a629956808aeeed5fc980258d88}\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily \label{class_player_a1c6b8a629956808aeeed5fc980258d88} 
+Player\+::\+Player (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{player\+Name}{, }\item[{uint32\+\_\+t}]{player\+Age}{, }\item[{double}]{initial\+Balance}{ = {\ttfamily 0.0}}\end{DoxyParamCaption})}
+
+
+
+Конструктор игрока 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Name} & Имя игрока \\
+\hline
+{\em player\+Age} & Возраст игрока \\
+\hline
+{\em initial\+Balance} & Начальный баланс (по умолчанию 0.\+0) \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_player_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_player_a36d0ca143869e7ab5b032ebcf6d4c54d}\index{Player@{Player}!deposit@{deposit}}
+\index{deposit@{deposit}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{deposit()}{deposit()}}
+{\footnotesize\ttfamily \label{class_player_a36d0ca143869e7ab5b032ebcf6d4c54d} 
+void Player\+::deposit (\begin{DoxyParamCaption}\item[{double}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Пополнить баланс игрока 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & Сумма для пополнения \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_a82917017543c1a20d50edec9e65eec42}\index{Player@{Player}!displayInfo@{displayInfo}}
+\index{displayInfo@{displayInfo}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{displayInfo()}{displayInfo()}}
+{\footnotesize\ttfamily \label{class_player_a82917017543c1a20d50edec9e65eec42} 
+void Player\+::display\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Отобразить информацию об игроке 
+
+Выводит в консоль основную информацию об игроке \Hypertarget{class_player_aa8e0b822f87987299cae96581d113536}\index{Player@{Player}!getAge@{getAge}}
+\index{getAge@{getAge}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getAge()}{getAge()}}
+{\footnotesize\ttfamily \label{class_player_aa8e0b822f87987299cae96581d113536} 
+uint32\+\_\+t Player\+::get\+Age (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить возраст игрока 
+
+\begin{DoxyReturn}{Returns}
+Возраст игрока 
+\end{DoxyReturn}
+\Hypertarget{class_player_a4494668b59618b48534aff21270bba97}\index{Player@{Player}!getBalance@{getBalance}}
+\index{getBalance@{getBalance}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getBalance()}{getBalance()}}
+{\footnotesize\ttfamily \label{class_player_a4494668b59618b48534aff21270bba97} 
+double Player\+::get\+Balance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить текущий баланс игрока 
+
+\begin{DoxyReturn}{Returns}
+Текущий баланс 
+\end{DoxyReturn}
+\Hypertarget{class_player_a8eab1adcc29896faf6f7ddc54eae1a47}\index{Player@{Player}!getId@{getId}}
+\index{getId@{getId}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily \label{class_player_a8eab1adcc29896faf6f7ddc54eae1a47} 
+uint64\+\_\+t Player\+::get\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить ID игрока 
+
+\begin{DoxyReturn}{Returns}
+Уникальный идентификатор игрока 
+\end{DoxyReturn}
+\Hypertarget{class_player_a73e4ff2d70e62ca7e3be1d9b4ad9de85}\index{Player@{Player}!getName@{getName}}
+\index{getName@{getName}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_player_a73e4ff2d70e62ca7e3be1d9b4ad9de85} 
+std\+::string Player\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить имя игрока 
+
+\begin{DoxyReturn}{Returns}
+Имя игрока 
+\end{DoxyReturn}
+\Hypertarget{class_player_a7321d96c5797009ca8f271a2ff4b19c5}\index{Player@{Player}!isVerified@{isVerified}}
+\index{isVerified@{isVerified}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{isVerified()}{isVerified()}}
+{\footnotesize\ttfamily \label{class_player_a7321d96c5797009ca8f271a2ff4b19c5} 
+bool Player\+::is\+Verified (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Проверить статус верификации игрока 
+
+\begin{DoxyReturn}{Returns}
+true если игрок верифицирован, false в противном случае 
+\end{DoxyReturn}
+\Hypertarget{class_player_a7c9bbc6c38b35d64892d36b8b22f4331}\index{Player@{Player}!verify@{verify}}
+\index{verify@{verify}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{verify()}{verify()}}
+{\footnotesize\ttfamily \label{class_player_a7c9bbc6c38b35d64892d36b8b22f4331} 
+void Player\+::verify (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Верифицировать игрока 
+
+Устанавливает статус верификации игрока в true \Hypertarget{class_player_a2cc230757036c33ebc9b8cfc73dc3470}\index{Player@{Player}!withdraw@{withdraw}}
+\index{withdraw@{withdraw}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{withdraw()}{withdraw()}}
+{\footnotesize\ttfamily \label{class_player_a2cc230757036c33ebc9b8cfc73dc3470} 
+bool Player\+::withdraw (\begin{DoxyParamCaption}\item[{double}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Снять деньги с баланса игрока 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & Сумма для снятия \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если операция успешна, false если недостаточно средств 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{player_8h}{player.\+h}}\end{DoxyCompactItemize}

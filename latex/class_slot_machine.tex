@@ -1,0 +1,276 @@
+\doxysection{Slot\+Machine Class Reference}
+\hypertarget{class_slot_machine}{}\label{class_slot_machine}\index{SlotMachine@{SlotMachine}}
+
+
+Класс, реализующий игровой автомат  
+
+
+
+
+{\ttfamily \#include $<$slotmachine.\+h$>$}
+
+Inheritance diagram for Slot\+Machine\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_slot_machine}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_slot_machine_a6f63d072950134a255d8a6250d7cd796}\label{class_slot_machine_a6f63d072950134a255d8a6250d7cd796} 
+{\bfseries Slot\+Machine} ()
+\begin{DoxyCompactList}\small\item\em Конструктор игрового автомата \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_slot_machine_a6e96dbcea0355396f7b2c987ae756b0b}{start\+Game}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$ player) override
+\begin{DoxyCompactList}\small\item\em Начать новую игру \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_slot_machine_a99ab2202c679bf81fd51a276e2fb2959}{play\+Round}} () override
+\begin{DoxyCompactList}\small\item\em Провести один раунд игры \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_slot_machine_ad23ec357801caaf43cb9325732a596c2}{end\+Game}} () override
+\begin{DoxyCompactList}\small\item\em Завершить игру \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_slot_machine_a5239599de9877dde80c799669cc1e26e}{get\+House\+Edge}} () const override
+\begin{DoxyCompactList}\small\item\em Получить преимущество казино \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_slot_machine_a40fc8e80605a6e8c1e30b60da116ca82}{get\+Game\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em Получить название игры \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_slot_machine_a65fc8bca3cd15ed8faa17d1fcae35f8a}{is\+Game\+Active}} () const override
+\begin{DoxyCompactList}\small\item\em Проверить, активна ли игра \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{class_slot_machine_ac7656a4954d06c2aa3fedae4387f52f6}{get\+Total\+Rounds\+Played}} () const override
+\begin{DoxyCompactList}\small\item\em Получить количество сыгранных раундов \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_slot_machine_a542386403b14532ff69cea8c9c506870}{get\+Total\+Amount\+Wagered}} () const override
+\begin{DoxyCompactList}\small\item\em Получить общую сумму ставок \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_slot_machine_adb86f43e6f9d84c7eb0a9bcb9c0d6706}{get\+Total\+Amount\+Won}} () const override
+\begin{DoxyCompactList}\small\item\em Получить общую сумму выигрышей \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_slot_machine_adeae8ce76171085c21a215ff28c7156f}{place\+Bet}} (double amount)
+\begin{DoxyCompactList}\small\item\em Сделать ставку \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_slot_machine_ad3bbe04cb6533c5a25943ada51119892}{spin}} ()
+\begin{DoxyCompactList}\small\item\em Крутить барабаны \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_slot_machine_aa3d94883ba6c6cd5081d63f3e586cbd8}{calculate\+Payout}} () const
+\begin{DoxyCompactList}\small\item\em Рассчитать выигрыш \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_slot_machine_a7e81debdc9a6a260596d8faef62b1197}{display\+Reels}} () const
+\begin{DoxyCompactList}\small\item\em Отобразить барабаны \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_slot_machine_a2d9a0e5951c0d21ba970956d974839d1}{place\+All\+In\+Bet}} ()
+\begin{DoxyCompactList}\small\item\em Сделать ставку на весь баланс \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс, реализующий игровой автомат 
+
+Этот класс реализует классический игровой автомат с тремя барабанами и различными символами, каждый из которых имеет свою выплату. 
+
+\label{doc-func-members}
+\Hypertarget{class_slot_machine_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_slot_machine_aa3d94883ba6c6cd5081d63f3e586cbd8}\index{SlotMachine@{SlotMachine}!calculatePayout@{calculatePayout}}
+\index{calculatePayout@{calculatePayout}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{calculatePayout()}{calculatePayout()}}
+{\footnotesize\ttfamily \label{class_slot_machine_aa3d94883ba6c6cd5081d63f3e586cbd8} 
+double Slot\+Machine\+::calculate\+Payout (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Рассчитать выигрыш 
+
+\begin{DoxyReturn}{Returns}
+Сумма выигрыша 
+\end{DoxyReturn}
+\Hypertarget{class_slot_machine_a7e81debdc9a6a260596d8faef62b1197}\index{SlotMachine@{SlotMachine}!displayReels@{displayReels}}
+\index{displayReels@{displayReels}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{displayReels()}{displayReels()}}
+{\footnotesize\ttfamily \label{class_slot_machine_a7e81debdc9a6a260596d8faef62b1197} 
+void Slot\+Machine\+::display\+Reels (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Отобразить барабаны 
+
+Выводит в консоль текущее состояние барабанов \Hypertarget{class_slot_machine_ad23ec357801caaf43cb9325732a596c2}\index{SlotMachine@{SlotMachine}!endGame@{endGame}}
+\index{endGame@{endGame}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{endGame()}{endGame()}}
+{\footnotesize\ttfamily \label{class_slot_machine_ad23ec357801caaf43cb9325732a596c2} 
+void Slot\+Machine\+::end\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Завершить игру 
+
+
+
+Implements \mbox{\hyperlink{class_i_game_ad92572b43a4e076b724047fc2403a557}{IGame}}.
+
+\Hypertarget{class_slot_machine_a40fc8e80605a6e8c1e30b60da116ca82}\index{SlotMachine@{SlotMachine}!getGameName@{getGameName}}
+\index{getGameName@{getGameName}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{getGameName()}{getGameName()}}
+{\footnotesize\ttfamily \label{class_slot_machine_a40fc8e80605a6e8c1e30b60da116ca82} 
+std\+::string Slot\+Machine\+::get\+Game\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить название игры 
+
+\begin{DoxyReturn}{Returns}
+Название игры 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_afa3493b07082a872195c855563dbf306}{IGame}}.
+
+\Hypertarget{class_slot_machine_a5239599de9877dde80c799669cc1e26e}\index{SlotMachine@{SlotMachine}!getHouseEdge@{getHouseEdge}}
+\index{getHouseEdge@{getHouseEdge}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{getHouseEdge()}{getHouseEdge()}}
+{\footnotesize\ttfamily \label{class_slot_machine_a5239599de9877dde80c799669cc1e26e} 
+double Slot\+Machine\+::get\+House\+Edge (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить преимущество казино 
+
+\begin{DoxyReturn}{Returns}
+Преимущество казино в процентах 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a8a4f27ed56941ab5250092a381ab8348}{IGame}}.
+
+\Hypertarget{class_slot_machine_a542386403b14532ff69cea8c9c506870}\index{SlotMachine@{SlotMachine}!getTotalAmountWagered@{getTotalAmountWagered}}
+\index{getTotalAmountWagered@{getTotalAmountWagered}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{getTotalAmountWagered()}{getTotalAmountWagered()}}
+{\footnotesize\ttfamily \label{class_slot_machine_a542386403b14532ff69cea8c9c506870} 
+double Slot\+Machine\+::get\+Total\+Amount\+Wagered (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить общую сумму ставок 
+
+\begin{DoxyReturn}{Returns}
+Сумма всех ставок 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a03d7878b6014fb6e40e54c47075ee4f1}{IGame}}.
+
+\Hypertarget{class_slot_machine_adb86f43e6f9d84c7eb0a9bcb9c0d6706}\index{SlotMachine@{SlotMachine}!getTotalAmountWon@{getTotalAmountWon}}
+\index{getTotalAmountWon@{getTotalAmountWon}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{getTotalAmountWon()}{getTotalAmountWon()}}
+{\footnotesize\ttfamily \label{class_slot_machine_adb86f43e6f9d84c7eb0a9bcb9c0d6706} 
+double Slot\+Machine\+::get\+Total\+Amount\+Won (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить общую сумму выигрышей 
+
+\begin{DoxyReturn}{Returns}
+Сумма всех выигрышей 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a60ab0310dcf9ba3b695b8ee6b612dd84}{IGame}}.
+
+\Hypertarget{class_slot_machine_ac7656a4954d06c2aa3fedae4387f52f6}\index{SlotMachine@{SlotMachine}!getTotalRoundsPlayed@{getTotalRoundsPlayed}}
+\index{getTotalRoundsPlayed@{getTotalRoundsPlayed}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{getTotalRoundsPlayed()}{getTotalRoundsPlayed()}}
+{\footnotesize\ttfamily \label{class_slot_machine_ac7656a4954d06c2aa3fedae4387f52f6} 
+uint64\+\_\+t Slot\+Machine\+::get\+Total\+Rounds\+Played (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить количество сыгранных раундов 
+
+\begin{DoxyReturn}{Returns}
+Количество раундов 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a6e228c5546cff7a44d632ab9dae265de}{IGame}}.
+
+\Hypertarget{class_slot_machine_a65fc8bca3cd15ed8faa17d1fcae35f8a}\index{SlotMachine@{SlotMachine}!isGameActive@{isGameActive}}
+\index{isGameActive@{isGameActive}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{isGameActive()}{isGameActive()}}
+{\footnotesize\ttfamily \label{class_slot_machine_a65fc8bca3cd15ed8faa17d1fcae35f8a} 
+bool Slot\+Machine\+::is\+Game\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Проверить, активна ли игра 
+
+\begin{DoxyReturn}{Returns}
+true если игра активна, false в противном случае 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a5acc38c7dec29267c6e005a6971ee1f5}{IGame}}.
+
+\Hypertarget{class_slot_machine_a2d9a0e5951c0d21ba970956d974839d1}\index{SlotMachine@{SlotMachine}!placeAllInBet@{placeAllInBet}}
+\index{placeAllInBet@{placeAllInBet}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{placeAllInBet()}{placeAllInBet()}}
+{\footnotesize\ttfamily \label{class_slot_machine_a2d9a0e5951c0d21ba970956d974839d1} 
+void Slot\+Machine\+::place\+All\+In\+Bet (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Сделать ставку на весь баланс 
+
+Ставит весь доступный баланс игрока \Hypertarget{class_slot_machine_adeae8ce76171085c21a215ff28c7156f}\index{SlotMachine@{SlotMachine}!placeBet@{placeBet}}
+\index{placeBet@{placeBet}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{placeBet()}{placeBet()}}
+{\footnotesize\ttfamily \label{class_slot_machine_adeae8ce76171085c21a215ff28c7156f} 
+bool Slot\+Machine\+::place\+Bet (\begin{DoxyParamCaption}\item[{double}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Сделать ставку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & Сумма ставки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если ставка успешно сделана, false в противном случае 
+\end{DoxyReturn}
+\Hypertarget{class_slot_machine_a99ab2202c679bf81fd51a276e2fb2959}\index{SlotMachine@{SlotMachine}!playRound@{playRound}}
+\index{playRound@{playRound}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{playRound()}{playRound()}}
+{\footnotesize\ttfamily \label{class_slot_machine_a99ab2202c679bf81fd51a276e2fb2959} 
+void Slot\+Machine\+::play\+Round (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Провести один раунд игры 
+
+
+
+Implements \mbox{\hyperlink{class_i_game_a1d17dab4df75500675717f2edbf71ce5}{IGame}}.
+
+\Hypertarget{class_slot_machine_ad3bbe04cb6533c5a25943ada51119892}\index{SlotMachine@{SlotMachine}!spin@{spin}}
+\index{spin@{spin}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{spin()}{spin()}}
+{\footnotesize\ttfamily \label{class_slot_machine_ad3bbe04cb6533c5a25943ada51119892} 
+void Slot\+Machine\+::spin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Крутить барабаны 
+
+Генерирует случайную комбинацию символов на барабанах \Hypertarget{class_slot_machine_a6e96dbcea0355396f7b2c987ae756b0b}\index{SlotMachine@{SlotMachine}!startGame@{startGame}}
+\index{startGame@{startGame}!SlotMachine@{SlotMachine}}
+\doxysubsubsection{\texorpdfstring{startGame()}{startGame()}}
+{\footnotesize\ttfamily \label{class_slot_machine_a6e96dbcea0355396f7b2c987ae756b0b} 
+void Slot\+Machine\+::start\+Game (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Начать новую игру 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Указатель на игрока \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_game_a30ed769d1b0903d4509ac31d141090f4}{IGame}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{slotmachine_8h}{slotmachine.\+h}}\end{DoxyCompactItemize}

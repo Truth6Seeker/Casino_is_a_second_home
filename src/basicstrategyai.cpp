@@ -1,4 +1,6 @@
 #include "basicstrategyai.h"
+#include "card.h"
+#include <algorithm>
 
 BasicStrategyAI::BasicStrategyAI() {}
 
@@ -179,4 +181,101 @@ bool BasicStrategyAI::isDealerCardVeryWeak(int dealerCard) const {
 
 bool BasicStrategyAI::isDealerCardVeryStrong(int dealerCard) const {
   return dealerCard == 10 || dealerCard == 11;
+}
+
+BasicStrategyAI::Action BasicStrategyAI::decideAction(const std::vector<Card>& playerCards,
+                                                     const Card& dealerUpCard) {
+    int playerValue = calculateHandValue(playerCards);
+    int dealerValue = dealerUpCard.getValue();
+    bool canSplit = playerCards.size() == 2 && playerCards[0].getRank() == playerCards[1].getRank();
+
+    if (canSplit) {
+        Rank rank = playerCards[0].getRank();
+        if (rank == Rank::ACE || rank == Rank::EIGHT) {
+            return BasicStrategyAI::Action::SPLIT;
+        }
+        if (rank == Rank::FIVE || rank == Rank::TEN || rank == Rank::JACK || rank == Rank::QUEEN || rank == Rank::KING) {
+            return BasicStrategyAI::Action::STAND;
+        }
+        if (rank == Rank::FOUR) {
+            return (dealerValue == 5 || dealerValue == 6) ? BasicStrategyAI::Action::SPLIT : BasicStrategyAI::Action::HIT;
+        }
+        if (rank == Rank::NINE) {
+            return (dealerValue == 7 || dealerValue == 10 || dealerValue == 1) ? BasicStrategyAI::Action::STAND : BasicStrategyAI::Action::SPLIT;
+        }
+        if (rank == Rank::TWO || rank == Rank::THREE || rank == Rank::SIX || rank == Rank::SEVEN) {
+            return (dealerValue >= 2 && dealerValue <= 7) ? BasicStrategyAI::Action::SPLIT : BasicStrategyAI::Action::HIT;
+        }
+    }
+
+    if (hasAce(playerCards)) {
+        int nonAceValue = playerValue - 11;
+        if (nonAceValue >= 8) {
+            return BasicStrategyAI::Action::STAND;
+        }
+        if (nonAceValue == 7) {
+            return (dealerValue >= 3 && dealerValue <= 6) ? BasicStrategyAI::Action::DOUBLE : BasicStrategyAI::Action::STAND;
+        }
+        if (nonAceValue == 6) {
+            return (dealerValue >= 3 && dealerValue <= 6) ? BasicStrategyAI::Action::DOUBLE : BasicStrategyAI::Action::HIT;
+        }
+        if (nonAceValue == 5 || nonAceValue == 4) {
+            return (dealerValue >= 4 && dealerValue <= 6) ? BasicStrategyAI::Action::DOUBLE : BasicStrategyAI::Action::HIT;
+        }
+        if (nonAceValue == 3 || nonAceValue == 2) {
+            return (dealerValue >= 5 && dealerValue <= 6) ? BasicStrategyAI::Action::DOUBLE : BasicStrategyAI::Action::HIT;
+        }
+        return BasicStrategyAI::Action::HIT;
+    }
+
+    if (playerValue <= 8) {
+        return BasicStrategyAI::Action::HIT;
+    }
+    if (playerValue >= 17) {
+        return BasicStrategyAI::Action::STAND;
+    }
+    if (playerValue == 9) {
+        return (dealerValue >= 3 && dealerValue <= 6) ? BasicStrategyAI::Action::DOUBLE : BasicStrategyAI::Action::HIT;
+    }
+    if (playerValue == 10 || playerValue == 11) {
+        return (dealerValue >= 2 && dealerValue <= 9) ? BasicStrategyAI::Action::DOUBLE : BasicStrategyAI::Action::HIT;
+    }
+    if (playerValue == 12) {
+        return (dealerValue >= 4 && dealerValue <= 6) ? BasicStrategyAI::Action::STAND : BasicStrategyAI::Action::HIT;
+    }
+    if (playerValue >= 13 && playerValue <= 16) {
+        return (dealerValue >= 2 && dealerValue <= 6) ? BasicStrategyAI::Action::STAND : BasicStrategyAI::Action::HIT;
+    }
+
+    return BasicStrategyAI::Action::HIT;
+}
+
+bool BasicStrategyAI::shouldTakeInsurance(const std::vector<Card>& playerCards,
+                                          const Card& dealerUpCard) {
+    return false;
+}
+
+int BasicStrategyAI::calculateHandValue(const std::vector<Card>& cards) {
+    int value = 0;
+    int aces = 0;
+    for (const auto& card : cards) {
+        Rank rank = card.getRank();
+        if (rank == Rank::ACE) {
+            aces++;
+            value += 11;
+        } else if (rank == Rank::JACK || rank == Rank::QUEEN || rank == Rank::KING) {
+            value += 10;
+        } else {
+            value += static_cast<int>(rank);
+        }
+    }
+    while (value > 21 && aces > 0) {
+        value -= 10;
+        aces--;
+    }
+    return value;
+}
+
+bool BasicStrategyAI::hasAce(const std::vector<Card>& cards) {
+    return std::any_of(cards.begin(), cards.end(), [](const Card& card) { return card.getRank() == Rank::ACE; });
 }

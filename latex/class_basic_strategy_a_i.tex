@@ -1,0 +1,249 @@
+\doxysection{Basic\+Strategy\+AI Class Reference}
+\hypertarget{class_basic_strategy_a_i}{}\label{class_basic_strategy_a_i}\index{BasicStrategyAI@{BasicStrategyAI}}
+
+
+Класс, реализующий базовую стратегию для блэкджека  
+
+
+
+
+{\ttfamily \#include $<$basicstrategyai.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585}{Action}} \{ \newline
+\mbox{\hyperlink{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585a4e5e3542d523b7fb9c61887d5bb7d642}{HIT}}
+, \mbox{\hyperlink{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585add135fb441de529b55c24775556f3a81}{STAND}}
+, \mbox{\hyperlink{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585afd3e4ece78a7d422280d5ed379482229}{DOUBLE}}
+, \mbox{\hyperlink{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585a913bcc607ae0d97776698d9ed424be6a}{SPLIT}}
+, \newline
+\mbox{\hyperlink{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585ad6ca1c80a16366902e14c2082335d472}{SURRENDER}}
+ \}
+\begin{DoxyCompactList}\small\item\em Возможные действия в игре \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_basic_strategy_a_i_abb4bbbf5f3f90dfb63b113150fb2a9de}\label{class_basic_strategy_a_i_abb4bbbf5f3f90dfb63b113150fb2a9de} 
+{\bfseries Basic\+Strategy\+AI} ()
+\begin{DoxyCompactList}\small\item\em Конструктор ИИ базовой стратегии \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585}{Action}} \mbox{\hyperlink{class_basic_strategy_a_i_a0b350dcca021dc00c253e6d40eeac673}{get\+Action}} (int player\+Score, int dealer\+Up\+Card, bool \mbox{\hyperlink{class_basic_strategy_a_i_a83fc8de27e276ac291584358a2f48be9}{is\+Soft\+Hand}}, bool can\+Split) const
+\begin{DoxyCompactList}\small\item\em Получить оптимальное действие \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585}{Action}} \mbox{\hyperlink{class_basic_strategy_a_i_a5f3d3206a4edebb2471cd78bd1125f78}{decide\+Action}} (const std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ \&player\+Cards, const \mbox{\hyperlink{class_card}{Card}} \&dealer\+Up\+Card)
+\begin{DoxyCompactList}\small\item\em Принять решение на основе карт \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_basic_strategy_a_i_a83fc8de27e276ac291584358a2f48be9}{is\+Soft\+Hand}} (const std\+::vector$<$ int $>$ \&cards) const
+\begin{DoxyCompactList}\small\item\em Проверить, является ли рука мягкой \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_basic_strategy_a_i_a8046a0d86edbee9a7eeea457c8ff7140}{can\+Double\+Down}} (int player\+Score) const
+\begin{DoxyCompactList}\small\item\em Проверить возможность удвоения \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_basic_strategy_a_i_a56888305cf37614f9168a7b52c683ebc}{should\+Take\+Insurance}} () const
+\begin{DoxyCompactList}\small\item\em Проверить, стоит ли брать страховку \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_basic_strategy_a_i_a9425feb9ed9878517c6c6d1e2571c0e1}{should\+Take\+Insurance}} (const std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ \&player\+Cards, const \mbox{\hyperlink{class_card}{Card}} \&dealer\+Up\+Card)
+\begin{DoxyCompactList}\small\item\em Проверить, стоит ли брать страховку \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_basic_strategy_a_i_ae3173471239d4967601fa690f45b8ced}{calculate\+Hand\+Value}} (const std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ \&cards)
+\begin{DoxyCompactList}\small\item\em Рассчитать стоимость руки \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_basic_strategy_a_i_a700e7dd763ce91bb1f9f8cc2fe495612}{has\+Ace}} (const std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ \&cards)
+\begin{DoxyCompactList}\small\item\em Проверить наличие туза \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс, реализующий базовую стратегию для блэкджека 
+
+Этот класс реализует оптимальную базовую стратегию для игры в блэкджек, которая минимизирует преимущество казино. 
+
+\label{doc-enum-members}
+\Hypertarget{class_basic_strategy_a_i_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585}\index{BasicStrategyAI@{BasicStrategyAI}!Action@{Action}}
+\index{Action@{Action}!BasicStrategyAI@{BasicStrategyAI}}
+\doxysubsubsection{\texorpdfstring{Action}{Action}}
+{\footnotesize\ttfamily \label{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585} 
+enum class \mbox{\hyperlink{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585}{Basic\+Strategy\+AI\+::\+Action}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Возможные действия в игре 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HIT@{HIT}!BasicStrategyAI@{BasicStrategyAI}}\index{BasicStrategyAI@{BasicStrategyAI}!HIT@{HIT}}}\Hypertarget{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585a4e5e3542d523b7fb9c61887d5bb7d642}\label{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585a4e5e3542d523b7fb9c61887d5bb7d642} 
+HIT&Взять карту \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STAND@{STAND}!BasicStrategyAI@{BasicStrategyAI}}\index{BasicStrategyAI@{BasicStrategyAI}!STAND@{STAND}}}\Hypertarget{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585add135fb441de529b55c24775556f3a81}\label{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585add135fb441de529b55c24775556f3a81} 
+STAND&Остановиться \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOUBLE@{DOUBLE}!BasicStrategyAI@{BasicStrategyAI}}\index{BasicStrategyAI@{BasicStrategyAI}!DOUBLE@{DOUBLE}}}\Hypertarget{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585afd3e4ece78a7d422280d5ed379482229}\label{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585afd3e4ece78a7d422280d5ed379482229} 
+DOUBLE&Удвоить ставку \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPLIT@{SPLIT}!BasicStrategyAI@{BasicStrategyAI}}\index{BasicStrategyAI@{BasicStrategyAI}!SPLIT@{SPLIT}}}\Hypertarget{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585a913bcc607ae0d97776698d9ed424be6a}\label{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585a913bcc607ae0d97776698d9ed424be6a} 
+SPLIT&Разделить пару \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SURRENDER@{SURRENDER}!BasicStrategyAI@{BasicStrategyAI}}\index{BasicStrategyAI@{BasicStrategyAI}!SURRENDER@{SURRENDER}}}\Hypertarget{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585ad6ca1c80a16366902e14c2082335d472}\label{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585ad6ca1c80a16366902e14c2082335d472} 
+SURRENDER&Сдаться \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{class_basic_strategy_a_i_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_basic_strategy_a_i_ae3173471239d4967601fa690f45b8ced}\index{BasicStrategyAI@{BasicStrategyAI}!calculateHandValue@{calculateHandValue}}
+\index{calculateHandValue@{calculateHandValue}!BasicStrategyAI@{BasicStrategyAI}}
+\doxysubsubsection{\texorpdfstring{calculateHandValue()}{calculateHandValue()}}
+{\footnotesize\ttfamily \label{class_basic_strategy_a_i_ae3173471239d4967601fa690f45b8ced} 
+int Basic\+Strategy\+AI\+::calculate\+Hand\+Value (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ \&}]{cards}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Рассчитать стоимость руки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cards} & Карты в руке \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Стоимость руки 
+\end{DoxyReturn}
+\Hypertarget{class_basic_strategy_a_i_a8046a0d86edbee9a7eeea457c8ff7140}\index{BasicStrategyAI@{BasicStrategyAI}!canDoubleDown@{canDoubleDown}}
+\index{canDoubleDown@{canDoubleDown}!BasicStrategyAI@{BasicStrategyAI}}
+\doxysubsubsection{\texorpdfstring{canDoubleDown()}{canDoubleDown()}}
+{\footnotesize\ttfamily \label{class_basic_strategy_a_i_a8046a0d86edbee9a7eeea457c8ff7140} 
+bool Basic\+Strategy\+AI\+::can\+Double\+Down (\begin{DoxyParamCaption}\item[{int}]{player\+Score}{}\end{DoxyParamCaption}) const}
+
+
+
+Проверить возможность удвоения 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Score} & Счет игрока \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если удвоение возможно, false в противном случае 
+\end{DoxyReturn}
+\Hypertarget{class_basic_strategy_a_i_a5f3d3206a4edebb2471cd78bd1125f78}\index{BasicStrategyAI@{BasicStrategyAI}!decideAction@{decideAction}}
+\index{decideAction@{decideAction}!BasicStrategyAI@{BasicStrategyAI}}
+\doxysubsubsection{\texorpdfstring{decideAction()}{decideAction()}}
+{\footnotesize\ttfamily \label{class_basic_strategy_a_i_a5f3d3206a4edebb2471cd78bd1125f78} 
+\mbox{\hyperlink{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585}{Action}} Basic\+Strategy\+AI\+::decide\+Action (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ \&}]{player\+Cards}{, }\item[{const \mbox{\hyperlink{class_card}{Card}} \&}]{dealer\+Up\+Card}{}\end{DoxyParamCaption})}
+
+
+
+Принять решение на основе карт 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Cards} & Карты игрока \\
+\hline
+{\em dealer\+Up\+Card} & Открытая карта дилера \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Оптимальное действие 
+\end{DoxyReturn}
+\Hypertarget{class_basic_strategy_a_i_a0b350dcca021dc00c253e6d40eeac673}\index{BasicStrategyAI@{BasicStrategyAI}!getAction@{getAction}}
+\index{getAction@{getAction}!BasicStrategyAI@{BasicStrategyAI}}
+\doxysubsubsection{\texorpdfstring{getAction()}{getAction()}}
+{\footnotesize\ttfamily \label{class_basic_strategy_a_i_a0b350dcca021dc00c253e6d40eeac673} 
+\mbox{\hyperlink{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585}{Action}} Basic\+Strategy\+AI\+::get\+Action (\begin{DoxyParamCaption}\item[{int}]{player\+Score}{, }\item[{int}]{dealer\+Up\+Card}{, }\item[{bool}]{is\+Soft\+Hand}{, }\item[{bool}]{can\+Split}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить оптимальное действие 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Score} & Счет игрока \\
+\hline
+{\em dealer\+Up\+Card} & Открытая карта дилера \\
+\hline
+{\em is\+Soft\+Hand} & Является ли рука мягкой \\
+\hline
+{\em can\+Split} & Можно ли разделить пару \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Оптимальное действие 
+\end{DoxyReturn}
+\Hypertarget{class_basic_strategy_a_i_a700e7dd763ce91bb1f9f8cc2fe495612}\index{BasicStrategyAI@{BasicStrategyAI}!hasAce@{hasAce}}
+\index{hasAce@{hasAce}!BasicStrategyAI@{BasicStrategyAI}}
+\doxysubsubsection{\texorpdfstring{hasAce()}{hasAce()}}
+{\footnotesize\ttfamily \label{class_basic_strategy_a_i_a700e7dd763ce91bb1f9f8cc2fe495612} 
+bool Basic\+Strategy\+AI\+::has\+Ace (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ \&}]{cards}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Проверить наличие туза 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cards} & Карты в руке \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если есть туз, false в противном случае 
+\end{DoxyReturn}
+\Hypertarget{class_basic_strategy_a_i_a83fc8de27e276ac291584358a2f48be9}\index{BasicStrategyAI@{BasicStrategyAI}!isSoftHand@{isSoftHand}}
+\index{isSoftHand@{isSoftHand}!BasicStrategyAI@{BasicStrategyAI}}
+\doxysubsubsection{\texorpdfstring{isSoftHand()}{isSoftHand()}}
+{\footnotesize\ttfamily \label{class_basic_strategy_a_i_a83fc8de27e276ac291584358a2f48be9} 
+bool Basic\+Strategy\+AI\+::is\+Soft\+Hand (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int $>$ \&}]{cards}{}\end{DoxyParamCaption}) const}
+
+
+
+Проверить, является ли рука мягкой 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cards} & Карты в руке \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если рука мягкая, false в противном случае 
+\end{DoxyReturn}
+\Hypertarget{class_basic_strategy_a_i_a56888305cf37614f9168a7b52c683ebc}\index{BasicStrategyAI@{BasicStrategyAI}!shouldTakeInsurance@{shouldTakeInsurance}}
+\index{shouldTakeInsurance@{shouldTakeInsurance}!BasicStrategyAI@{BasicStrategyAI}}
+\doxysubsubsection{\texorpdfstring{shouldTakeInsurance()}{shouldTakeInsurance()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_basic_strategy_a_i_a56888305cf37614f9168a7b52c683ebc} 
+bool Basic\+Strategy\+AI\+::should\+Take\+Insurance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Проверить, стоит ли брать страховку 
+
+\begin{DoxyReturn}{Returns}
+true если стоит брать страховку, false в противном случае 
+\end{DoxyReturn}
+\Hypertarget{class_basic_strategy_a_i_a9425feb9ed9878517c6c6d1e2571c0e1}\index{BasicStrategyAI@{BasicStrategyAI}!shouldTakeInsurance@{shouldTakeInsurance}}
+\index{shouldTakeInsurance@{shouldTakeInsurance}!BasicStrategyAI@{BasicStrategyAI}}
+\doxysubsubsection{\texorpdfstring{shouldTakeInsurance()}{shouldTakeInsurance()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_basic_strategy_a_i_a9425feb9ed9878517c6c6d1e2571c0e1} 
+bool Basic\+Strategy\+AI\+::should\+Take\+Insurance (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_card}{Card}} $>$ \&}]{player\+Cards}{, }\item[{const \mbox{\hyperlink{class_card}{Card}} \&}]{dealer\+Up\+Card}{}\end{DoxyParamCaption})}
+
+
+
+Проверить, стоит ли брать страховку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Cards} & Карты игрока \\
+\hline
+{\em dealer\+Up\+Card} & Открытая карта дилера \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если стоит брать страховку, false в противном случае 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{basicstrategyai_8h}{basicstrategyai.\+h}}\end{DoxyCompactItemize}

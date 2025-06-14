@@ -1,0 +1,61 @@
+\doxysection{roulette.\+h}
+\hypertarget{roulette_8h_source}{}\label{roulette_8h_source}\index{headers/roulette.h@{headers/roulette.h}}
+\mbox{\hyperlink{roulette_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ ROULETTE\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ ROULETTE\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{igame_8h}{igame.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_roulette_ad3fee153e8e8dd3be868c02af02fa36b}{Roulette}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_game}{IGame}}\ \{}
+\DoxyCodeLine{00023\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{class_roulette_ad3fee153e8e8dd3be868c02af02fa36b}{Roulette}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_roulette_af385f0a9b5e7606d8645775289f253a3}{startGame}}(std::shared\_ptr<Player>\ player)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_roulette_ad09e072ca705c4a0ab73db253f6d3b76}{playRound}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_roulette_a58bc8e86c5a08d3f684a39e8cef60a69}{endGame}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_roulette_aae2528b9a7551df710edbca97dfea286}{getHouseEdge}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ std::string\ \mbox{\hyperlink{class_roulette_af17a6ff685c33111bcdd65c37ee1cd94}{getGameName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_roulette_ab0914a97631d97b582961855b150aaf0}{isGameActive}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ uint64\_t\ \mbox{\hyperlink{class_roulette_ad85a1ffe9421217487627986d60f1b32}{getTotalRoundsPlayed}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_roulette_a077551a4fa8ceabb593bef55c909f5c6}{getTotalAmountWagered}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_roulette_aabbde093da45b67f910886470e31f39e}{getTotalAmountWon}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00082\ \ \ std::shared\_ptr<Player>\ currentPlayer;\ \ }
+\DoxyCodeLine{00083\ \ \ \textcolor{keywordtype}{bool}\ gameActive;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \textcolor{keywordtype}{double}\ currentBet;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{comment}{//\ Статистика}}
+\DoxyCodeLine{00087\ \ \ uint64\_t\ roundsPlayed;\ \ }
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{double}\ totalWagered;\ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \textcolor{keywordtype}{double}\ totalWon;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{void}\ placeBet();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{void}\ spinWheel();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00109\ \ \ \textcolor{keywordtype}{void}\ payout(\textcolor{keywordtype}{int}\ winningNumber);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{void}\ displayBoard()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00123\ \ \ std::vector<int>\ getWinningNumbers(\textcolor{keywordtype}{int}\ number)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00124\ \};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ ROULETTE\_H}}
+
+\end{DoxyCode}

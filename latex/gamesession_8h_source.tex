@@ -1,0 +1,50 @@
+\doxysection{gamesession.\+h}
+\hypertarget{gamesession_8h_source}{}\label{gamesession_8h_source}\index{headers/gamesession.h@{headers/gamesession.h}}
+\mbox{\hyperlink{gamesession_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_game}{IGame}};\ \ \textcolor{comment}{//\ Forward\ declaration}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_session_a97eae988b431fe1943015b0273098ed7}{GameSession}}\ \{}
+\DoxyCodeLine{00022\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ std::shared\_ptr<Player>\ player;\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ std::shared\_ptr<IGame>\ currentGame;\ }
+\DoxyCodeLine{00025\ \ \ time\_t\ startTime;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{double}\ initialBalance;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{double}\ totalWagered;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{double}\ totalWon;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{class_game_session_a97eae988b431fe1943015b0273098ed7}{GameSession}}(std::shared\_ptr<Player>\ player);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_session_a0067baec81a99670fc890082ca08aec4}{startGame}}(std::shared\_ptr<IGame>\ game);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_session_af45a3af30a89bfde69feebbfc0cd6d34}{endGame}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_session_ad5f8b0cc95aa62ab1ae55e38123d2e48}{placeBet}}(\textcolor{keywordtype}{double}\ amount);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_session_ae53b162c789ea3662b4ced145d0c2a88}{addWinnings}}(\textcolor{keywordtype}{double}\ amount);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_game_session_a20e6ce23aa7e6dde7468a2164241ce49}{getSessionDuration}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_game_session_ac2802a36adad2fc217d68a58961eead1}{getNetResult}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_game_session_ada80d98b7380004edccec42f05b8e7c9}{getTotalWagered}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_game_session_a11e53f88aec94cb5649e3de559661a3b}{getTotalWon}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00092\ \ \ std::shared\_ptr<Player>\ \mbox{\hyperlink{class_game_session_a47a890e3243201603ee4f209b0571223}{getPlayer}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00098\ \ \ std::shared\_ptr<IGame>\ \mbox{\hyperlink{class_game_session_a46a10eafc1b3cf664dd1052ffcdb0a4a}{getCurrentGame}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00104\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_session_a1a891bb5497f2a1b6fcf1ed6572eceeb}{isActive}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00105\ \};}
+
+\end{DoxyCode}

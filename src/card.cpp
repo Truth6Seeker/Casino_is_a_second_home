@@ -10,53 +10,50 @@ Rank Card::getRank() const { return rank; }
 
 int Card::getValue() const {
   if (rank == Rank::ACE) {
-    return 11;  // Ace is worth 11 by default in blackjack
-  } else if (rank >= Rank::JACK) {
-    return 10;  // Face cards are worth 10
+    return 11;
+  }
+  if (rank >= Rank::JACK) {
+    return 10;
   }
   return static_cast<int>(rank);
 }
 
 std::string Card::toString() const {
-  std::stringstream ss;
+  std::string result;
 
-  // Add rank
   switch (rank) {
     case Rank::ACE:
-      ss << "Ace";
+      result += "A";
       break;
     case Rank::JACK:
-      ss << "Jack";
+      result += "J";
       break;
     case Rank::QUEEN:
-      ss << "Queen";
+      result += "Q";
       break;
     case Rank::KING:
-      ss << "King";
+      result += "K";
       break;
     default:
-      ss << static_cast<int>(rank);
+      result += std::to_string(static_cast<int>(rank));
   }
 
-  ss << " of ";
-
-  // Add suit
   switch (suit) {
     case Suit::HEARTS:
-      ss << "Hearts";
+      result += "♥";
       break;
     case Suit::DIAMONDS:
-      ss << "Diamonds";
+      result += "♦";
       break;
     case Suit::CLUBS:
-      ss << "Clubs";
+      result += "♣";
       break;
     case Suit::SPADES:
-      ss << "Spades";
+      result += "♠";
       break;
   }
 
-  return ss.str();
+  return result;
 }
 
 std::string Card::toSymbol() const {

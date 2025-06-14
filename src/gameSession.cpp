@@ -1,4 +1,4 @@
-#include "gamesession.h"
+#include "../headers/gameSession.h"
 
 #include <ctime>
 #include <iostream>
@@ -8,29 +8,29 @@
 GameSession::GameSession(std::shared_ptr<Player> player)
     : player(player),
       currentGame(nullptr),
-      startTime(std::time(nullptr)),
+      startTime(0),
       initialBalance(player->getBalance()),
       totalWagered(0),
       totalWon(0) {}
 
 bool GameSession::startGame(std::shared_ptr<IGame> game) {
   if (currentGame != nullptr) {
-    return false;  // Already has an active game
+    return false;
   }
-
   currentGame = game;
-  currentGame->startGame(player);
+  startTime = std::time(nullptr);
   return true;
 }
 
 void GameSession::endGame() {
-  if (currentGame != nullptr) {
-    currentGame->endGame();
-    currentGame = nullptr;
-  }
+  currentGame = nullptr;
+  startTime = 0;
 }
 
 bool GameSession::placeBet(double amount) {
+  if (currentGame == nullptr || amount <= 0) {
+    return false;
+  }
   if (player->withdraw(amount)) {
     totalWagered += amount;
     return true;
@@ -46,21 +46,32 @@ void GameSession::addWinnings(double amount) {
 }
 
 double GameSession::getSessionDuration() const {
-  return difftime(std::time(nullptr), startTime) / 60.0;  // Minutes
+  if (startTime == 0) {
+    return 0;
+  }
+  return std::difftime(std::time(nullptr), startTime) / 60.0;
 }
 
 double GameSession::getNetResult() const {
-  return (player->getBalance() - initialBalance);
+  return totalWon - totalWagered;
 }
 
-double GameSession::getTotalWagered() const { return totalWagered; }
-double GameSession::getTotalWon() const { return totalWon; }
+double GameSession::getTotalWagered() const {
+  return totalWagered;
+}
 
-std::shared_ptr<Player> GameSession::getPlayer() const { return player; }
+double GameSession::getTotalWon() const {
+  return totalWon;
+}
+
+std::shared_ptr<Player> GameSession::getPlayer() const {
+  return player;
+}
+
 std::shared_ptr<IGame> GameSession::getCurrentGame() const {
   return currentGame;
 }
 
 bool GameSession::isActive() const {
-  return currentGame != nullptr && currentGame->isGameActive();
+  return currentGame != nullptr;
 }

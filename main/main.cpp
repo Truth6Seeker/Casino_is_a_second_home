@@ -1,3 +1,8 @@
+/**
+ * @file main.cpp
+ * @brief Главный файл программы, реализующий консольное казино
+ */
+
 #include <iomanip>
 #include <iostream>
 #include <limits>
@@ -10,14 +15,24 @@
 #include "../headers/roulette.h"
 #include "../headers/slotmachine.h"
 
-const double SECURITY_ALERT_BALANCE = 1000000.0;
-const double VIP_THRESHOLD = 77777.0;
+const double SECURITY_ALERT_BALANCE = 1000000.0;  ///< Порог баланса для срабатывания сигнализации
+const double VIP_THRESHOLD = 77777.0;             ///< Порог баланса для получения VIP статуса
 
+/**
+ * @brief Очищает буфер ввода
+ * 
+ * Используется для корректной обработки некорректного ввода
+ */
 void clearInputBuffer() {
   std::cin.clear();
   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
+/**
+ * @brief Отображает сообщение о получении VIP статуса
+ * 
+ * Выводит в консоль красиво оформленное сообщение о VIP статусе
+ */
 void displayVIPMessage() {
   std::cout
       << "\n╔════════════════════════════════════════════════════════════╗\n";
@@ -26,7 +41,7 @@ void displayVIPMessage() {
   std::cout
       << "║                                                            ║\n";
   std::cout
-      << "║  Congratulations! You are a valued VIP player!            ║\n";
+      << "║  Congratulations! You are a valued VIP player!              ║\n";
   std::cout
       << "║  Enjoy exclusive benefits and premium gaming experience!   ║\n";
   std::cout
@@ -35,6 +50,12 @@ void displayVIPMessage() {
       << "╚════════════════════════════════════════════════════════════╝\n\n";
 }
 
+/**
+ * @brief Играет в блэкджек
+ * @param session Игровая сессия
+ * @param session_games_played Счетчик сыгранных игр
+ * @param session_wins Счетчик побед
+ */
 void playBlackjack(std::shared_ptr<GameSession> session,
                    int& session_games_played, int& session_wins) {
   auto blackjack = std::make_shared<Blackjack>();
@@ -43,7 +64,6 @@ void playBlackjack(std::shared_ptr<GameSession> session,
   std::cout << "Rules:\n- Try to get closer to 21 than dealer\n- Face cards = "
                "10, Ace = 1 or 11\n- Dealer stands on 17\n\n";
 
-  // Вопрос про AI ДО старта игры
   char useAI;
   while (true) {
     std::cout << "Do you want to use the Basic Strategy AI? (y/n): ";
@@ -77,7 +97,6 @@ void playBlackjack(std::shared_ptr<GameSession> session,
 
     if (result == RoundResult::EXIT) break;
 
-    // Обновляем сессионную статистику
     session_games_played++;
     if (result == RoundResult::WIN) session_wins++;
 
@@ -86,11 +105,19 @@ void playBlackjack(std::shared_ptr<GameSession> session,
   }
 }
 
+/**
+ * @brief Играет в рулетку
+ * @param session Игровая сессия
+ */
 void playRoulette(std::shared_ptr<GameSession> session) {
   auto roulette = std::make_shared<Roulette>();
   session->startGame(roulette);
 }
 
+/**
+ * @brief Играет в кости
+ * @param session Игровая сессия
+ */
 void playDiceGame(std::shared_ptr<GameSession> session) {
   auto diceGame = std::make_shared<DiceGame>();
   session->startGame(diceGame);
@@ -100,17 +127,14 @@ void playDiceGame(std::shared_ptr<GameSession> session) {
                "bet\n\n";
 
   while (true) {
-    // Show current balance
     double balance = session->getPlayer()->getBalance();
     std::cout << "Current balance: $" << balance << "\n";
 
-    // Check if player can continue
     if (balance <= 0) {
       std::cout << "You're out of money! Game over.\n";
       break;
     }
 
-    // Get bet amount
     double betAmount;
     while (true) {
       std::cout << "Enter bet amount (0 to quit): $";
@@ -128,7 +152,6 @@ void playDiceGame(std::shared_ptr<GameSession> session) {
       clearInputBuffer();
     }
 
-    // Get high/low choice
     char choice;
     while (true) {
       std::cout << "Bet on (H)igh or (L)ow? ";
@@ -142,16 +165,13 @@ void playDiceGame(std::shared_ptr<GameSession> session) {
       clearInputBuffer();
     }
 
-    // 1. First try to place the bet (will deduct from balance)
     if (!diceGame->placeBet(betAmount, choice == 'H')) {
       std::cout << "Failed to place bet! Please check your balance.\n";
-      continue;  // Skip to next round if bet failed
+      continue;
     }
 
-    // 2. Play the round (bet was successfully placed)
     diceGame->playRound();
 
-    // 3. Show result - balance was already updated by placeBet()
     int result = diceGame->getLastRoll();
     std::cout << "\nDice rolled: " << result << " - You "
               << (result >= 4 && choice == 'H' || result <= 3 && choice == 'L'
@@ -159,12 +179,15 @@ void playDiceGame(std::shared_ptr<GameSession> session) {
                       : "LOST!")
               << "\n";
 
-    // 4. Show updated balance (automatically reflects win/loss)
     std::cout << "New balance: $" << session->getPlayer()->getBalance()
               << "\n\n";
   }
 }
 
+/**
+ * @brief Играет в подбрасывание монеты
+ * @param session Игровая сессия
+ */
 void playCoinFlip(std::shared_ptr<GameSession> session) {
   auto coinFlip = std::make_shared<CoinFlip>();
   session->startGame(coinFlip);
@@ -173,17 +196,14 @@ void playCoinFlip(std::shared_ptr<GameSession> session) {
   std::cout << "Rules:\n- Bet on Heads or Tails\n- Win pays 1.95x your bet\n\n";
 
   while (true) {
-    // Show current balance
     double balance = session->getPlayer()->getBalance();
     std::cout << "Current balance: $" << balance << "\n";
 
-    // Check if player can continue
     if (balance <= 0) {
       std::cout << "You're out of money! Game over.\n";
       break;
     }
 
-    // Get bet amount
     double betAmount;
     while (true) {
       std::cout << "Enter bet amount (0 to quit): $";
@@ -201,7 +221,6 @@ void playCoinFlip(std::shared_ptr<GameSession> session) {
       clearInputBuffer();
     }
 
-    // Get heads/tails choice
     char choice;
     while (true) {
       std::cout << "Bet on (H)eads or (T)ails? ";
@@ -215,16 +234,13 @@ void playCoinFlip(std::shared_ptr<GameSession> session) {
       clearInputBuffer();
     }
 
-    // Place the bet
     if (!coinFlip->placeBet(betAmount, choice == 'H')) {
       std::cout << "Failed to place bet! Please check your balance.\n";
       continue;
     }
 
-    // Play the round
     coinFlip->playRound();
 
-    // Show result
     std::cout << "\nCoin landed on: " << coinFlip->getLastResultString()
               << "\n";
     std::cout << "You "
@@ -233,12 +249,15 @@ void playCoinFlip(std::shared_ptr<GameSession> session) {
                       : "LOST!")
               << "\n";
 
-    // Show updated balance
     std::cout << "New balance: $" << session->getPlayer()->getBalance()
               << "\n\n";
   }
 }
 
+/**
+ * @brief Играет в игровой автомат
+ * @param session Игровая сессия
+ */
 void playSlotMachine(std::shared_ptr<GameSession> session) {
   auto slotMachine = std::make_shared<SlotMachine>();
   session->startGame(slotMachine);
@@ -266,7 +285,6 @@ void playSlotMachine(std::shared_ptr<GameSession> session) {
       break;
     }
 
-    // Get bet amount
     double betAmount;
     while (true) {
       std::cout << "Enter bet amount (0 to quit, -1 for all-in): $";
@@ -292,20 +310,21 @@ void playSlotMachine(std::shared_ptr<GameSession> session) {
       clearInputBuffer();
     }
 
-    // Play the round
     slotMachine->playRound();
 
-    // Show updated balance
     std::cout << "New balance: $" << session->getPlayer()->getBalance()
               << "\n\n";
   }
 }
 
+/**
+ * @brief Главная функция программы
+ * @return 0 при успешном завершении
+ */
 int main() {
   Leaderboard leaderboard;
   Casino myCasino("Lucky Dice Casino");
 
-  // Register and verify player
   std::string name;
   int age;
   double initialDeposit;
@@ -329,14 +348,11 @@ int main() {
   auto player = myCasino.registerPlayer(name, age, initialDeposit);
   player->verify();
 
-  // Сессионная статистика
   int session_games_played = 0;
   int session_wins = 0;
 
-  // Create game session and play
   auto session = myCasino.createGameSession(player->getId());
   while (true) {
-    // Display VIP status if applicable
     if (player->getBalance() >= VIP_THRESHOLD) {
       displayVIPMessage();
     }
@@ -393,11 +409,9 @@ int main() {
       std::cout << "Invalid input! Please enter a number between 1 and 7\n";
     }
 
-    // Показываем баланс после каждой игры
     std::cout << "\nYour current balance: $" << std::fixed
               << std::setprecision(2) << player->getBalance() << "\n";
 
-    // SECURITY ALERT
     if (player->getBalance() >= SECURITY_ALERT_BALANCE) {
       std::cout << "\n!!! SECURITY ALERT !!!\n";
       std::cout << "Casino investigation started for player: "
@@ -411,7 +425,6 @@ int main() {
     }
   }
 
-  // Show final results
   std::cout << "\n=== Game Over ===\n";
   std::cout << "Final balance: $" << std::fixed << std::setprecision(2)
             << player->getBalance() << "\n";

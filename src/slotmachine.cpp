@@ -22,22 +22,59 @@ void SlotMachine::startGame(std::shared_ptr<Player> player) {
 }
 
 void SlotMachine::playRound() {
-  if (!gameActive || currentBet <= 0) return;
+  if (!gameActive) return;
 
-  spin();
-  displayReels();
-
-  double winnings = calculatePayout() * currentBet;
-  if (winnings > 0) {
-    currentPlayer->deposit(winnings);
-    totalWon += winnings;
-    std::cout << "\nJACKPOT!! You won $" << winnings << "!! (0_0)\n";
-  } else {
-    std::cout << "\nNo winning combination. Better luck next time!\n";
+  std::vector<std::vector<std::string>> reels(3, std::vector<std::string>(3));
+  std::uniform_int_distribution<size_t> dist(0, symbols.size() - 1);
+  for (int i = 0; i < 3; ++i) {
+    for (int j = 0; j < 3; ++j) {
+      reels[i][j] = symbols[dist(gen)];
+    }
   }
 
-  totalRounds++;
-  currentBet = 0;  // Reset bet after round
+  std::cout << "\n=== Slot Machine Results ===\n";
+  for (int i = 0; i < 3; ++i) {
+    std::cout << "| ";
+    for (int j = 0; j < 3; ++j) {
+      std::cout << reels[i][j] << " | ";
+    }
+    std::cout << "\n";
+  }
+
+  std::vector<std::string> centerRow;
+  for (int i = 0; i < 3; ++i) {
+    centerRow.push_back(reels[i][1]);
+  }
+
+  std::map<std::string, int> symbolCounts;
+  for (const std::string& symbol : centerRow) {
+    symbolCounts[symbol]++;
+  }
+
+  double totalWin = 0;
+  for (const auto& [symbol, count] : symbolCounts) {
+    if (count >= 2) {
+      auto symbolPayouts = payTable.find(symbol);
+      if (symbolPayouts != payTable.end()) {
+        auto payout = symbolPayouts->second.find(count);
+        if (payout != symbolPayouts->second.end()) {
+          double win = currentBet * payout->second;
+          totalWin += win;
+          std::cout << count << "x " << symbol << " pays " << win << "\n";
+        }
+      }
+    }
+  }
+
+  if (totalWin > 0) {
+    std::cout << "Total win: " << totalWin << "\n";
+    currentPlayer->deposit(totalWin);
+  } else {
+    std::cout << "No win this round.\n";
+  }
+
+  currentBet = 0;
+  gameActive = false;
 }
 
 void SlotMachine::endGame() {
@@ -47,27 +84,19 @@ void SlotMachine::endGame() {
 }
 
 bool SlotMachine::placeBet(double amount) {
-  if (!gameActive || amount <= 0) return false;
-
-  if (!currentPlayer->withdraw(amount)) {
-    return false;  // Insufficient funds
+  if (!gameActive || amount <= 0 || amount > currentPlayer->getBalance()) {
+    return false;
   }
 
   currentBet = amount;
-  totalWagered += amount;
+  currentPlayer->withdraw(amount);
   return true;
 }
 
 void SlotMachine::placeAllInBet() {
   if (!gameActive) return;
-
-  double balance = currentPlayer->getBalance();
-  if (balance <= 0) return;
-
-  if (currentPlayer->withdraw(balance)) {
-    currentBet = balance;
-    totalWagered += balance;
-  }
+  currentBet = currentPlayer->getBalance();
+  currentPlayer->withdraw(currentBet);
 }
 
 void SlotMachine::spin() {

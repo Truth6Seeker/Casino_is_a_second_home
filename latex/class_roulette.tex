@@ -1,0 +1,205 @@
+\doxysection{Roulette Class Reference}
+\hypertarget{class_roulette}{}\label{class_roulette}\index{Roulette@{Roulette}}
+
+
+Класс, реализующий игру в рулетку  
+
+
+
+
+{\ttfamily \#include $<$roulette.\+h$>$}
+
+Inheritance diagram for Roulette\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_roulette}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_roulette_ad3fee153e8e8dd3be868c02af02fa36b}\label{class_roulette_ad3fee153e8e8dd3be868c02af02fa36b} 
+{\bfseries Roulette} ()
+\begin{DoxyCompactList}\small\item\em Конструктор игры в рулетку \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_roulette_af385f0a9b5e7606d8645775289f253a3}{start\+Game}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$ player) override
+\begin{DoxyCompactList}\small\item\em Начать новую игру \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_roulette_ad09e072ca705c4a0ab73db253f6d3b76}{play\+Round}} () override
+\begin{DoxyCompactList}\small\item\em Провести один раунд игры \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_roulette_a58bc8e86c5a08d3f684a39e8cef60a69}{end\+Game}} () override
+\begin{DoxyCompactList}\small\item\em Завершить игру \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_roulette_aae2528b9a7551df710edbca97dfea286}{get\+House\+Edge}} () const override
+\begin{DoxyCompactList}\small\item\em Получить преимущество казино \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_roulette_af17a6ff685c33111bcdd65c37ee1cd94}{get\+Game\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em Получить название игры \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_roulette_ab0914a97631d97b582961855b150aaf0}{is\+Game\+Active}} () const override
+\begin{DoxyCompactList}\small\item\em Проверить, активна ли игра \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{class_roulette_ad85a1ffe9421217487627986d60f1b32}{get\+Total\+Rounds\+Played}} () const override
+\begin{DoxyCompactList}\small\item\em Получить количество сыгранных раундов \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_roulette_a077551a4fa8ceabb593bef55c909f5c6}{get\+Total\+Amount\+Wagered}} () const override
+\begin{DoxyCompactList}\small\item\em Получить общую сумму ставок \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_roulette_aabbde093da45b67f910886470e31f39e}{get\+Total\+Amount\+Won}} () const override
+\begin{DoxyCompactList}\small\item\em Получить общую сумму выигрышей \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс, реализующий игру в рулетку 
+
+Этот класс реализует классическую европейскую рулетку с одним нулем и всеми стандартными типами ставок. 
+
+\label{doc-func-members}
+\Hypertarget{class_roulette_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_roulette_a58bc8e86c5a08d3f684a39e8cef60a69}\index{Roulette@{Roulette}!endGame@{endGame}}
+\index{endGame@{endGame}!Roulette@{Roulette}}
+\doxysubsubsection{\texorpdfstring{endGame()}{endGame()}}
+{\footnotesize\ttfamily \label{class_roulette_a58bc8e86c5a08d3f684a39e8cef60a69} 
+void Roulette\+::end\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Завершить игру 
+
+
+
+Implements \mbox{\hyperlink{class_i_game_ad92572b43a4e076b724047fc2403a557}{IGame}}.
+
+\Hypertarget{class_roulette_af17a6ff685c33111bcdd65c37ee1cd94}\index{Roulette@{Roulette}!getGameName@{getGameName}}
+\index{getGameName@{getGameName}!Roulette@{Roulette}}
+\doxysubsubsection{\texorpdfstring{getGameName()}{getGameName()}}
+{\footnotesize\ttfamily \label{class_roulette_af17a6ff685c33111bcdd65c37ee1cd94} 
+std\+::string Roulette\+::get\+Game\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить название игры 
+
+\begin{DoxyReturn}{Returns}
+Название игры 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_afa3493b07082a872195c855563dbf306}{IGame}}.
+
+\Hypertarget{class_roulette_aae2528b9a7551df710edbca97dfea286}\index{Roulette@{Roulette}!getHouseEdge@{getHouseEdge}}
+\index{getHouseEdge@{getHouseEdge}!Roulette@{Roulette}}
+\doxysubsubsection{\texorpdfstring{getHouseEdge()}{getHouseEdge()}}
+{\footnotesize\ttfamily \label{class_roulette_aae2528b9a7551df710edbca97dfea286} 
+double Roulette\+::get\+House\+Edge (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить преимущество казино 
+
+\begin{DoxyReturn}{Returns}
+Преимущество казино в процентах 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a8a4f27ed56941ab5250092a381ab8348}{IGame}}.
+
+\Hypertarget{class_roulette_a077551a4fa8ceabb593bef55c909f5c6}\index{Roulette@{Roulette}!getTotalAmountWagered@{getTotalAmountWagered}}
+\index{getTotalAmountWagered@{getTotalAmountWagered}!Roulette@{Roulette}}
+\doxysubsubsection{\texorpdfstring{getTotalAmountWagered()}{getTotalAmountWagered()}}
+{\footnotesize\ttfamily \label{class_roulette_a077551a4fa8ceabb593bef55c909f5c6} 
+double Roulette\+::get\+Total\+Amount\+Wagered (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить общую сумму ставок 
+
+\begin{DoxyReturn}{Returns}
+Сумма всех ставок 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a03d7878b6014fb6e40e54c47075ee4f1}{IGame}}.
+
+\Hypertarget{class_roulette_aabbde093da45b67f910886470e31f39e}\index{Roulette@{Roulette}!getTotalAmountWon@{getTotalAmountWon}}
+\index{getTotalAmountWon@{getTotalAmountWon}!Roulette@{Roulette}}
+\doxysubsubsection{\texorpdfstring{getTotalAmountWon()}{getTotalAmountWon()}}
+{\footnotesize\ttfamily \label{class_roulette_aabbde093da45b67f910886470e31f39e} 
+double Roulette\+::get\+Total\+Amount\+Won (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить общую сумму выигрышей 
+
+\begin{DoxyReturn}{Returns}
+Сумма всех выигрышей 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a60ab0310dcf9ba3b695b8ee6b612dd84}{IGame}}.
+
+\Hypertarget{class_roulette_ad85a1ffe9421217487627986d60f1b32}\index{Roulette@{Roulette}!getTotalRoundsPlayed@{getTotalRoundsPlayed}}
+\index{getTotalRoundsPlayed@{getTotalRoundsPlayed}!Roulette@{Roulette}}
+\doxysubsubsection{\texorpdfstring{getTotalRoundsPlayed()}{getTotalRoundsPlayed()}}
+{\footnotesize\ttfamily \label{class_roulette_ad85a1ffe9421217487627986d60f1b32} 
+uint64\+\_\+t Roulette\+::get\+Total\+Rounds\+Played (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить количество сыгранных раундов 
+
+\begin{DoxyReturn}{Returns}
+Количество раундов 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a6e228c5546cff7a44d632ab9dae265de}{IGame}}.
+
+\Hypertarget{class_roulette_ab0914a97631d97b582961855b150aaf0}\index{Roulette@{Roulette}!isGameActive@{isGameActive}}
+\index{isGameActive@{isGameActive}!Roulette@{Roulette}}
+\doxysubsubsection{\texorpdfstring{isGameActive()}{isGameActive()}}
+{\footnotesize\ttfamily \label{class_roulette_ab0914a97631d97b582961855b150aaf0} 
+bool Roulette\+::is\+Game\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Проверить, активна ли игра 
+
+\begin{DoxyReturn}{Returns}
+true если игра активна, false в противном случае 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a5acc38c7dec29267c6e005a6971ee1f5}{IGame}}.
+
+\Hypertarget{class_roulette_ad09e072ca705c4a0ab73db253f6d3b76}\index{Roulette@{Roulette}!playRound@{playRound}}
+\index{playRound@{playRound}!Roulette@{Roulette}}
+\doxysubsubsection{\texorpdfstring{playRound()}{playRound()}}
+{\footnotesize\ttfamily \label{class_roulette_ad09e072ca705c4a0ab73db253f6d3b76} 
+void Roulette\+::play\+Round (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Провести один раунд игры 
+
+
+
+Implements \mbox{\hyperlink{class_i_game_a1d17dab4df75500675717f2edbf71ce5}{IGame}}.
+
+\Hypertarget{class_roulette_af385f0a9b5e7606d8645775289f253a3}\index{Roulette@{Roulette}!startGame@{startGame}}
+\index{startGame@{startGame}!Roulette@{Roulette}}
+\doxysubsubsection{\texorpdfstring{startGame()}{startGame()}}
+{\footnotesize\ttfamily \label{class_roulette_af385f0a9b5e7606d8645775289f253a3} 
+void Roulette\+::start\+Game (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Начать новую игру 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Указатель на игрока \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_game_a30ed769d1b0903d4509ac31d141090f4}{IGame}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{roulette_8h}{roulette.\+h}}\end{DoxyCompactItemize}

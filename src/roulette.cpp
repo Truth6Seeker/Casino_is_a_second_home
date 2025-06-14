@@ -72,7 +72,7 @@ void Roulette::spinWheel() {
 }
 
 void Roulette::payout(int winningNumber) {
-  // Здесь должна быть логика определения выигрыша
+  // Здесь (будет) логика определения выигрыша
   // Для примера - просто возвращаем ставку
   double winnings = currentBet * 2;
   currentPlayer->deposit(winnings);

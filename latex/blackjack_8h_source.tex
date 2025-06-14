@@ -1,0 +1,102 @@
+\doxysection{blackjack.\+h}
+\hypertarget{blackjack_8h_source}{}\label{blackjack_8h_source}\index{headers/blackjack.h@{headers/blackjack.h}}
+\mbox{\hyperlink{blackjack_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ BLACKJACK\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ BLACKJACK\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{basicstrategyai_8h}{basicstrategyai.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{card_8h}{card.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{deck_8h}{deck.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{igame_8h}{igame.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021}{RoundResult}}\ \{\ }
+\DoxyCodeLine{00024\ \ \ \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021ae3d507ddaf2e3d4d357b049cdeb0fb2e}{LOSS}},\ \ }
+\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021a92e56d8195a9dd45a9b90aacf82886b1}{WIN}},\ \ \ }
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021a2b4807f24940ca2fe73284bc6e864d66}{DRAW}},\ \ }
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021aa42b2fb0e720a080e79a92f4ca97d927}{EXIT}}\ \ \ }
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_blackjack_a0e314e46a0b9446efff51b81a23d7fb6}{Blackjack}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_game}{IGame}}\ \{}
+\DoxyCodeLine{00038\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{class_blackjack_a0e314e46a0b9446efff51b81a23d7fb6}{Blackjack}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_blackjack_ad70d6be963dc17a6709bbdfe36ece7a2}{startGame}}(std::shared\_ptr<Player>\ player)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_blackjack_a18f6049e9f242487363053c25a329428}{playRound}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_blackjack_a01bc654e82cc65eb1290bff6cbf8e5ce}{endGame}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_blackjack_a33a363d37e257e94b83e122d658a3ea5}{getHouseEdge}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00070\ \ \ std::string\ \mbox{\hyperlink{class_blackjack_ab848763724a0876933f86bb9a071dd63}{getGameName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_blackjack_aabe3d6307cd35ec2fdbcf059dac5a21e}{isGameActive}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00082\ \ \ uint64\_t\ \mbox{\hyperlink{class_blackjack_a941c0b100e9cbadb8fda1ec4dbeed4a0}{getTotalRoundsPlayed}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_blackjack_ab246f710c62b35bd1f41c35251b2461c}{getTotalAmountWagered}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_blackjack_aec1ecb9876a7cc36eb7b7a2cee420421}{getTotalAmountWon}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_blackjack_a031b5d0fffc3f898c790e67b23758995}{setUseAI}}(\textcolor{keywordtype}{bool}\ useAI)\ \{\ useBasicStrategy\ =\ useAI;\ \}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_blackjack_ad678e5caefadafa4d6e9f1de03041749}{isUsingAI}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ useBasicStrategy;\ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00112\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_blackjack_a3ac836f43fefd9a9adfd1938b3cb6e43}{takeBet}}();}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00118\ \ \ \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021}{RoundResult}}\ \mbox{\hyperlink{class_blackjack_a3a174999301c7aea0b6a998b77c80091}{playRoundWithResult}}();}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00124\ \ \ \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021}{RoundResult}}\ \mbox{\hyperlink{class_blackjack_a29a15a6ea9d0a822f318ed2431fb44cb}{determineWinnerWithResult}}();}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00127\ \ \ std::shared\_ptr<Player>\ currentPlayer;\ \ }
+\DoxyCodeLine{00128\ \ \ \mbox{\hyperlink{class_deck}{Deck}}\ deck;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ std::vector<Card>\ playerCards;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ std::vector<Card>\ dealerCards;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \textcolor{keywordtype}{bool}\ gameActive;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00132\ \ \ \textcolor{keywordtype}{double}\ currentBet;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \textcolor{keywordtype}{bool}\ useBasicStrategy;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \mbox{\hyperlink{class_basic_strategy_a_i}{BasicStrategyAI}}\ strategyAI;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \textcolor{comment}{//\ Статистика}}
+\DoxyCodeLine{00137\ \ \ uint64\_t\ roundsPlayed;\ \ }
+\DoxyCodeLine{00138\ \ \ \textcolor{keywordtype}{double}\ totalWagered;\ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \textcolor{keywordtype}{double}\ totalWon;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00144\ \ \ \textcolor{keywordtype}{void}\ payout();}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00149\ \ \ \textcolor{keywordtype}{void}\ dealInitialCards();}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00154\ \ \ \textcolor{keywordtype}{void}\ playerTurn();}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00159\ \ \ \textcolor{keywordtype}{void}\ dealerTurn();}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00164\ \ \ \textcolor{keywordtype}{void}\ determineWinner();}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00171\ \ \ \textcolor{keywordtype}{int}\ calculateHandValue(\textcolor{keyword}{const}\ std::vector<Card>\&\ cards)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00178\ \ \ \textcolor{keywordtype}{bool}\ isSoftHand(\textcolor{keyword}{const}\ std::vector<Card>\&\ cards)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00184\ \ \ \textcolor{keywordtype}{int}\ getDealerUpCard()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00190\ \ \ \textcolor{keywordtype}{bool}\ canSplit()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00196\ \ \ \textcolor{keywordtype}{bool}\ canDoubleDown()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00202\ \ \ \textcolor{keywordtype}{void}\ handleAIAction(\mbox{\hyperlink{class_basic_strategy_a_i_abcf8e3edfb7de512ee1b875e2af51585}{BasicStrategyAI::Action}}\ action);}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00209\ \ \ \textcolor{keywordtype}{void}\ displayCards(\textcolor{keyword}{const}\ std::vector<Card>\&\ cards,}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hideFirst\ =\ \textcolor{keyword}{false})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00211\ \};}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

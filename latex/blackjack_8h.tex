@@ -1,0 +1,67 @@
+\doxysection{headers/blackjack.h File Reference}
+\hypertarget{blackjack_8h}{}\label{blackjack_8h}\index{headers/blackjack.h@{headers/blackjack.h}}
+
+
+Класс, реализующий игру в блэкджек  
+
+
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}basicstrategyai.\+h"{}}\newline
+{\ttfamily \#include "{}card.\+h"{}}\newline
+{\ttfamily \#include "{}deck.\+h"{}}\newline
+{\ttfamily \#include "{}igame.\+h"{}}\newline
+{\ttfamily \#include "{}player.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_blackjack}{Blackjack}}
+\begin{DoxyCompactList}\small\item\em Класс, реализующий игру в блэкджек \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021}{Round\+Result}} \{ \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021ae3d507ddaf2e3d4d357b049cdeb0fb2e}{LOSS}}
+, \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021a92e56d8195a9dd45a9b90aacf82886b1}{WIN}}
+, \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021a2b4807f24940ca2fe73284bc6e864d66}{DRAW}}
+, \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021aa42b2fb0e720a080e79a92f4ca97d927}{EXIT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Результат раунда в блэкджеке \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс, реализующий игру в блэкджек 
+
+
+
+\label{doc-enum-members}
+\Hypertarget{blackjack_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021}\index{blackjack.h@{blackjack.h}!RoundResult@{RoundResult}}
+\index{RoundResult@{RoundResult}!blackjack.h@{blackjack.h}}
+\doxysubsubsection{\texorpdfstring{RoundResult}{RoundResult}}
+{\footnotesize\ttfamily \label{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021} 
+enum class \mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021}{Round\+Result}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Результат раунда в блэкджеке 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOSS@{LOSS}!blackjack.h@{blackjack.h}}\index{blackjack.h@{blackjack.h}!LOSS@{LOSS}}}\Hypertarget{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021ae3d507ddaf2e3d4d357b049cdeb0fb2e}\label{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021ae3d507ddaf2e3d4d357b049cdeb0fb2e} 
+LOSS&Проигрыш \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WIN@{WIN}!blackjack.h@{blackjack.h}}\index{blackjack.h@{blackjack.h}!WIN@{WIN}}}\Hypertarget{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021a92e56d8195a9dd45a9b90aacf82886b1}\label{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021a92e56d8195a9dd45a9b90aacf82886b1} 
+WIN&Выигрыш \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DRAW@{DRAW}!blackjack.h@{blackjack.h}}\index{blackjack.h@{blackjack.h}!DRAW@{DRAW}}}\Hypertarget{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021a2b4807f24940ca2fe73284bc6e864d66}\label{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021a2b4807f24940ca2fe73284bc6e864d66} 
+DRAW&Ничья \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXIT@{EXIT}!blackjack.h@{blackjack.h}}\index{blackjack.h@{blackjack.h}!EXIT@{EXIT}}}\Hypertarget{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021aa42b2fb0e720a080e79a92f4ca97d927}\label{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021aa42b2fb0e720a080e79a92f4ca97d927} 
+EXIT&Выход из игры \\
+\hline
+
+\end{DoxyEnumFields}
