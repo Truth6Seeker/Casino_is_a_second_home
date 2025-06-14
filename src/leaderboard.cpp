@@ -4,9 +4,6 @@
 #include <filesystem>
 
 Leaderboard::Leaderboard() : db(nullptr) {
-    // Получаем путь к корню проекта и формируем путь к базе
-    std::string projectRoot = getProjectRootPath();
-    dbPath = projectRoot + "/leaderboard.db";
     openDB();
     createTableIfNotExists();
 }
@@ -18,7 +15,7 @@ Leaderboard::~Leaderboard() {
 void Leaderboard::openDB() {
     std::cout << "[DEBUG] Opening DB at: " << dbPath << std::endl;
     if (sqlite3_open(dbPath.c_str(), (sqlite3**)&db) != SQLITE_OK) {
-        std::cerr << "Can't open leaderboard database!\n";
+        std::cerr << "Can't open leaderboard database: " << sqlite3_errmsg((sqlite3*)db) << "\n";
         db = nullptr;
     }
 }
@@ -28,6 +25,8 @@ void Leaderboard::closeDB() {
 }
 
 void Leaderboard::createTableIfNotExists() {
+    if (!db) return;  // Если база не открыта, выходим
+
     const char* sql = "CREATE TABLE IF NOT EXISTS leaderboard ("
                       "name TEXT PRIMARY KEY, "
                       "balance REAL, "
@@ -36,10 +35,15 @@ void Leaderboard::createTableIfNotExists() {
                       ");";
     char* errMsg = nullptr;
     sqlite3_exec((sqlite3*)db, sql, nullptr, nullptr, &errMsg);
-    if (errMsg) sqlite3_free(errMsg);
+    if (errMsg) {
+        std::cerr << "SQL error: " << errMsg << std::endl;
+        sqlite3_free(errMsg);
+    }
 }
 
 void Leaderboard::addOrUpdatePlayer(const std::string& name, double balance, int wins, int games_played) {
+    if (!db) return;  // Если база не открыта, выходим
+
     // Получить текущие значения
     int old_wins = 0, old_games = 0;
     double old_balance = 0;
@@ -79,6 +83,8 @@ void Leaderboard::addOrUpdatePlayer(const std::string& name, double balance, int
 
 std::vector<LeaderboardEntry> Leaderboard::getTopPlayers(int limit) {
     std::vector<LeaderboardEntry> result;
+    if (!db) return result;  // Если база не открыта, возвращаем пустой результат
+
     const char* sql = "SELECT name, balance, games_played, wins FROM leaderboard ORDER BY balance DESC LIMIT ?;";
     sqlite3_stmt* stmt;
     sqlite3_prepare_v2((sqlite3*)db, sql, -1, &stmt, nullptr);
@@ -93,11 +99,4 @@ std::vector<LeaderboardEntry> Leaderboard::getTopPlayers(int limit) {
     }
     sqlite3_finalize(stmt);
     return result;
-}
-
-std::string Leaderboard::getProjectRootPath() const {
-    // __FILE__ — путь к этому cpp-файлу (например, /path/to/project/src/leaderboard.cpp)
-    std::filesystem::path p = __FILE__;
-    // Переходим вверх до папки проекта (обычно два раза: src -> project)
-    return p.parent_path().parent_path().string();
 } 
