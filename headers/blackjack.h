@@ -4,7 +4,8 @@
 #include <memory>
 #include <vector>
 #include <limits>
-
+#include "card.h"
+#include "deck.h"
 #include "basicstrategyai.h"
 #include "igame.h"
 #include "player.h"
@@ -45,13 +46,13 @@ class Blackjack : public IGame {
 
  private:
   std::shared_ptr<Player> currentPlayer;
-  int dealerScore;
-  int playerScore;
+  Deck deck;
+  std::vector<Card> playerCards;
+  std::vector<Card> dealerCards;
   bool gameActive;
   double currentBet;
   bool useBasicStrategy;
   BasicStrategyAI strategyAI;
-  std::vector<int> playerCards;
 
   // Статистика
   uint64_t roundsPlayed;
@@ -63,12 +64,13 @@ class Blackjack : public IGame {
   void playerTurn();
   void dealerTurn();
   void determineWinner();
-  int getCardValue();
+  int calculateHandValue(const std::vector<Card>& cards) const;
+  bool isSoftHand(const std::vector<Card>& cards) const;
   int getDealerUpCard() const;
   bool canSplit() const;
   bool canDoubleDown() const;
-  int getPlayerScore() const;
   void handleAIAction(BasicStrategyAI::Action action);
+  void displayCards(const std::vector<Card>& cards, bool hideFirst = false) const;
 };
 
 #endif
