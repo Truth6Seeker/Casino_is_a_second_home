@@ -1,38 +1,39 @@
 #pragma once
-#include <vector>
 #include <memory>
 #include <unordered_map>
-#include "Player.h"
-#include "GameSession.h"
+#include <vector>
 
-class Casino
-{
-private:
-    std::string name;
-    std::vector<std::shared_ptr<Player>> players;
-    std::unordered_map<uint64_t, std::shared_ptr<GameSession>> activeSessions;
-    double houseBalance;
+#include "gamesession.h"
+#include "player.h"
 
-public:
-    Casino(const std::string &casinoName);
+class Casino {
+ private:
+  std::string name;
+  std::vector<std::shared_ptr<Player>> players;
+  std::unordered_map<uint64_t, std::shared_ptr<GameSession>> activeSessions;
+  double houseBalance;
 
-    // Player management
-    std::shared_ptr<Player> registerPlayer(const std::string &name, uint32_t age, double initialDeposit = 0.0);
-    bool removePlayer(uint64_t playerId);
-    std::shared_ptr<Player> getPlayer(uint64_t playerId) const;
+ public:
+  Casino(const std::string &casinoName);
 
-    // Game session management
-    std::shared_ptr<GameSession> createGameSession(uint64_t playerId);
-    bool endGameSession(uint64_t sessionId);
+  // Player management
+  std::shared_ptr<Player> registerPlayer(const std::string &name, uint32_t age,
+                                         double initialDeposit = 0.0);
+  bool removePlayer(uint64_t playerId);
+  std::shared_ptr<Player> getPlayer(uint64_t playerId) const;
 
-    // Financial operations
-    void adjustHouseBalance(double amount);
-    double getHouseBalance() const;
+  // Game session management
+  std::shared_ptr<GameSession> createGameSession(uint64_t playerId);
+  bool endGameSession(uint64_t sessionId);
 
-    // Casino information
-    std::string getName() const { return name; }
+  // Financial operations
+  void adjustHouseBalance(double amount);
+  double getHouseBalance() const;
 
-    // Casino operations
-    void displayActiveSessions() const;
-    void displayAllPlayers() const;
+  // Casino information
+  std::string getName() const { return name; }
+
+  // Casino operations
+  void displayActiveSessions() const;
+  void displayAllPlayers() const;
 };
