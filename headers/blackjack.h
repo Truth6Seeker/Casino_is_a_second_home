@@ -1,22 +1,18 @@
 #ifndef BLACKJACK_H
 #define BLACKJACK_H
 
+#include <limits>
 #include <memory>
 #include <vector>
-#include <limits>
+
+#include "basicstrategyai.h"
 #include "card.h"
 #include "deck.h"
-#include "basicstrategyai.h"
 #include "igame.h"
 #include "player.h"
 
 // Новый enum для результата раунда
-enum class RoundResult {
-    LOSS,
-    WIN,
-    DRAW,
-    EXIT
-};
+enum class RoundResult { LOSS, WIN, DRAW, EXIT };
 
 class Blackjack : public IGame {
  public:
@@ -70,7 +66,8 @@ class Blackjack : public IGame {
   bool canSplit() const;
   bool canDoubleDown() const;
   void handleAIAction(BasicStrategyAI::Action action);
-  void displayCards(const std::vector<Card>& cards, bool hideFirst = false) const;
+  void displayCards(const std::vector<Card>& cards,
+                    bool hideFirst = false) const;
 };
 
 #endif

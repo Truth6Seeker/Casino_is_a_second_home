@@ -1,0 +1,12 @@
+# Настройка тестов
+add_executable(tests tests.cpp)
+target_include_directories(tests PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR} 
+    ${CMAKE_SOURCE_DIR}/src     # Если нужно подключать blackjack.cpp
+)
+
+# Подключаем Doctest
+target_compile_definitions(tests PRIVATE DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN)
+
+# Добавляем тест в CTest
+add_test(NAME blackjack_tests COMMAND tests)
