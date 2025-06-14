@@ -1,0 +1,44 @@
+\doxysection{deck.\+h}
+\hypertarget{deck_8h_source}{}\label{deck_8h_source}\index{headers/deck.h@{headers/deck.h}}
+\mbox{\hyperlink{deck_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ DECK\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ DECK\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{card_8h}{card.h}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_deck_aa2b14efd9d4b82c8ee7b9975e2f7ede0}{Deck}}\ \{}
+\DoxyCodeLine{00023\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{class_deck_aa2b14efd9d4b82c8ee7b9975e2f7ede0}{Deck}}(\textcolor{keywordtype}{int}\ numDecks\ =\ 6);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_deck_ae5a1e52ab00ae5924f2bc6b730dba3eb}{shuffle}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{class_card}{Card}}\ \mbox{\hyperlink{class_deck_a7e3cb5a726dec9953c564ab7d780563d}{drawCard}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_deck_ae008730523829086451bc11f53b1cf70}{cardsRemaining}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_deck_a02a080b20dcf494606ab5a7345361688}{getTrueCount}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_deck_a14aa4f2f94b6b880cd575cf17af26762}{reset}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_deck_a487138cc1a190cba71bf3c3dcb0c4e17}{getRunningCount}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00070\ \ \ std::vector<Card>\ cards;\ \ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{int}\ numDecks;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{int}\ runningCount;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ std::mt19937\ rng;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{void}\ initializeDeck();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{void}\ updateRunningCount(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_card}{Card}}\&\ card);}
+\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ DECK\_H}}
+
+\end{DoxyCode}

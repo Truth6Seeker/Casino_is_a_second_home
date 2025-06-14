@@ -1,0 +1,226 @@
+\doxysection{Casino Class Reference}
+\hypertarget{class_casino}{}\label{class_casino}\index{Casino@{Casino}}
+
+
+Класс, представляющий казино  
+
+
+
+
+{\ttfamily \#include $<$casino.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_casino_aa1fc26150677611bb42f3e5b9bb176d5}{Casino}} (const std\+::string \&casino\+Name)
+\begin{DoxyCompactList}\small\item\em Конструктор казино \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$ \mbox{\hyperlink{class_casino_af71c780a72562c5fcae3e1779560dd92}{register\+Player}} (const std\+::string \&name, uint32\+\_\+t age, double initial\+Deposit=0.\+0)
+\begin{DoxyCompactList}\small\item\em Зарегистрировать нового игрока \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_casino_adee4e7ceeeee8f1bee2f98b4b7d11a86}{remove\+Player}} (uint64\+\_\+t player\+Id)
+\begin{DoxyCompactList}\small\item\em Удалить игрока \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$ \mbox{\hyperlink{class_casino_a4ff65ae9bac47fbe8858d0034e3567b1}{get\+Player}} (uint64\+\_\+t player\+Id) const
+\begin{DoxyCompactList}\small\item\em Получить игрока по ID. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_game_session}{Game\+Session}} $>$ \mbox{\hyperlink{class_casino_a66af21f9a2f7362ec8ae44b9a349bb2c}{create\+Game\+Session}} (uint64\+\_\+t player\+Id)
+\begin{DoxyCompactList}\small\item\em Создать новую игровую сессию \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_casino_aeabd99594fb78e92ca25122b77473e11}{end\+Game\+Session}} (uint64\+\_\+t session\+Id)
+\begin{DoxyCompactList}\small\item\em Завершить игровую сессию \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_casino_ac3d008c1e1d9203227f8a8ae2c1f8bc7}{adjust\+House\+Balance}} (double amount)
+\begin{DoxyCompactList}\small\item\em Изменить баланс казино \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_casino_aa2c201896d003f2aa1322f1c7630283b}{get\+House\+Balance}} () const
+\begin{DoxyCompactList}\small\item\em Получить текущий баланс казино \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_casino_afdf8cb3f794b6e732b953a26ddf6e4e1}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Получить название казино \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_casino_aea850c2f4a4c9e7cfa2c65169e01a86c}{display\+Active\+Sessions}} () const
+\begin{DoxyCompactList}\small\item\em Отобразить информацию об активных сессиях \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_casino_a97374c430e135ad03aed6562f8620a0b}{display\+All\+Players}} () const
+\begin{DoxyCompactList}\small\item\em Отобразить информацию о всех игроках \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс, представляющий казино 
+
+Этот класс управляет всеми аспектами работы казино, включая регистрацию игроков, управление игровыми сессиями и финансовые операции. 
+
+\label{doc-constructors}
+\Hypertarget{class_casino_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_casino_aa1fc26150677611bb42f3e5b9bb176d5}\index{Casino@{Casino}!Casino@{Casino}}
+\index{Casino@{Casino}!Casino@{Casino}}
+\doxysubsubsection{\texorpdfstring{Casino()}{Casino()}}
+{\footnotesize\ttfamily \label{class_casino_aa1fc26150677611bb42f3e5b9bb176d5} 
+Casino\+::\+Casino (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{casino\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Конструктор казино 
+
+
+\begin{DoxyParams}{Parameters}
+{\em casino\+Name} & Название казино \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_casino_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_casino_ac3d008c1e1d9203227f8a8ae2c1f8bc7}\index{Casino@{Casino}!adjustHouseBalance@{adjustHouseBalance}}
+\index{adjustHouseBalance@{adjustHouseBalance}!Casino@{Casino}}
+\doxysubsubsection{\texorpdfstring{adjustHouseBalance()}{adjustHouseBalance()}}
+{\footnotesize\ttfamily \label{class_casino_ac3d008c1e1d9203227f8a8ae2c1f8bc7} 
+void Casino\+::adjust\+House\+Balance (\begin{DoxyParamCaption}\item[{double}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Изменить баланс казино 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & Сумма изменения (положительная для увеличения, отрицательная для уменьшения) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_casino_a66af21f9a2f7362ec8ae44b9a349bb2c}\index{Casino@{Casino}!createGameSession@{createGameSession}}
+\index{createGameSession@{createGameSession}!Casino@{Casino}}
+\doxysubsubsection{\texorpdfstring{createGameSession()}{createGameSession()}}
+{\footnotesize\ttfamily \label{class_casino_a66af21f9a2f7362ec8ae44b9a349bb2c} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_game_session}{Game\+Session}} $>$ Casino\+::create\+Game\+Session (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{player\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Создать новую игровую сессию 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Id} & ID игрока \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Указатель на созданную сессию или nullptr в случае ошибки 
+\end{DoxyReturn}
+\Hypertarget{class_casino_aea850c2f4a4c9e7cfa2c65169e01a86c}\index{Casino@{Casino}!displayActiveSessions@{displayActiveSessions}}
+\index{displayActiveSessions@{displayActiveSessions}!Casino@{Casino}}
+\doxysubsubsection{\texorpdfstring{displayActiveSessions()}{displayActiveSessions()}}
+{\footnotesize\ttfamily \label{class_casino_aea850c2f4a4c9e7cfa2c65169e01a86c} 
+void Casino\+::display\+Active\+Sessions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Отобразить информацию об активных сессиях 
+
+Выводит в консоль информацию о всех активных игровых сессиях \Hypertarget{class_casino_a97374c430e135ad03aed6562f8620a0b}\index{Casino@{Casino}!displayAllPlayers@{displayAllPlayers}}
+\index{displayAllPlayers@{displayAllPlayers}!Casino@{Casino}}
+\doxysubsubsection{\texorpdfstring{displayAllPlayers()}{displayAllPlayers()}}
+{\footnotesize\ttfamily \label{class_casino_a97374c430e135ad03aed6562f8620a0b} 
+void Casino\+::display\+All\+Players (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Отобразить информацию о всех игроках 
+
+Выводит в консоль информацию о всех зарегистрированных игроках \Hypertarget{class_casino_aeabd99594fb78e92ca25122b77473e11}\index{Casino@{Casino}!endGameSession@{endGameSession}}
+\index{endGameSession@{endGameSession}!Casino@{Casino}}
+\doxysubsubsection{\texorpdfstring{endGameSession()}{endGameSession()}}
+{\footnotesize\ttfamily \label{class_casino_aeabd99594fb78e92ca25122b77473e11} 
+bool Casino\+::end\+Game\+Session (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{session\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Завершить игровую сессию 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session\+Id} & ID сессии \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если сессия успешно завершена, false в противном случае 
+\end{DoxyReturn}
+\Hypertarget{class_casino_aa2c201896d003f2aa1322f1c7630283b}\index{Casino@{Casino}!getHouseBalance@{getHouseBalance}}
+\index{getHouseBalance@{getHouseBalance}!Casino@{Casino}}
+\doxysubsubsection{\texorpdfstring{getHouseBalance()}{getHouseBalance()}}
+{\footnotesize\ttfamily \label{class_casino_aa2c201896d003f2aa1322f1c7630283b} 
+double Casino\+::get\+House\+Balance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить текущий баланс казино 
+
+\begin{DoxyReturn}{Returns}
+Текущий баланс казино 
+\end{DoxyReturn}
+\Hypertarget{class_casino_afdf8cb3f794b6e732b953a26ddf6e4e1}\index{Casino@{Casino}!getName@{getName}}
+\index{getName@{getName}!Casino@{Casino}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_casino_afdf8cb3f794b6e732b953a26ddf6e4e1} 
+std\+::string Casino\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Получить название казино 
+
+\begin{DoxyReturn}{Returns}
+Название казино 
+\end{DoxyReturn}
+\Hypertarget{class_casino_a4ff65ae9bac47fbe8858d0034e3567b1}\index{Casino@{Casino}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!Casino@{Casino}}
+\doxysubsubsection{\texorpdfstring{getPlayer()}{getPlayer()}}
+{\footnotesize\ttfamily \label{class_casino_a4ff65ae9bac47fbe8858d0034e3567b1} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$ Casino\+::get\+Player (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{player\+Id}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить игрока по ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Id} & ID игрока \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Указатель на игрока или nullptr, если игрок не найден 
+\end{DoxyReturn}
+\Hypertarget{class_casino_af71c780a72562c5fcae3e1779560dd92}\index{Casino@{Casino}!registerPlayer@{registerPlayer}}
+\index{registerPlayer@{registerPlayer}!Casino@{Casino}}
+\doxysubsubsection{\texorpdfstring{registerPlayer()}{registerPlayer()}}
+{\footnotesize\ttfamily \label{class_casino_af71c780a72562c5fcae3e1779560dd92} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$ Casino\+::register\+Player (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{uint32\+\_\+t}]{age}{, }\item[{double}]{initial\+Deposit}{ = {\ttfamily 0.0}}\end{DoxyParamCaption})}
+
+
+
+Зарегистрировать нового игрока 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя игрока \\
+\hline
+{\em age} & Возраст игрока \\
+\hline
+{\em initial\+Deposit} & Начальный депозит (по умолчанию 0.\+0) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Указатель на созданного игрока 
+\end{DoxyReturn}
+\Hypertarget{class_casino_adee4e7ceeeee8f1bee2f98b4b7d11a86}\index{Casino@{Casino}!removePlayer@{removePlayer}}
+\index{removePlayer@{removePlayer}!Casino@{Casino}}
+\doxysubsubsection{\texorpdfstring{removePlayer()}{removePlayer()}}
+{\footnotesize\ttfamily \label{class_casino_adee4e7ceeeee8f1bee2f98b4b7d11a86} 
+bool Casino\+::remove\+Player (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{player\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Удалить игрока 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Id} & ID игрока \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если игрок успешно удален, false в противном случае 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{casino_8h}{casino.\+h}}\end{DoxyCompactItemize}

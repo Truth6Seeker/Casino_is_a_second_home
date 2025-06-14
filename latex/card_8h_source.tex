@@ -1,0 +1,56 @@
+\doxysection{card.\+h}
+\hypertarget{card_8h_source}{}\label{card_8h_source}\index{headers/card.h@{headers/card.h}}
+\mbox{\hyperlink{card_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ CARD\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ CARD\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{card_8h_af78e1c8ea5e6837b6ab9452a1e435e4e}{Suit}}\ \{\ }
+\DoxyCodeLine{00016\ \ \ \mbox{\hyperlink{card_8h_af78e1c8ea5e6837b6ab9452a1e435e4ead52d2d4c0b7218c48897d2e69e156ba4}{HEARTS}},\ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \mbox{\hyperlink{card_8h_af78e1c8ea5e6837b6ab9452a1e435e4ea6ada586d0768a1f9c8d67e819f9c70af}{DIAMONDS}},\ \ }
+\DoxyCodeLine{00018\ \ \ \mbox{\hyperlink{card_8h_af78e1c8ea5e6837b6ab9452a1e435e4ead85016c04fa090ced22a82729fac4307}{CLUBS}},\ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \mbox{\hyperlink{card_8h_af78e1c8ea5e6837b6ab9452a1e435e4ea46a3bd9b0bb333d0b7521054dd6f8a06}{SPADES}}\ \ \ \ \ }
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbed}{Rank}}\ \{}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbeda757f4749aebb1891ef5ac2a9b5439cea}{ACE}}\ =\ 1,\ \ \ }
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbeda0f82d86afa0f5dc965c5c15aca58dcfb}{TWO}}\ =\ 2,\ \ \ }
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbeda413af0de1f97a2155acf2b8b26ab36e2}{THREE}}\ =\ 3,\ }
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbeda341fee9692a2ed8f09906d40d23fb1f9}{FOUR}}\ =\ 4,\ \ }
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbeda180bb5e381e316e2246b88c92770ee75}{FIVE}}\ =\ 5,\ \ }
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbeda48041ef8474caedcbcf2fe8996056b7f}{SIX}}\ =\ 6,\ \ \ }
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbedaebcf71d9bbc715c43f24a10cce77dab4}{SEVEN}}\ =\ 7,\ }
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbeda960df6d77e65cd185ca4f3501db634eb}{EIGHT}}\ =\ 8,\ }
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbeda73995fb90f0ebefe78b90731e67789cd}{NINE}}\ =\ 9,\ \ }
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbeda25e822c5a6128d9e957062a9ec28a29d}{TEN}}\ =\ 10,\ \ }
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbedab9b507acdaa100f6590fda3779d15e99}{JACK}}\ =\ 11,\ }
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbeda02d144e18eda99bcb94f3a764756805e}{QUEEN}}\ =\ 12,}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbeda123b28961dd0f97d91bcb55d7a3b7c1c}{KING}}\ =\ 13\ \ }
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_card_a70210cc8ee3d60a60f208f850bc54f85}{Card}}\ \{}
+\DoxyCodeLine{00051\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00057\ \ \ \mbox{\hyperlink{class_card_a70210cc8ee3d60a60f208f850bc54f85}{Card}}(\mbox{\hyperlink{card_8h_af78e1c8ea5e6837b6ab9452a1e435e4e}{Suit}}\ suit,\ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbed}{Rank}}\ rank);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \mbox{\hyperlink{card_8h_af78e1c8ea5e6837b6ab9452a1e435e4e}{Suit}}\ \mbox{\hyperlink{class_card_a8ad282c1b97a4846775a4b502722a4f1}{getSuit}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00069\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbed}{Rank}}\ \mbox{\hyperlink{class_card_ad2c7de19fb9df88e6591015a7f2d81dd}{getRank}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_card_acc9b1b81d72e09c5a70036d0b91b4b30}{getValue}}()\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ the\ blackjack\ value\ of\ the\ card}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ std::string\ \mbox{\hyperlink{class_card_a9a4e42dd612127ec056ba3619da466bc}{toString}}()\ \textcolor{keyword}{const};\ \ \textcolor{comment}{//\ Returns\ a\ string\ representation\ of\ the\ card}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \ \ std::string\ \mbox{\hyperlink{class_card_af8a633ae26c08ee54b7162a379178918}{toSymbol}}()\ \textcolor{keyword}{const};\ \ \textcolor{comment}{//\ Returns\ a\ symbol\ representation\ (e.g.,\ "{}A♠"{})}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00090\ \ \ \mbox{\hyperlink{card_8h_af78e1c8ea5e6837b6ab9452a1e435e4e}{Suit}}\ suit;\ \ }
+\DoxyCodeLine{00091\ \ \ \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbed}{Rank}}\ rank;\ \ }
+\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ CARD\_H}}
+
+\end{DoxyCode}

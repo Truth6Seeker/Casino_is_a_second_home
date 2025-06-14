@@ -1,0 +1,47 @@
+\doxysection{casino.\+h}
+\hypertarget{casino_8h_source}{}\label{casino_8h_source}\index{headers/casino.h@{headers/casino.h}}
+\mbox{\hyperlink{casino_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gamesession_8h}{gamesession.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_casino_aa1fc26150677611bb42f3e5b9bb176d5}{Casino}}\ \{}
+\DoxyCodeLine{00022\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ std::string\ name;\ \ }
+\DoxyCodeLine{00024\ \ \ std::vector<std::shared\_ptr<Player>>\ players;\ \ }
+\DoxyCodeLine{00025\ \ \ std::unordered\_map<uint64\_t,\ std::shared\_ptr<GameSession>>\ activeSessions;\ \ }
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{double}\ houseBalance;\ \ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{class_casino_aa1fc26150677611bb42f3e5b9bb176d5}{Casino}}(\textcolor{keyword}{const}\ std::string\ \&casinoName);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00042\ \ \ std::shared\_ptr<Player>\ \mbox{\hyperlink{class_casino_af71c780a72562c5fcae3e1779560dd92}{registerPlayer}}(\textcolor{keyword}{const}\ std::string\ \&name,\ uint32\_t\ age,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ initialDeposit\ =\ 0.0);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_casino_adee4e7ceeeee8f1bee2f98b4b7d11a86}{removePlayer}}(uint64\_t\ playerId);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \ \ std::shared\_ptr<Player>\ \mbox{\hyperlink{class_casino_a4ff65ae9bac47fbe8858d0034e3567b1}{getPlayer}}(uint64\_t\ playerId)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ \ \ std::shared\_ptr<GameSession>\ \mbox{\hyperlink{class_casino_a66af21f9a2f7362ec8ae44b9a349bb2c}{createGameSession}}(uint64\_t\ playerId);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_casino_aeabd99594fb78e92ca25122b77473e11}{endGameSession}}(uint64\_t\ sessionId);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00077\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_casino_ac3d008c1e1d9203227f8a8ae2c1f8bc7}{adjustHouseBalance}}(\textcolor{keywordtype}{double}\ amount);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00083\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_casino_aa2c201896d003f2aa1322f1c7630283b}{getHouseBalance}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \ \ std::string\ \mbox{\hyperlink{class_casino_afdf8cb3f794b6e732b953a26ddf6e4e1}{getName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ name;\ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_casino_aea850c2f4a4c9e7cfa2c65169e01a86c}{displayActiveSessions}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_casino_a97374c430e135ad03aed6562f8620a0b}{displayAllPlayers}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00104\ \};}
+
+\end{DoxyCode}

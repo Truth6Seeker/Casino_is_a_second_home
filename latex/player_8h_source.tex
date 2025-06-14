@@ -1,0 +1,42 @@
+\doxysection{player.\+h}
+\hypertarget{player_8h_source}{}\label{player_8h_source}\index{headers/player.h@{headers/player.h}}
+\mbox{\hyperlink{player_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_player_a1c6b8a629956808aeeed5fc980258d88}{Player}}\ \{}
+\DoxyCodeLine{00018\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ std::string\ name;\ \ \ \ }
+\DoxyCodeLine{00020\ \ \ uint64\_t\ playerId;\ \ \ }
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{double}\ balance;\ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ uint32\_t\ age;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{bool}\ verified;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{class_player_a1c6b8a629956808aeeed5fc980258d88}{Player}}(\textcolor{keyword}{const}\ std::string\ \&playerName,\ uint32\_t\ playerAge,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ initialBalance\ =\ 0.0);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \ \ std::string\ \mbox{\hyperlink{class_player_a73e4ff2d70e62ca7e3be1d9b4ad9de85}{getName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \ \ uint64\_t\ \mbox{\hyperlink{class_player_a8eab1adcc29896faf6f7ddc54eae1a47}{getId}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_player_a4494668b59618b48534aff21270bba97}{getBalance}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00057\ \ \ uint32\_t\ \mbox{\hyperlink{class_player_aa8e0b822f87987299cae96581d113536}{getAge}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_player_a7321d96c5797009ca8f271a2ff4b19c5}{isVerified}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_a36d0ca143869e7ab5b032ebcf6d4c54d}{deposit}}(\textcolor{keywordtype}{double}\ amount);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_player_a2cc230757036c33ebc9b8cfc73dc3470}{withdraw}}(\textcolor{keywordtype}{double}\ amount);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00083\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_a7c9bbc6c38b35d64892d36b8b22f4331}{verify}}();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_a82917017543c1a20d50edec9e65eec42}{displayInfo}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00091\ \};}
+
+\end{DoxyCode}

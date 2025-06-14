@@ -1,0 +1,79 @@
+\doxysection{slotmachine.\+h}
+\hypertarget{slotmachine_8h_source}{}\label{slotmachine_8h_source}\index{headers/slotmachine.h@{headers/slotmachine.h}}
+\mbox{\hyperlink{slotmachine_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{igame_8h}{igame.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_slot_machine_a6f63d072950134a255d8a6250d7cd796}{SlotMachine}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_game}{IGame}}\ \{}
+\DoxyCodeLine{00023\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{class_slot_machine_a6f63d072950134a255d8a6250d7cd796}{SlotMachine}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_slot_machine_a6e96dbcea0355396f7b2c987ae756b0b}{startGame}}(std::shared\_ptr<Player>\ player)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_slot_machine_a99ab2202c679bf81fd51a276e2fb2959}{playRound}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_slot_machine_ad23ec357801caaf43cb9325732a596c2}{endGame}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_slot_machine_a5239599de9877dde80c799669cc1e26e}{getHouseEdge}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ std::string\ \mbox{\hyperlink{class_slot_machine_a40fc8e80605a6e8c1e30b60da116ca82}{getGameName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_slot_machine_a65fc8bca3cd15ed8faa17d1fcae35f8a}{isGameActive}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ uint64\_t\ \mbox{\hyperlink{class_slot_machine_ac7656a4954d06c2aa3fedae4387f52f6}{getTotalRoundsPlayed}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_slot_machine_a542386403b14532ff69cea8c9c506870}{getTotalAmountWagered}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_slot_machine_adb86f43e6f9d84c7eb0a9bcb9c0d6706}{getTotalAmountWon}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_slot_machine_adeae8ce76171085c21a215ff28c7156f}{placeBet}}(\textcolor{keywordtype}{double}\ amount);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_slot_machine_ad3bbe04cb6533c5a25943ada51119892}{spin}}();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00099\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_slot_machine_aa3d94883ba6c6cd5081d63f3e586cbd8}{calculatePayout}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_slot_machine_a7e81debdc9a6a260596d8faef62b1197}{displayReels}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_slot_machine_a2d9a0e5951c0d21ba970956d974839d1}{placeAllInBet}}();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00116\ \ \ std::shared\_ptr<Player>\ currentPlayer;\ \ }
+\DoxyCodeLine{00117\ \ \ \textcolor{keywordtype}{bool}\ gameActive;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \textcolor{keywordtype}{double}\ currentBet;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \textcolor{comment}{//\ Статистика}}
+\DoxyCodeLine{00121\ \ \ uint64\_t\ totalRounds;\ \ }
+\DoxyCodeLine{00122\ \ \ \textcolor{keywordtype}{double}\ totalWagered;\ \ \ }
+\DoxyCodeLine{00123\ \ \ \textcolor{keywordtype}{double}\ totalWon;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \textcolor{comment}{//\ Настройка\ барабанов}}
+\DoxyCodeLine{00126\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ REEL\_COUNT\ =\ 3;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ SYMBOLS\_PER\_REEL\ =\ 3;\ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ std::vector<std::vector<std::string>>\ reels;\ \ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \textcolor{comment}{//\ Определения\ символов\ и\ выплат}}
+\DoxyCodeLine{00131\ \ \ std::vector<std::string>\ symbols\ =\ \{\textcolor{stringliteral}{"{}C"{}},\ \textcolor{stringliteral}{"{}L"{}},\ \textcolor{stringliteral}{"{}O"{}},\ \textcolor{stringliteral}{"{}S"{}},\ \textcolor{stringliteral}{"{}B"{}},\ \textcolor{stringliteral}{"{}7"{}},\ \textcolor{stringliteral}{"{}D"{}}\};\ \ }
+\DoxyCodeLine{00132\ \ \ std::map<std::string,\ std::map<int,\ double>>\ payTable\ =\ \{\ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}D"{}},\ \{\{3,\ 100.0\},\ \{2,\ 10.0\}\}\},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}7"{}},\ \{\{3,\ 50.0\},\ \{2,\ 5.0\}\}\},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}B"{}},\ \{\{3,\ 20.0\},\ \{2,\ 3.0\}\}\},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}S"{}},\ \{\{3,\ 15.0\},\ \{2,\ 2.0\}\}\},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}O"{}},\ \{\{3,\ 10.0\}\}\},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}L"{}},\ \{\{3,\ 8.0\}\}\},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}C"{}},\ \{\{3,\ 5.0\},\ \{2,\ 2.0\},\ \{1,\ 1.0\}\}\}\ \ }
+\DoxyCodeLine{00140\ \ \ \};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ std::random\_device\ rd;\ \ }
+\DoxyCodeLine{00143\ \ \ std::mt19937\ gen;\ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \};}
+
+\end{DoxyCode}

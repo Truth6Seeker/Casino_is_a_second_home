@@ -1,0 +1,140 @@
+\doxysection{Deck Class Reference}
+\hypertarget{class_deck}{}\label{class_deck}\index{Deck@{Deck}}
+
+
+Класс, представляющий колоду карт  
+
+
+
+
+{\ttfamily \#include $<$deck.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_deck_aa2b14efd9d4b82c8ee7b9975e2f7ede0}{Deck}} (int num\+Decks=6)
+\begin{DoxyCompactList}\small\item\em Конструктор колоды \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_deck_ae5a1e52ab00ae5924f2bc6b730dba3eb}{shuffle}} ()
+\begin{DoxyCompactList}\small\item\em Перемешать колоду \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_card}{Card}} \mbox{\hyperlink{class_deck_a7e3cb5a726dec9953c564ab7d780563d}{draw\+Card}} ()
+\begin{DoxyCompactList}\small\item\em Взять карту из колоды \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_deck_ae008730523829086451bc11f53b1cf70}{cards\+Remaining}} () const
+\begin{DoxyCompactList}\small\item\em Получить количество оставшихся карт \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_deck_a02a080b20dcf494606ab5a7345361688}{get\+True\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Получить истинный счет для карточного счета \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_deck_a14aa4f2f94b6b880cd575cf17af26762}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Сбросить колоду в начальное состояние \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_deck_a487138cc1a190cba71bf3c3dcb0c4e17}{get\+Running\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Получить текущий running count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс, представляющий колоду карт 
+
+Этот класс представляет колоду карт, которая может содержать несколько стандартных колод. Поддерживает перемешивание карт, подсчет оставшихся карт и подсчет для карточного счета. 
+
+\label{doc-constructors}
+\Hypertarget{class_deck_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_deck_aa2b14efd9d4b82c8ee7b9975e2f7ede0}\index{Deck@{Deck}!Deck@{Deck}}
+\index{Deck@{Deck}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{Deck()}{Deck()}}
+{\footnotesize\ttfamily \label{class_deck_aa2b14efd9d4b82c8ee7b9975e2f7ede0} 
+Deck\+::\+Deck (\begin{DoxyParamCaption}\item[{int}]{num\+Decks}{ = {\ttfamily 6}}\end{DoxyParamCaption})}
+
+
+
+Конструктор колоды 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Decks} & Количество колод (по умолчанию 6, как в большинстве казино) \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_deck_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_deck_ae008730523829086451bc11f53b1cf70}\index{Deck@{Deck}!cardsRemaining@{cardsRemaining}}
+\index{cardsRemaining@{cardsRemaining}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{cardsRemaining()}{cardsRemaining()}}
+{\footnotesize\ttfamily \label{class_deck_ae008730523829086451bc11f53b1cf70} 
+int Deck\+::cards\+Remaining (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить количество оставшихся карт 
+
+\begin{DoxyReturn}{Returns}
+Количество карт в колоде 
+\end{DoxyReturn}
+\Hypertarget{class_deck_a7e3cb5a726dec9953c564ab7d780563d}\index{Deck@{Deck}!drawCard@{drawCard}}
+\index{drawCard@{drawCard}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{drawCard()}{drawCard()}}
+{\footnotesize\ttfamily \label{class_deck_a7e3cb5a726dec9953c564ab7d780563d} 
+\mbox{\hyperlink{class_card}{Card}} Deck\+::draw\+Card (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Взять карту из колоды 
+
+\begin{DoxyReturn}{Returns}
+Карта, взятая из колоды 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & если в колоде не осталось карт \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_deck_a487138cc1a190cba71bf3c3dcb0c4e17}\index{Deck@{Deck}!getRunningCount@{getRunningCount}}
+\index{getRunningCount@{getRunningCount}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{getRunningCount()}{getRunningCount()}}
+{\footnotesize\ttfamily \label{class_deck_a487138cc1a190cba71bf3c3dcb0c4e17} 
+int Deck\+::get\+Running\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить текущий running count. 
+
+\begin{DoxyReturn}{Returns}
+Текущий running count для карточного счета 
+\end{DoxyReturn}
+\Hypertarget{class_deck_a02a080b20dcf494606ab5a7345361688}\index{Deck@{Deck}!getTrueCount@{getTrueCount}}
+\index{getTrueCount@{getTrueCount}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{getTrueCount()}{getTrueCount()}}
+{\footnotesize\ttfamily \label{class_deck_a02a080b20dcf494606ab5a7345361688} 
+double Deck\+::get\+True\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить истинный счет для карточного счета 
+
+\begin{DoxyReturn}{Returns}
+Истинный счет (running count / decks remaining) 
+\end{DoxyReturn}
+\Hypertarget{class_deck_a14aa4f2f94b6b880cd575cf17af26762}\index{Deck@{Deck}!reset@{reset}}
+\index{reset@{reset}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{class_deck_a14aa4f2f94b6b880cd575cf17af26762} 
+void Deck\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Сбросить колоду в начальное состояние 
+
+Пересоздает колоду с исходным количеством карт и перемешивает её \Hypertarget{class_deck_ae5a1e52ab00ae5924f2bc6b730dba3eb}\index{Deck@{Deck}!shuffle@{shuffle}}
+\index{shuffle@{shuffle}!Deck@{Deck}}
+\doxysubsubsection{\texorpdfstring{shuffle()}{shuffle()}}
+{\footnotesize\ttfamily \label{class_deck_ae5a1e52ab00ae5924f2bc6b730dba3eb} 
+void Deck\+::shuffle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Перемешать колоду 
+
+Перемешивает все карты в колоде случайным образом 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{deck_8h}{deck.\+h}}\end{DoxyCompactItemize}

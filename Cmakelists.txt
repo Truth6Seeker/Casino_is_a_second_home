@@ -2,19 +2,135 @@ cmake_minimum_required(VERSION 3.10)
 project(Casino)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Find SQLite3 package
+find_package(SQLite3 REQUIRED)
 
 # Include directories
 include_directories(headers)
 
 # Source files
 set(SOURCES
-    src/Casino.cpp
-    src/Player.cpp
-    src/GameSession.cpp
-    src/DiceGame.cpp
+    src/casino.cpp
+    src/player.cpp
+    src/gameSession.cpp
+    src/diceGame.cpp
     src/blackjack.cpp
+    src/leaderboard.cpp
+    src/roulette.cpp
+    src/basicstrategyai.cpp
+    src/coinflip.cpp
+    src/slotmachine.cpp
+    src/card.cpp
+    src/deck.cpp
     main/main.cpp
 )
 
 # Create executable
 add_executable(casino_app ${SOURCES})
+
+# Link SQLite3
+target_link_libraries(casino_app PRIVATE SQLite::SQLite3)
+
+# Set output directory to current directory
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Copy executable to project root
+add_custom_command(TARGET casino_app POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+    ${CMAKE_BINARY_DIR}/casino_app
+    ${CMAKE_SOURCE_DIR}/casino_app
+)
+
+# Add tests
+enable_testing()
+
+# Common test dependencies
+set(TEST_DEPS
+    src/player.cpp
+    src/gameSession.cpp
+    src/card.cpp
+    src/deck.cpp
+    src/basicstrategyai.cpp
+)
+
+# Blackjack tests
+add_executable(blackjack_test 
+    tests/blackjack_test.cpp
+    src/blackjack.cpp
+    ${TEST_DEPS}
+)
+target_include_directories(blackjack_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(blackjack_test PRIVATE SQLite::SQLite3)
+add_test(NAME blackjack_test COMMAND blackjack_test)
+
+# CoinFlip tests
+add_executable(coinflip_test
+    tests/coinflip_test.cpp
+    src/coinflip.cpp
+    ${TEST_DEPS}
+)
+target_include_directories(coinflip_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(coinflip_test PRIVATE SQLite::SQLite3)
+add_test(NAME coinflip_test COMMAND coinflip_test)
+
+# SlotMachine tests
+add_executable(slotmachine_test
+    tests/slotmachine_test.cpp
+    src/slotmachine.cpp
+    ${TEST_DEPS}
+)
+target_include_directories(slotmachine_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(slotmachine_test PRIVATE SQLite::SQLite3)
+add_test(NAME slotmachine_test COMMAND slotmachine_test)
+
+# DiceGame tests
+add_executable(dicegame_test
+    tests/dicegame_test.cpp
+    src/diceGame.cpp
+    ${TEST_DEPS}
+)
+target_include_directories(dicegame_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(dicegame_test PRIVATE SQLite::SQLite3)
+add_test(NAME dicegame_test COMMAND dicegame_test)
+
+# Player tests
+add_executable(player_test
+    tests/player_test.cpp
+    src/player.cpp
+)
+target_include_directories(player_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(player_test PRIVATE SQLite::SQLite3)
+add_test(NAME player_test COMMAND player_test)
+
+# GameSession tests
+add_executable(gamesession_test
+    tests/gamesession_test.cpp
+    src/gameSession.cpp
+    src/blackjack.cpp
+    ${TEST_DEPS}
+)
+target_include_directories(gamesession_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(gamesession_test PRIVATE SQLite::SQLite3)
+add_test(NAME gamesession_test COMMAND gamesession_test)
+
+# Casino tests
+add_executable(casino_test
+    tests/casino_test.cpp
+    src/casino.cpp
+    src/player.cpp
+    src/gameSession.cpp
+)
+target_include_directories(casino_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(casino_test PRIVATE SQLite::SQLite3)
+add_test(NAME casino_test COMMAND casino_test)
+
+# Leaderboard tests
+add_executable(leaderboard_test
+    tests/leaderboard_test.cpp
+    src/leaderboard.cpp
+)
+target_include_directories(leaderboard_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(leaderboard_test PRIVATE SQLite::SQLite3)
+add_test(NAME leaderboard_test COMMAND leaderboard_test)

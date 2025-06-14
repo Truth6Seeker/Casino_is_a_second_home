@@ -1,0 +1,128 @@
+\doxysection{Card Class Reference}
+\hypertarget{class_card}{}\label{class_card}\index{Card@{Card}}
+
+
+Класс, представляющий игральную карту  
+
+
+
+
+{\ttfamily \#include $<$card.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_card_a70210cc8ee3d60a60f208f850bc54f85}{Card}} (\mbox{\hyperlink{card_8h_af78e1c8ea5e6837b6ab9452a1e435e4e}{Suit}} suit, \mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbed}{Rank}} rank)
+\begin{DoxyCompactList}\small\item\em Конструктор карты \end{DoxyCompactList}\item 
+\mbox{\hyperlink{card_8h_af78e1c8ea5e6837b6ab9452a1e435e4e}{Suit}} \mbox{\hyperlink{class_card_a8ad282c1b97a4846775a4b502722a4f1}{get\+Suit}} () const
+\begin{DoxyCompactList}\small\item\em Получить масть карты \end{DoxyCompactList}\item 
+\mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbed}{Rank}} \mbox{\hyperlink{class_card_ad2c7de19fb9df88e6591015a7f2d81dd}{get\+Rank}} () const
+\begin{DoxyCompactList}\small\item\em Получить достоинство карты \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_card_acc9b1b81d72e09c5a70036d0b91b4b30}{get\+Value}} () const
+\begin{DoxyCompactList}\small\item\em Получить значение карты для игры в блэкджек \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_card_a9a4e42dd612127ec056ba3619da466bc}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Получить строковое представление карты \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_card_af8a633ae26c08ee54b7162a379178918}{to\+Symbol}} () const
+\begin{DoxyCompactList}\small\item\em Получить символьное представление карты \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс, представляющий игральную карту 
+
+Этот класс представляет игральную карту с мастью и достоинством. Предоставляет методы для получения информации о карте и её строкового представления. 
+
+\label{doc-constructors}
+\Hypertarget{class_card_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_card_a70210cc8ee3d60a60f208f850bc54f85}\index{Card@{Card}!Card@{Card}}
+\index{Card@{Card}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{Card()}{Card()}}
+{\footnotesize\ttfamily \label{class_card_a70210cc8ee3d60a60f208f850bc54f85} 
+Card\+::\+Card (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{card_8h_af78e1c8ea5e6837b6ab9452a1e435e4e}{Suit}}}]{suit}{, }\item[{\mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbed}{Rank}}}]{rank}{}\end{DoxyParamCaption})}
+
+
+
+Конструктор карты 
+
+
+\begin{DoxyParams}{Parameters}
+{\em suit} & Масть карты \\
+\hline
+{\em rank} & Достоинство карты \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_card_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_card_ad2c7de19fb9df88e6591015a7f2d81dd}\index{Card@{Card}!getRank@{getRank}}
+\index{getRank@{getRank}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{getRank()}{getRank()}}
+{\footnotesize\ttfamily \label{class_card_ad2c7de19fb9df88e6591015a7f2d81dd} 
+\mbox{\hyperlink{card_8h_adf74d53cd68bbef55ba510b266ecbbed}{Rank}} Card\+::get\+Rank (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить достоинство карты 
+
+\begin{DoxyReturn}{Returns}
+Достоинство карты 
+\end{DoxyReturn}
+\Hypertarget{class_card_a8ad282c1b97a4846775a4b502722a4f1}\index{Card@{Card}!getSuit@{getSuit}}
+\index{getSuit@{getSuit}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{getSuit()}{getSuit()}}
+{\footnotesize\ttfamily \label{class_card_a8ad282c1b97a4846775a4b502722a4f1} 
+\mbox{\hyperlink{card_8h_af78e1c8ea5e6837b6ab9452a1e435e4e}{Suit}} Card\+::get\+Suit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить масть карты 
+
+\begin{DoxyReturn}{Returns}
+Масть карты 
+\end{DoxyReturn}
+\Hypertarget{class_card_acc9b1b81d72e09c5a70036d0b91b4b30}\index{Card@{Card}!getValue@{getValue}}
+\index{getValue@{getValue}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily \label{class_card_acc9b1b81d72e09c5a70036d0b91b4b30} 
+int Card\+::get\+Value (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить значение карты для игры в блэкджек 
+
+\begin{DoxyReturn}{Returns}
+Значение карты (туз может быть 1 или 11) 
+\end{DoxyReturn}
+\Hypertarget{class_card_a9a4e42dd612127ec056ba3619da466bc}\index{Card@{Card}!toString@{toString}}
+\index{toString@{toString}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily \label{class_card_a9a4e42dd612127ec056ba3619da466bc} 
+std\+::string Card\+::to\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить строковое представление карты 
+
+\begin{DoxyReturn}{Returns}
+Строка вида "{}\+Ace of Spades"{} 
+\end{DoxyReturn}
+\Hypertarget{class_card_af8a633ae26c08ee54b7162a379178918}\index{Card@{Card}!toSymbol@{toSymbol}}
+\index{toSymbol@{toSymbol}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{toSymbol()}{toSymbol()}}
+{\footnotesize\ttfamily \label{class_card_af8a633ae26c08ee54b7162a379178918} 
+std\+::string Card\+::to\+Symbol (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить символьное представление карты 
+
+\begin{DoxyReturn}{Returns}
+Строка вида "{}\+A♠"{} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{card_8h}{card.\+h}}\end{DoxyCompactItemize}

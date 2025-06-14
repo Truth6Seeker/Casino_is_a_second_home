@@ -1,0 +1,78 @@
+\doxysection{Leaderboard Class Reference}
+\hypertarget{class_leaderboard}{}\label{class_leaderboard}\index{Leaderboard@{Leaderboard}}
+
+
+Класс, реализующий таблицу лидеров  
+
+
+
+
+{\ttfamily \#include $<$leaderboard.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_leaderboard_ab094b18c57ab9b8ef9d06a94d9b11f02}\label{class_leaderboard_ab094b18c57ab9b8ef9d06a94d9b11f02} 
+{\bfseries Leaderboard} ()
+\begin{DoxyCompactList}\small\item\em Конструктор таблицы лидеров \end{DoxyCompactList}\item 
+\Hypertarget{class_leaderboard_af22f560c91505f0d97e02d4c41103a4c}\label{class_leaderboard_af22f560c91505f0d97e02d4c41103a4c} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Leaderboard} ()
+\begin{DoxyCompactList}\small\item\em Деструктор таблицы лидеров \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_leaderboard_a858379b48441ceac0b3e7bae4362bb51}{add\+Or\+Update\+Player}} (const std\+::string \&name, double balance, int wins, int games\+\_\+played)
+\begin{DoxyCompactList}\small\item\em Добавить или обновить игрока в таблице лидеров \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_leaderboard_entry}{Leaderboard\+Entry}} $>$ \mbox{\hyperlink{class_leaderboard_a637c2f64236b1f46b2c102d386c39131}{get\+Top\+Players}} (int limit=10)
+\begin{DoxyCompactList}\small\item\em Получить список лучших игроков \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс, реализующий таблицу лидеров 
+
+Этот класс управляет таблицей лидеров, хранящей информацию о лучших игроках в базе данных SQLite. 
+
+\label{doc-func-members}
+\Hypertarget{class_leaderboard_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_leaderboard_a858379b48441ceac0b3e7bae4362bb51}\index{Leaderboard@{Leaderboard}!addOrUpdatePlayer@{addOrUpdatePlayer}}
+\index{addOrUpdatePlayer@{addOrUpdatePlayer}!Leaderboard@{Leaderboard}}
+\doxysubsubsection{\texorpdfstring{addOrUpdatePlayer()}{addOrUpdatePlayer()}}
+{\footnotesize\ttfamily \label{class_leaderboard_a858379b48441ceac0b3e7bae4362bb51} 
+void Leaderboard\+::add\+Or\+Update\+Player (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{double}]{balance}{, }\item[{int}]{wins}{, }\item[{int}]{games\+\_\+played}{}\end{DoxyParamCaption})}
+
+
+
+Добавить или обновить игрока в таблице лидеров 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя игрока \\
+\hline
+{\em balance} & Текущий баланс \\
+\hline
+{\em wins} & Количество побед \\
+\hline
+{\em games\+\_\+played} & Количество сыгранных игр \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_leaderboard_a637c2f64236b1f46b2c102d386c39131}\index{Leaderboard@{Leaderboard}!getTopPlayers@{getTopPlayers}}
+\index{getTopPlayers@{getTopPlayers}!Leaderboard@{Leaderboard}}
+\doxysubsubsection{\texorpdfstring{getTopPlayers()}{getTopPlayers()}}
+{\footnotesize\ttfamily \label{class_leaderboard_a637c2f64236b1f46b2c102d386c39131} 
+std\+::vector$<$ \mbox{\hyperlink{struct_leaderboard_entry}{Leaderboard\+Entry}} $>$ Leaderboard\+::get\+Top\+Players (\begin{DoxyParamCaption}\item[{int}]{limit}{ = {\ttfamily 10}}\end{DoxyParamCaption})}
+
+
+
+Получить список лучших игроков 
+
+
+\begin{DoxyParams}{Parameters}
+{\em limit} & Максимальное количество игроков (по умолчанию 10) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Вектор записей с лучшими игроками 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{leaderboard_8h}{leaderboard.\+h}}\end{DoxyCompactItemize}

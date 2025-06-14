@@ -1,0 +1,282 @@
+\doxysection{Blackjack Class Reference}
+\hypertarget{class_blackjack}{}\label{class_blackjack}\index{Blackjack@{Blackjack}}
+
+
+Класс, реализующий игру в блэкджек  
+
+
+
+
+{\ttfamily \#include $<$blackjack.\+h$>$}
+
+Inheritance diagram for Blackjack\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_blackjack}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_blackjack_a0e314e46a0b9446efff51b81a23d7fb6}\label{class_blackjack_a0e314e46a0b9446efff51b81a23d7fb6} 
+{\bfseries Blackjack} ()
+\begin{DoxyCompactList}\small\item\em Конструктор игры в блэкджек \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_blackjack_ad70d6be963dc17a6709bbdfe36ece7a2}{start\+Game}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$ player) override
+\begin{DoxyCompactList}\small\item\em Начать новую игру \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_blackjack_a18f6049e9f242487363053c25a329428}{play\+Round}} () override
+\begin{DoxyCompactList}\small\item\em Провести один раунд игры \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_blackjack_a01bc654e82cc65eb1290bff6cbf8e5ce}{end\+Game}} () override
+\begin{DoxyCompactList}\small\item\em Завершить игру \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_blackjack_a33a363d37e257e94b83e122d658a3ea5}{get\+House\+Edge}} () const override
+\begin{DoxyCompactList}\small\item\em Получить преимущество казино \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_blackjack_ab848763724a0876933f86bb9a071dd63}{get\+Game\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em Получить название игры \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_blackjack_aabe3d6307cd35ec2fdbcf059dac5a21e}{is\+Game\+Active}} () const override
+\begin{DoxyCompactList}\small\item\em Проверить, активна ли игра \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{class_blackjack_a941c0b100e9cbadb8fda1ec4dbeed4a0}{get\+Total\+Rounds\+Played}} () const override
+\begin{DoxyCompactList}\small\item\em Получить количество сыгранных раундов \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_blackjack_ab246f710c62b35bd1f41c35251b2461c}{get\+Total\+Amount\+Wagered}} () const override
+\begin{DoxyCompactList}\small\item\em Получить общую сумму ставок \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_blackjack_aec1ecb9876a7cc36eb7b7a2cee420421}{get\+Total\+Amount\+Won}} () const override
+\begin{DoxyCompactList}\small\item\em Получить общую сумму выигрышей \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_blackjack_a031b5d0fffc3f898c790e67b23758995}{set\+Use\+AI}} (bool use\+AI)
+\begin{DoxyCompactList}\small\item\em Установить использование ИИ \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_blackjack_ad678e5caefadafa4d6e9f1de03041749}{is\+Using\+AI}} () const
+\begin{DoxyCompactList}\small\item\em Проверить, используется ли ИИ \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_blackjack_a3ac836f43fefd9a9adfd1938b3cb6e43}{take\+Bet}} ()
+\begin{DoxyCompactList}\small\item\em Сделать ставку \end{DoxyCompactList}\item 
+\mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021}{Round\+Result}} \mbox{\hyperlink{class_blackjack_a3a174999301c7aea0b6a998b77c80091}{play\+Round\+With\+Result}} ()
+\begin{DoxyCompactList}\small\item\em Провести раунд и получить результат \end{DoxyCompactList}\item 
+\mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021}{Round\+Result}} \mbox{\hyperlink{class_blackjack_a29a15a6ea9d0a822f318ed2431fb44cb}{determine\+Winner\+With\+Result}} ()
+\begin{DoxyCompactList}\small\item\em Определить победителя раунда \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс, реализующий игру в блэкджек 
+
+Этот класс реализует классическую игру в блэкджек с поддержкой базовой стратегии для ИИ и подсчета карт. 
+
+\label{doc-func-members}
+\Hypertarget{class_blackjack_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_blackjack_a29a15a6ea9d0a822f318ed2431fb44cb}\index{Blackjack@{Blackjack}!determineWinnerWithResult@{determineWinnerWithResult}}
+\index{determineWinnerWithResult@{determineWinnerWithResult}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{determineWinnerWithResult()}{determineWinnerWithResult()}}
+{\footnotesize\ttfamily \label{class_blackjack_a29a15a6ea9d0a822f318ed2431fb44cb} 
+\mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021}{Round\+Result}} Blackjack\+::determine\+Winner\+With\+Result (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Определить победителя раунда 
+
+\begin{DoxyReturn}{Returns}
+Результат раунда 
+\end{DoxyReturn}
+\Hypertarget{class_blackjack_a01bc654e82cc65eb1290bff6cbf8e5ce}\index{Blackjack@{Blackjack}!endGame@{endGame}}
+\index{endGame@{endGame}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{endGame()}{endGame()}}
+{\footnotesize\ttfamily \label{class_blackjack_a01bc654e82cc65eb1290bff6cbf8e5ce} 
+void Blackjack\+::end\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Завершить игру 
+
+
+
+Implements \mbox{\hyperlink{class_i_game_ad92572b43a4e076b724047fc2403a557}{IGame}}.
+
+\Hypertarget{class_blackjack_ab848763724a0876933f86bb9a071dd63}\index{Blackjack@{Blackjack}!getGameName@{getGameName}}
+\index{getGameName@{getGameName}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{getGameName()}{getGameName()}}
+{\footnotesize\ttfamily \label{class_blackjack_ab848763724a0876933f86bb9a071dd63} 
+std\+::string Blackjack\+::get\+Game\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить название игры 
+
+\begin{DoxyReturn}{Returns}
+Название игры 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_afa3493b07082a872195c855563dbf306}{IGame}}.
+
+\Hypertarget{class_blackjack_a33a363d37e257e94b83e122d658a3ea5}\index{Blackjack@{Blackjack}!getHouseEdge@{getHouseEdge}}
+\index{getHouseEdge@{getHouseEdge}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{getHouseEdge()}{getHouseEdge()}}
+{\footnotesize\ttfamily \label{class_blackjack_a33a363d37e257e94b83e122d658a3ea5} 
+double Blackjack\+::get\+House\+Edge (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить преимущество казино 
+
+\begin{DoxyReturn}{Returns}
+Преимущество казино в процентах 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a8a4f27ed56941ab5250092a381ab8348}{IGame}}.
+
+\Hypertarget{class_blackjack_ab246f710c62b35bd1f41c35251b2461c}\index{Blackjack@{Blackjack}!getTotalAmountWagered@{getTotalAmountWagered}}
+\index{getTotalAmountWagered@{getTotalAmountWagered}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{getTotalAmountWagered()}{getTotalAmountWagered()}}
+{\footnotesize\ttfamily \label{class_blackjack_ab246f710c62b35bd1f41c35251b2461c} 
+double Blackjack\+::get\+Total\+Amount\+Wagered (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить общую сумму ставок 
+
+\begin{DoxyReturn}{Returns}
+Сумма всех ставок 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a03d7878b6014fb6e40e54c47075ee4f1}{IGame}}.
+
+\Hypertarget{class_blackjack_aec1ecb9876a7cc36eb7b7a2cee420421}\index{Blackjack@{Blackjack}!getTotalAmountWon@{getTotalAmountWon}}
+\index{getTotalAmountWon@{getTotalAmountWon}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{getTotalAmountWon()}{getTotalAmountWon()}}
+{\footnotesize\ttfamily \label{class_blackjack_aec1ecb9876a7cc36eb7b7a2cee420421} 
+double Blackjack\+::get\+Total\+Amount\+Won (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить общую сумму выигрышей 
+
+\begin{DoxyReturn}{Returns}
+Сумма всех выигрышей 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a60ab0310dcf9ba3b695b8ee6b612dd84}{IGame}}.
+
+\Hypertarget{class_blackjack_a941c0b100e9cbadb8fda1ec4dbeed4a0}\index{Blackjack@{Blackjack}!getTotalRoundsPlayed@{getTotalRoundsPlayed}}
+\index{getTotalRoundsPlayed@{getTotalRoundsPlayed}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{getTotalRoundsPlayed()}{getTotalRoundsPlayed()}}
+{\footnotesize\ttfamily \label{class_blackjack_a941c0b100e9cbadb8fda1ec4dbeed4a0} 
+uint64\+\_\+t Blackjack\+::get\+Total\+Rounds\+Played (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить количество сыгранных раундов 
+
+\begin{DoxyReturn}{Returns}
+Количество раундов 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a6e228c5546cff7a44d632ab9dae265de}{IGame}}.
+
+\Hypertarget{class_blackjack_aabe3d6307cd35ec2fdbcf059dac5a21e}\index{Blackjack@{Blackjack}!isGameActive@{isGameActive}}
+\index{isGameActive@{isGameActive}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{isGameActive()}{isGameActive()}}
+{\footnotesize\ttfamily \label{class_blackjack_aabe3d6307cd35ec2fdbcf059dac5a21e} 
+bool Blackjack\+::is\+Game\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Проверить, активна ли игра 
+
+\begin{DoxyReturn}{Returns}
+true если игра активна, false в противном случае 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_game_a5acc38c7dec29267c6e005a6971ee1f5}{IGame}}.
+
+\Hypertarget{class_blackjack_ad678e5caefadafa4d6e9f1de03041749}\index{Blackjack@{Blackjack}!isUsingAI@{isUsingAI}}
+\index{isUsingAI@{isUsingAI}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{isUsingAI()}{isUsingAI()}}
+{\footnotesize\ttfamily \label{class_blackjack_ad678e5caefadafa4d6e9f1de03041749} 
+bool Blackjack\+::is\+Using\+AI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Проверить, используется ли ИИ 
+
+\begin{DoxyReturn}{Returns}
+true если ИИ включен, false в противном случае 
+\end{DoxyReturn}
+\Hypertarget{class_blackjack_a18f6049e9f242487363053c25a329428}\index{Blackjack@{Blackjack}!playRound@{playRound}}
+\index{playRound@{playRound}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{playRound()}{playRound()}}
+{\footnotesize\ttfamily \label{class_blackjack_a18f6049e9f242487363053c25a329428} 
+void Blackjack\+::play\+Round (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Провести один раунд игры 
+
+
+
+Implements \mbox{\hyperlink{class_i_game_a1d17dab4df75500675717f2edbf71ce5}{IGame}}.
+
+\Hypertarget{class_blackjack_a3a174999301c7aea0b6a998b77c80091}\index{Blackjack@{Blackjack}!playRoundWithResult@{playRoundWithResult}}
+\index{playRoundWithResult@{playRoundWithResult}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{playRoundWithResult()}{playRoundWithResult()}}
+{\footnotesize\ttfamily \label{class_blackjack_a3a174999301c7aea0b6a998b77c80091} 
+\mbox{\hyperlink{blackjack_8h_a60f3c963c9dd51d71bdbf21629771021}{Round\+Result}} Blackjack\+::play\+Round\+With\+Result (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Провести раунд и получить результат 
+
+\begin{DoxyReturn}{Returns}
+Результат раунда 
+\end{DoxyReturn}
+\Hypertarget{class_blackjack_a031b5d0fffc3f898c790e67b23758995}\index{Blackjack@{Blackjack}!setUseAI@{setUseAI}}
+\index{setUseAI@{setUseAI}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{setUseAI()}{setUseAI()}}
+{\footnotesize\ttfamily \label{class_blackjack_a031b5d0fffc3f898c790e67b23758995} 
+void Blackjack\+::set\+Use\+AI (\begin{DoxyParamCaption}\item[{bool}]{use\+AI}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Установить использование ИИ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em use\+AI} & true для включения ИИ, false для отключения \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_blackjack_ad70d6be963dc17a6709bbdfe36ece7a2}\index{Blackjack@{Blackjack}!startGame@{startGame}}
+\index{startGame@{startGame}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{startGame()}{startGame()}}
+{\footnotesize\ttfamily \label{class_blackjack_ad70d6be963dc17a6709bbdfe36ece7a2} 
+void Blackjack\+::start\+Game (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Начать новую игру 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Указатель на игрока \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_game_a30ed769d1b0903d4509ac31d141090f4}{IGame}}.
+
+\Hypertarget{class_blackjack_a3ac836f43fefd9a9adfd1938b3cb6e43}\index{Blackjack@{Blackjack}!takeBet@{takeBet}}
+\index{takeBet@{takeBet}!Blackjack@{Blackjack}}
+\doxysubsubsection{\texorpdfstring{takeBet()}{takeBet()}}
+{\footnotesize\ttfamily \label{class_blackjack_a3ac836f43fefd9a9adfd1938b3cb6e43} 
+bool Blackjack\+::take\+Bet (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Сделать ставку 
+
+\begin{DoxyReturn}{Returns}
+true если ставка успешно сделана, false в противном случае 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{blackjack_8h}{blackjack.\+h}}\end{DoxyCompactItemize}

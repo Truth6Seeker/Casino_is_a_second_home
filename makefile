@@ -21,3 +21,14 @@ clean:
 	rm -f $(OBJ) $(EXEC)
 
 .PHONY: all clean
+
+find_package(Doxygen REQUIRED)
+if(DOXYGEN_FOUND)
+    set(DOXYGEN_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/docs)
+    set(DOXYGEN_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+    doxygen_add_docs(
+        generate_docs
+        ${DOXYGEN_SOURCE_DIR}
+        COMMENT "Generating Doxygen docs"
+    )
+endif()

@@ -1,0 +1,61 @@
+\doxysection{dicegame.\+h}
+\hypertarget{dicegame_8h_source}{}\label{dicegame_8h_source}\index{headers/dicegame.h@{headers/dicegame.h}}
+\mbox{\hyperlink{dicegame_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{igame_8h}{igame.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_dice_game_ad3241e068ab46ddd8ad887b18e3ef39c}{DiceGame}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_game}{IGame}}\ \{}
+\DoxyCodeLine{00020\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ std::shared\_ptr<Player>\ currentPlayer;\ \ }
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{bool}\ gameActive;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{double}\ currentBet;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{bool}\ betOnHigh;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \textcolor{comment}{//\ Статистика\ игры}}
+\DoxyCodeLine{00027\ \ \ uint64\_t\ totalRounds;\ \ }
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{double}\ totalWagered;\ \ \ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{double}\ totalWon;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{int}\ lastRoll;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{comment}{//\ Генератор\ случайных\ чисел}}
+\DoxyCodeLine{00033\ \ \ std::random\_device\ rd;\ \ }
+\DoxyCodeLine{00034\ \ \ std::mt19937\ gen;\ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ std::uniform\_int\_distribution<>\ dist;\ \ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{class_dice_game_ad3241e068ab46ddd8ad887b18e3ef39c}{DiceGame}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_dice_game_ae6b97d9e712aa1a5ced54113bf57ac46}{startGame}}(std::shared\_ptr<Player>\ player)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_dice_game_a06f3d53573c05f4458fadc6360e324c7}{playRound}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_dice_game_a91c91e40ca920144b56b938796d991a2}{endGame}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_dice_game_ada9937300765912bc2451ddc551f0179}{getHouseEdge}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00069\ \ \ std::string\ \mbox{\hyperlink{class_dice_game_a1b2efa8729c54b143e227e0a72356838}{getGameName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_dice_game_a8a3bd3974abf19a7ec5f094d461805b2}{isGameActive}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ uint64\_t\ \mbox{\hyperlink{class_dice_game_a5335104bdc471bfa4460277ba76dbd26}{getTotalRoundsPlayed}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_dice_game_ae27a07caebdbcac355233975fcfe3b0d}{getTotalAmountWagered}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_dice_game_a8f05fbb24200e39fec7fe904b7d5801f}{getTotalAmountWon}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00099\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_dice_game_ac8a01b063954bb586770b789f018c9ec}{getLastRoll}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ lastRoll;\ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00107\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_dice_game_a49c84b0696e6fcb255cd829478765550}{placeBet}}(\textcolor{keywordtype}{double}\ amount,\ \textcolor{keywordtype}{bool}\ betHigh);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_dice_game_a9a24d92ba7363d1969eb7652df95c855}{rollDice}}();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00119\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_dice_game_ac935e60cec3c5fd6378cc73315b4c10f}{payout}}(\textcolor{keywordtype}{bool}\ won);}
+\DoxyCodeLine{00120\ \};}
+
+\end{DoxyCode}

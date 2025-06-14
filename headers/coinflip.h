@@ -1,50 +1,143 @@
+/**
+ * @file coinflip.h
+ * @brief Класс, реализующий игру в подбрасывание монеты
+ */
+
 #pragma once
-#include "igame.h"
-#include "player.h"
 #include <random>
 
-class CoinFlip : public IGame
-{
-private:
-    std::shared_ptr<Player> player;
-    bool gameStarted;
-    double currentBet;
-    bool betOnHeads; // true for heads, false for tails
-    int lastResult; // 1 for heads, 0 for tails
+#include "igame.h"
+#include "player.h"
 
-    // Game statistics
-    int totalRounds;
-    double totalWagered;
-    double totalWon;
+/**
+ * @class CoinFlip
+ * @brief Класс, реализующий игру в подбрасывание монеты
+ * 
+ * Этот класс реализует простую игру в подбрасывание монеты,
+ * где игрок может сделать ставку на орла или решку.
+ */
+class CoinFlip : public IGame {
+ private:
+  std::shared_ptr<Player> player;  ///< Указатель на игрока
+  bool gameStarted;                ///< Статус игры
+  double currentBet;               ///< Текущая ставка
+  bool betOnHeads;                 ///< Ставка на орла (true) или решку (false)
+  int lastResult;                  ///< Последний результат (1 - орел, 0 - решка)
 
-    // Random number generator
-    std::mt19937 rng;
+  // Статистика игры
+  int totalRounds;     ///< Общее количество раундов
+  double totalWagered; ///< Общая сумма ставок
+  double totalWon;     ///< Общая сумма выигрышей
 
-public:
-    CoinFlip();
+  std::mt19937 rng;    ///< Генератор случайных чисел
 
-    // IGame interface implementation
-    void startGame(std::shared_ptr<Player> p) override;
-    void playRound() override;
-    void endGame() override;
-    double getHouseEdge() const override;
-    std::string getGameName() const override;
-    bool isGameActive() const override;
+ public:
+  /**
+   * @brief Конструктор игры в подбрасывание монеты
+   */
+  CoinFlip();
 
-    // Game statistics
-    int getTotalRounds() const { return totalRounds; }
-    double getTotalWagered() const { return totalWagered; }
-    double getTotalWon() const { return totalWon; }
+  /**
+   * @brief Начать новую игру
+   * @param p Указатель на игрока
+   */
+  void startGame(std::shared_ptr<Player> p) override;
 
-    // Coin flip specific methods
-    bool placeBet(double amount, bool onHeads);
-    void flipCoin();
-    void handlePayout();
-    std::string getLastResultString() const;
-    int getLastResult() const { return lastResult; }
+  /**
+   * @brief Провести один раунд игры
+   */
+  void playRound() override;
 
-    // Реализация чисто виртуальных методов IGame
-    uint64_t getTotalRoundsPlayed() const override;
-    double getTotalAmountWagered() const override;
-    double getTotalAmountWon() const override;
-}; 
+  /**
+   * @brief Завершить игру
+   */
+  void endGame() override;
+
+  /**
+   * @brief Получить преимущество казино
+   * @return Преимущество казино в процентах
+   */
+  double getHouseEdge() const override;
+
+  /**
+   * @brief Получить название игры
+   * @return Название игры
+   */
+  std::string getGameName() const override;
+
+  /**
+   * @brief Проверить, активна ли игра
+   * @return true если игра активна, false в противном случае
+   */
+  bool isGameActive() const override;
+
+  /**
+   * @brief Получить количество сыгранных раундов
+   * @return Количество раундов
+   */
+  int getTotalRounds() const { return totalRounds; }
+
+  /**
+   * @brief Получить общую сумму ставок
+   * @return Сумма всех ставок
+   */
+  double getTotalWagered() const { return totalWagered; }
+
+  /**
+   * @brief Получить общую сумму выигрышей
+   * @return Сумма всех выигрышей
+   */
+  double getTotalWon() const { return totalWon; }
+
+  /**
+   * @brief Сделать ставку
+   * @param amount Сумма ставки
+   * @param onHeads true для ставки на орла, false для ставки на решку
+   * @return true если ставка успешно сделана, false в противном случае
+   */
+  bool placeBet(double amount, bool onHeads);
+
+  /**
+   * @brief Подбросить монету
+   * 
+   * Генерирует случайный результат подбрасывания монеты
+   */
+  void flipCoin();
+
+  /**
+   * @brief Обработать выплату
+   * 
+   * Рассчитывает и выплачивает выигрыш в зависимости от результата
+   */
+  void handlePayout();
+
+  /**
+   * @brief Получить строковое представление последнего результата
+   * @return Строка "Heads" или "Tails"
+   */
+  std::string getLastResultString() const;
+
+  /**
+   * @brief Получить последний результат
+   * @return 1 для орла, 0 для решки
+   */
+  int getLastResult() const { return lastResult; }
+
+  /**
+   * @brief Получить количество сыгранных раундов
+   * @return Количество раундов
+   */
+  uint64_t getTotalRoundsPlayed() const override;
+
+  /**
+   * @brief Получить общую сумму ставок
+   * @return Сумма всех ставок
+   */
+  double getTotalAmountWagered() const override;
+
+  /**
+   * @brief Получить общую сумму выигрышей
+   * @return Сумма всех выигрышей
+   */
+  double getTotalAmountWon() const override;
+};

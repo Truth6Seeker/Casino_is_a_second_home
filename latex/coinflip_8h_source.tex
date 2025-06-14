@@ -1,0 +1,66 @@
+\doxysection{coinflip.\+h}
+\hypertarget{coinflip_8h_source}{}\label{coinflip_8h_source}\index{headers/coinflip.h@{headers/coinflip.h}}
+\mbox{\hyperlink{coinflip_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{igame_8h}{igame.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_coin_flip_af9b2c58debf42b6e9c724a867aa6ecd3}{CoinFlip}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_game}{IGame}}\ \{}
+\DoxyCodeLine{00020\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ std::shared\_ptr<Player>\ player;\ \ }
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{bool}\ gameStarted;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{double}\ currentBet;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{bool}\ betOnHeads;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{int}\ lastResult;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \textcolor{comment}{//\ Статистика\ игры}}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{int}\ totalRounds;\ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{double}\ totalWagered;\ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{double}\ totalWon;\ \ \ \ \ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ std::mt19937\ rng;\ \ \ \ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{class_coin_flip_af9b2c58debf42b6e9c724a867aa6ecd3}{CoinFlip}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_coin_flip_af284bee5c87025761c48a1c441c4f8d0}{startGame}}(std::shared\_ptr<Player>\ p)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_coin_flip_a6a8a9674272c6ece602f9d370a8527d3}{playRound}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_coin_flip_a2cafe23dbbb7638282dee51062dae4ea}{endGame}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_coin_flip_a4bf3ad6d7a79891802f1c27b0250b971}{getHouseEdge}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ std::string\ \mbox{\hyperlink{class_coin_flip_a9bb8b7cf8310681c93b21deaf7fa3d09}{getGameName}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_coin_flip_acbaf29b4c930a06d418666e9bc9e9b25}{isGameActive}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_coin_flip_a5c0afee7cb53c1e4e1b3a7494ab74259}{getTotalRounds}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ totalRounds;\ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00084\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_coin_flip_ad85860b45242964303fc1a4836d140ef}{getTotalWagered}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ totalWagered;\ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_coin_flip_a38fc963d7acbbf0ec2e6b0371b3b3efa}{getTotalWon}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ totalWon;\ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_coin_flip_a3c0c4dbb65e1d867addabeae4adc7014}{placeBet}}(\textcolor{keywordtype}{double}\ amount,\ \textcolor{keywordtype}{bool}\ onHeads);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00105\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_coin_flip_a17dd5c655db871fcd9b9042037dae3c8}{flipCoin}}();}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00112\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_coin_flip_a4c5cf898fe73fe818f5adadfc16d9a84}{handlePayout}}();}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00118\ \ \ std::string\ \mbox{\hyperlink{class_coin_flip_ac703ee81dce0a3ece64803ffef744b15}{getLastResultString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00124\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_coin_flip_ab8d25680b61f12cea47754e745ff3ca3}{getLastResult}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ lastResult;\ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00130\ \ \ uint64\_t\ \mbox{\hyperlink{class_coin_flip_aa9e76941ff3b8e8ad8319777247c1b84}{getTotalRoundsPlayed}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00136\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_coin_flip_a9551b587d2aad88f76a153684f947e9e}{getTotalAmountWagered}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00142\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_coin_flip_aae6149f7596e01b24840813125670092}{getTotalAmountWon}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00143\ \};}
+
+\end{DoxyCode}

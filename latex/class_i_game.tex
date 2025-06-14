@@ -1,0 +1,202 @@
+\doxysection{IGame Class Reference}
+\hypertarget{class_i_game}{}\label{class_i_game}\index{IGame@{IGame}}
+
+
+Абстрактный класс, определяющий интерфейс для всех игр в казино  
+
+
+
+
+{\ttfamily \#include $<$igame.\+h$>$}
+
+Inheritance diagram for IGame\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i_game}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_i_game_a30ed769d1b0903d4509ac31d141090f4}{start\+Game}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$ player)=0
+\begin{DoxyCompactList}\small\item\em Начинает новую игру \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_i_game_a1d17dab4df75500675717f2edbf71ce5}{play\+Round}} ()=0
+\begin{DoxyCompactList}\small\item\em Проводит один раунд игры \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_i_game_ad92572b43a4e076b724047fc2403a557}{end\+Game}} ()=0
+\begin{DoxyCompactList}\small\item\em Завершает текущую игру \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_i_game_a8a4f27ed56941ab5250092a381ab8348}{get\+House\+Edge}} () const =0
+\begin{DoxyCompactList}\small\item\em Возвращает преимущество казино в игре \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_i_game_afa3493b07082a872195c855563dbf306}{get\+Game\+Name}} () const =0
+\begin{DoxyCompactList}\small\item\em Возвращает название игры \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_i_game_a5acc38c7dec29267c6e005a6971ee1f5}{is\+Game\+Active}} () const =0
+\begin{DoxyCompactList}\small\item\em Проверяет, активна ли игра в данный момент \end{DoxyCompactList}\item 
+virtual uint64\+\_\+t \mbox{\hyperlink{class_i_game_a6e228c5546cff7a44d632ab9dae265de}{get\+Total\+Rounds\+Played}} () const =0
+\begin{DoxyCompactList}\small\item\em Возвращает общее количество сыгранных раундов \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_i_game_a03d7878b6014fb6e40e54c47075ee4f1}{get\+Total\+Amount\+Wagered}} () const =0
+\begin{DoxyCompactList}\small\item\em Возвращает общую сумму ставок \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_i_game_a60ab0310dcf9ba3b695b8ee6b612dd84}{get\+Total\+Amount\+Won}} () const =0
+\begin{DoxyCompactList}\small\item\em Возвращает общую сумму выигрышей \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Абстрактный класс, определяющий интерфейс для всех игр в казино 
+
+Этот интерфейс определяет основные методы, которые должны быть реализованы всеми играми в казино. Он обеспечивает единообразный способ взаимодействия с различными играми. 
+
+\label{doc-func-members}
+\Hypertarget{class_i_game_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_i_game_ad92572b43a4e076b724047fc2403a557}\index{IGame@{IGame}!endGame@{endGame}}
+\index{endGame@{endGame}!IGame@{IGame}}
+\doxysubsubsection{\texorpdfstring{endGame()}{endGame()}}
+{\footnotesize\ttfamily \label{class_i_game_ad92572b43a4e076b724047fc2403a557} 
+virtual void IGame\+::end\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Завершает текущую игру 
+
+Метод должен выполнить все необходимые действия по завершению игры, включая обновление статистики и освобождение ресурсов. 
+
+Implemented in \mbox{\hyperlink{class_blackjack_a01bc654e82cc65eb1290bff6cbf8e5ce}{Blackjack}}, \mbox{\hyperlink{class_coin_flip_a2cafe23dbbb7638282dee51062dae4ea}{Coin\+Flip}}, \mbox{\hyperlink{class_dice_game_a91c91e40ca920144b56b938796d991a2}{Dice\+Game}}, \mbox{\hyperlink{class_roulette_a58bc8e86c5a08d3f684a39e8cef60a69}{Roulette}}, and \mbox{\hyperlink{class_slot_machine_ad23ec357801caaf43cb9325732a596c2}{Slot\+Machine}}.
+
+\Hypertarget{class_i_game_afa3493b07082a872195c855563dbf306}\index{IGame@{IGame}!getGameName@{getGameName}}
+\index{getGameName@{getGameName}!IGame@{IGame}}
+\doxysubsubsection{\texorpdfstring{getGameName()}{getGameName()}}
+{\footnotesize\ttfamily \label{class_i_game_afa3493b07082a872195c855563dbf306} 
+virtual std\+::string IGame\+::get\+Game\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Возвращает название игры 
+
+\begin{DoxyReturn}{Returns}
+Строка с названием игры 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_blackjack_ab848763724a0876933f86bb9a071dd63}{Blackjack}}, \mbox{\hyperlink{class_coin_flip_a9bb8b7cf8310681c93b21deaf7fa3d09}{Coin\+Flip}}, \mbox{\hyperlink{class_dice_game_a1b2efa8729c54b143e227e0a72356838}{Dice\+Game}}, \mbox{\hyperlink{class_roulette_af17a6ff685c33111bcdd65c37ee1cd94}{Roulette}}, and \mbox{\hyperlink{class_slot_machine_a40fc8e80605a6e8c1e30b60da116ca82}{Slot\+Machine}}.
+
+\Hypertarget{class_i_game_a8a4f27ed56941ab5250092a381ab8348}\index{IGame@{IGame}!getHouseEdge@{getHouseEdge}}
+\index{getHouseEdge@{getHouseEdge}!IGame@{IGame}}
+\doxysubsubsection{\texorpdfstring{getHouseEdge()}{getHouseEdge()}}
+{\footnotesize\ttfamily \label{class_i_game_a8a4f27ed56941ab5250092a381ab8348} 
+virtual double IGame\+::get\+House\+Edge (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Возвращает преимущество казино в игре 
+
+\begin{DoxyReturn}{Returns}
+Преимущество казино в процентах 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_blackjack_a33a363d37e257e94b83e122d658a3ea5}{Blackjack}}, \mbox{\hyperlink{class_coin_flip_a4bf3ad6d7a79891802f1c27b0250b971}{Coin\+Flip}}, \mbox{\hyperlink{class_dice_game_ada9937300765912bc2451ddc551f0179}{Dice\+Game}}, \mbox{\hyperlink{class_roulette_aae2528b9a7551df710edbca97dfea286}{Roulette}}, and \mbox{\hyperlink{class_slot_machine_a5239599de9877dde80c799669cc1e26e}{Slot\+Machine}}.
+
+\Hypertarget{class_i_game_a03d7878b6014fb6e40e54c47075ee4f1}\index{IGame@{IGame}!getTotalAmountWagered@{getTotalAmountWagered}}
+\index{getTotalAmountWagered@{getTotalAmountWagered}!IGame@{IGame}}
+\doxysubsubsection{\texorpdfstring{getTotalAmountWagered()}{getTotalAmountWagered()}}
+{\footnotesize\ttfamily \label{class_i_game_a03d7878b6014fb6e40e54c47075ee4f1} 
+virtual double IGame\+::get\+Total\+Amount\+Wagered (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Возвращает общую сумму ставок 
+
+\begin{DoxyReturn}{Returns}
+Сумма всех ставок 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_blackjack_ab246f710c62b35bd1f41c35251b2461c}{Blackjack}}, \mbox{\hyperlink{class_coin_flip_a9551b587d2aad88f76a153684f947e9e}{Coin\+Flip}}, \mbox{\hyperlink{class_dice_game_ae27a07caebdbcac355233975fcfe3b0d}{Dice\+Game}}, \mbox{\hyperlink{class_roulette_a077551a4fa8ceabb593bef55c909f5c6}{Roulette}}, and \mbox{\hyperlink{class_slot_machine_a542386403b14532ff69cea8c9c506870}{Slot\+Machine}}.
+
+\Hypertarget{class_i_game_a60ab0310dcf9ba3b695b8ee6b612dd84}\index{IGame@{IGame}!getTotalAmountWon@{getTotalAmountWon}}
+\index{getTotalAmountWon@{getTotalAmountWon}!IGame@{IGame}}
+\doxysubsubsection{\texorpdfstring{getTotalAmountWon()}{getTotalAmountWon()}}
+{\footnotesize\ttfamily \label{class_i_game_a60ab0310dcf9ba3b695b8ee6b612dd84} 
+virtual double IGame\+::get\+Total\+Amount\+Won (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Возвращает общую сумму выигрышей 
+
+\begin{DoxyReturn}{Returns}
+Сумма всех выигрышей 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_blackjack_aec1ecb9876a7cc36eb7b7a2cee420421}{Blackjack}}, \mbox{\hyperlink{class_coin_flip_aae6149f7596e01b24840813125670092}{Coin\+Flip}}, \mbox{\hyperlink{class_dice_game_a8f05fbb24200e39fec7fe904b7d5801f}{Dice\+Game}}, \mbox{\hyperlink{class_roulette_aabbde093da45b67f910886470e31f39e}{Roulette}}, and \mbox{\hyperlink{class_slot_machine_adb86f43e6f9d84c7eb0a9bcb9c0d6706}{Slot\+Machine}}.
+
+\Hypertarget{class_i_game_a6e228c5546cff7a44d632ab9dae265de}\index{IGame@{IGame}!getTotalRoundsPlayed@{getTotalRoundsPlayed}}
+\index{getTotalRoundsPlayed@{getTotalRoundsPlayed}!IGame@{IGame}}
+\doxysubsubsection{\texorpdfstring{getTotalRoundsPlayed()}{getTotalRoundsPlayed()}}
+{\footnotesize\ttfamily \label{class_i_game_a6e228c5546cff7a44d632ab9dae265de} 
+virtual uint64\+\_\+t IGame\+::get\+Total\+Rounds\+Played (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Возвращает общее количество сыгранных раундов 
+
+\begin{DoxyReturn}{Returns}
+Количество раундов 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_blackjack_a941c0b100e9cbadb8fda1ec4dbeed4a0}{Blackjack}}, \mbox{\hyperlink{class_coin_flip_aa9e76941ff3b8e8ad8319777247c1b84}{Coin\+Flip}}, \mbox{\hyperlink{class_dice_game_a5335104bdc471bfa4460277ba76dbd26}{Dice\+Game}}, \mbox{\hyperlink{class_roulette_ad85a1ffe9421217487627986d60f1b32}{Roulette}}, and \mbox{\hyperlink{class_slot_machine_ac7656a4954d06c2aa3fedae4387f52f6}{Slot\+Machine}}.
+
+\Hypertarget{class_i_game_a5acc38c7dec29267c6e005a6971ee1f5}\index{IGame@{IGame}!isGameActive@{isGameActive}}
+\index{isGameActive@{isGameActive}!IGame@{IGame}}
+\doxysubsubsection{\texorpdfstring{isGameActive()}{isGameActive()}}
+{\footnotesize\ttfamily \label{class_i_game_a5acc38c7dec29267c6e005a6971ee1f5} 
+virtual bool IGame\+::is\+Game\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Проверяет, активна ли игра в данный момент 
+
+\begin{DoxyReturn}{Returns}
+true если игра активна, false в противном случае 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_blackjack_aabe3d6307cd35ec2fdbcf059dac5a21e}{Blackjack}}, \mbox{\hyperlink{class_coin_flip_acbaf29b4c930a06d418666e9bc9e9b25}{Coin\+Flip}}, \mbox{\hyperlink{class_dice_game_a8a3bd3974abf19a7ec5f094d461805b2}{Dice\+Game}}, \mbox{\hyperlink{class_roulette_ab0914a97631d97b582961855b150aaf0}{Roulette}}, and \mbox{\hyperlink{class_slot_machine_a65fc8bca3cd15ed8faa17d1fcae35f8a}{Slot\+Machine}}.
+
+\Hypertarget{class_i_game_a1d17dab4df75500675717f2edbf71ce5}\index{IGame@{IGame}!playRound@{playRound}}
+\index{playRound@{playRound}!IGame@{IGame}}
+\doxysubsubsection{\texorpdfstring{playRound()}{playRound()}}
+{\footnotesize\ttfamily \label{class_i_game_a1d17dab4df75500675717f2edbf71ce5} 
+virtual void IGame\+::play\+Round (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Проводит один раунд игры 
+
+Метод должен быть реализован для конкретной игры и содержать логику проведения одного раунда. 
+
+Implemented in \mbox{\hyperlink{class_blackjack_a18f6049e9f242487363053c25a329428}{Blackjack}}, \mbox{\hyperlink{class_coin_flip_a6a8a9674272c6ece602f9d370a8527d3}{Coin\+Flip}}, \mbox{\hyperlink{class_dice_game_a06f3d53573c05f4458fadc6360e324c7}{Dice\+Game}}, \mbox{\hyperlink{class_roulette_ad09e072ca705c4a0ab73db253f6d3b76}{Roulette}}, and \mbox{\hyperlink{class_slot_machine_a99ab2202c679bf81fd51a276e2fb2959}{Slot\+Machine}}.
+
+\Hypertarget{class_i_game_a30ed769d1b0903d4509ac31d141090f4}\index{IGame@{IGame}!startGame@{startGame}}
+\index{startGame@{startGame}!IGame@{IGame}}
+\doxysubsubsection{\texorpdfstring{startGame()}{startGame()}}
+{\footnotesize\ttfamily \label{class_i_game_a30ed769d1b0903d4509ac31d141090f4} 
+virtual void IGame\+::start\+Game (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Начинает новую игру 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Указатель на игрока, который будет участвовать в игре \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_blackjack_ad70d6be963dc17a6709bbdfe36ece7a2}{Blackjack}}, \mbox{\hyperlink{class_coin_flip_af284bee5c87025761c48a1c441c4f8d0}{Coin\+Flip}}, \mbox{\hyperlink{class_dice_game_ae6b97d9e712aa1a5ced54113bf57ac46}{Dice\+Game}}, \mbox{\hyperlink{class_roulette_af385f0a9b5e7606d8645775289f253a3}{Roulette}}, and \mbox{\hyperlink{class_slot_machine_a6e96dbcea0355396f7b2c987ae756b0b}{Slot\+Machine}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{igame_8h}{igame.\+h}}\end{DoxyCompactItemize}

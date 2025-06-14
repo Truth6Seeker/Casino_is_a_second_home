@@ -1,0 +1,225 @@
+\doxysection{Game\+Session Class Reference}
+\hypertarget{class_game_session}{}\label{class_game_session}\index{GameSession@{GameSession}}
+
+
+Класс, представляющий игровую сессию  
+
+
+
+
+{\ttfamily \#include $<$gamesession.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_session_a97eae988b431fe1943015b0273098ed7}{Game\+Session}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$ player)
+\begin{DoxyCompactList}\small\item\em Конструктор игровой сессии \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_session_a0067baec81a99670fc890082ca08aec4}{start\+Game}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_game}{IGame}} $>$ game)
+\begin{DoxyCompactList}\small\item\em Начать новую игру \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_session_af45a3af30a89bfde69feebbfc0cd6d34}{end\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Завершить текущую игру \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_session_ad5f8b0cc95aa62ab1ae55e38123d2e48}{place\+Bet}} (double amount)
+\begin{DoxyCompactList}\small\item\em Сделать ставку \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_session_ae53b162c789ea3662b4ced145d0c2a88}{add\+Winnings}} (double amount)
+\begin{DoxyCompactList}\small\item\em Добавить выигрыш \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_game_session_a20e6ce23aa7e6dde7468a2164241ce49}{get\+Session\+Duration}} () const
+\begin{DoxyCompactList}\small\item\em Получить продолжительность сессии \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_game_session_ac2802a36adad2fc217d68a58961eead1}{get\+Net\+Result}} () const
+\begin{DoxyCompactList}\small\item\em Получить чистый результат сессии \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_game_session_ada80d98b7380004edccec42f05b8e7c9}{get\+Total\+Wagered}} () const
+\begin{DoxyCompactList}\small\item\em Получить общую сумму ставок \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_game_session_a11e53f88aec94cb5649e3de559661a3b}{get\+Total\+Won}} () const
+\begin{DoxyCompactList}\small\item\em Получить общую сумму выигрышей \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$ \mbox{\hyperlink{class_game_session_a47a890e3243201603ee4f209b0571223}{get\+Player}} () const
+\begin{DoxyCompactList}\small\item\em Получить указатель на игрока \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_game}{IGame}} $>$ \mbox{\hyperlink{class_game_session_a46a10eafc1b3cf664dd1052ffcdb0a4a}{get\+Current\+Game}} () const
+\begin{DoxyCompactList}\small\item\em Получить указатель на текущую игру \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_session_a1a891bb5497f2a1b6fcf1ed6572eceeb}{is\+Active}} () const
+\begin{DoxyCompactList}\small\item\em Проверить, активна ли сессия \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс, представляющий игровую сессию 
+
+Этот класс отслеживает игровую сессию игрока, включая текущую игру, статистику ставок и выигрышей, а также продолжительность сессии. 
+
+\label{doc-constructors}
+\Hypertarget{class_game_session_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_session_a97eae988b431fe1943015b0273098ed7}\index{GameSession@{GameSession}!GameSession@{GameSession}}
+\index{GameSession@{GameSession}!GameSession@{GameSession}}
+\doxysubsubsection{\texorpdfstring{GameSession()}{GameSession()}}
+{\footnotesize\ttfamily \label{class_game_session_a97eae988b431fe1943015b0273098ed7} 
+Game\+Session\+::\+Game\+Session (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$}]{player}{}\end{DoxyParamCaption})}
+
+
+
+Конструктор игровой сессии 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Указатель на игрока \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_game_session_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_session_ae53b162c789ea3662b4ced145d0c2a88}\index{GameSession@{GameSession}!addWinnings@{addWinnings}}
+\index{addWinnings@{addWinnings}!GameSession@{GameSession}}
+\doxysubsubsection{\texorpdfstring{addWinnings()}{addWinnings()}}
+{\footnotesize\ttfamily \label{class_game_session_ae53b162c789ea3662b4ced145d0c2a88} 
+void Game\+Session\+::add\+Winnings (\begin{DoxyParamCaption}\item[{double}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Добавить выигрыш 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & Сумма выигрыша \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_session_af45a3af30a89bfde69feebbfc0cd6d34}\index{GameSession@{GameSession}!endGame@{endGame}}
+\index{endGame@{endGame}!GameSession@{GameSession}}
+\doxysubsubsection{\texorpdfstring{endGame()}{endGame()}}
+{\footnotesize\ttfamily \label{class_game_session_af45a3af30a89bfde69feebbfc0cd6d34} 
+void Game\+Session\+::end\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Завершить текущую игру 
+
+Завершает текущую игру и обновляет статистику сессии \Hypertarget{class_game_session_a46a10eafc1b3cf664dd1052ffcdb0a4a}\index{GameSession@{GameSession}!getCurrentGame@{getCurrentGame}}
+\index{getCurrentGame@{getCurrentGame}!GameSession@{GameSession}}
+\doxysubsubsection{\texorpdfstring{getCurrentGame()}{getCurrentGame()}}
+{\footnotesize\ttfamily \label{class_game_session_a46a10eafc1b3cf664dd1052ffcdb0a4a} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_game}{IGame}} $>$ Game\+Session\+::get\+Current\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить указатель на текущую игру 
+
+\begin{DoxyReturn}{Returns}
+Указатель на текущую игру 
+\end{DoxyReturn}
+\Hypertarget{class_game_session_ac2802a36adad2fc217d68a58961eead1}\index{GameSession@{GameSession}!getNetResult@{getNetResult}}
+\index{getNetResult@{getNetResult}!GameSession@{GameSession}}
+\doxysubsubsection{\texorpdfstring{getNetResult()}{getNetResult()}}
+{\footnotesize\ttfamily \label{class_game_session_ac2802a36adad2fc217d68a58961eead1} 
+double Game\+Session\+::get\+Net\+Result (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить чистый результат сессии 
+
+\begin{DoxyReturn}{Returns}
+Разница между выигрышами и ставками 
+\end{DoxyReturn}
+\Hypertarget{class_game_session_a47a890e3243201603ee4f209b0571223}\index{GameSession@{GameSession}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!GameSession@{GameSession}}
+\doxysubsubsection{\texorpdfstring{getPlayer()}{getPlayer()}}
+{\footnotesize\ttfamily \label{class_game_session_a47a890e3243201603ee4f209b0571223} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$ Game\+Session\+::get\+Player (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить указатель на игрока 
+
+\begin{DoxyReturn}{Returns}
+Указатель на игрока 
+\end{DoxyReturn}
+\Hypertarget{class_game_session_a20e6ce23aa7e6dde7468a2164241ce49}\index{GameSession@{GameSession}!getSessionDuration@{getSessionDuration}}
+\index{getSessionDuration@{getSessionDuration}!GameSession@{GameSession}}
+\doxysubsubsection{\texorpdfstring{getSessionDuration()}{getSessionDuration()}}
+{\footnotesize\ttfamily \label{class_game_session_a20e6ce23aa7e6dde7468a2164241ce49} 
+double Game\+Session\+::get\+Session\+Duration (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить продолжительность сессии 
+
+\begin{DoxyReturn}{Returns}
+Продолжительность сессии в минутах 
+\end{DoxyReturn}
+\Hypertarget{class_game_session_ada80d98b7380004edccec42f05b8e7c9}\index{GameSession@{GameSession}!getTotalWagered@{getTotalWagered}}
+\index{getTotalWagered@{getTotalWagered}!GameSession@{GameSession}}
+\doxysubsubsection{\texorpdfstring{getTotalWagered()}{getTotalWagered()}}
+{\footnotesize\ttfamily \label{class_game_session_ada80d98b7380004edccec42f05b8e7c9} 
+double Game\+Session\+::get\+Total\+Wagered (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить общую сумму ставок 
+
+\begin{DoxyReturn}{Returns}
+Общая сумма ставок за сессию 
+\end{DoxyReturn}
+\Hypertarget{class_game_session_a11e53f88aec94cb5649e3de559661a3b}\index{GameSession@{GameSession}!getTotalWon@{getTotalWon}}
+\index{getTotalWon@{getTotalWon}!GameSession@{GameSession}}
+\doxysubsubsection{\texorpdfstring{getTotalWon()}{getTotalWon()}}
+{\footnotesize\ttfamily \label{class_game_session_a11e53f88aec94cb5649e3de559661a3b} 
+double Game\+Session\+::get\+Total\+Won (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Получить общую сумму выигрышей 
+
+\begin{DoxyReturn}{Returns}
+Общая сумма выигрышей за сессию 
+\end{DoxyReturn}
+\Hypertarget{class_game_session_a1a891bb5497f2a1b6fcf1ed6572eceeb}\index{GameSession@{GameSession}!isActive@{isActive}}
+\index{isActive@{isActive}!GameSession@{GameSession}}
+\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}}
+{\footnotesize\ttfamily \label{class_game_session_a1a891bb5497f2a1b6fcf1ed6572eceeb} 
+bool Game\+Session\+::is\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Проверить, активна ли сессия 
+
+\begin{DoxyReturn}{Returns}
+true если сессия активна, false в противном случае 
+\end{DoxyReturn}
+\Hypertarget{class_game_session_ad5f8b0cc95aa62ab1ae55e38123d2e48}\index{GameSession@{GameSession}!placeBet@{placeBet}}
+\index{placeBet@{placeBet}!GameSession@{GameSession}}
+\doxysubsubsection{\texorpdfstring{placeBet()}{placeBet()}}
+{\footnotesize\ttfamily \label{class_game_session_ad5f8b0cc95aa62ab1ae55e38123d2e48} 
+bool Game\+Session\+::place\+Bet (\begin{DoxyParamCaption}\item[{double}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Сделать ставку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & Сумма ставки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если ставка успешно сделана, false в противном случае 
+\end{DoxyReturn}
+\Hypertarget{class_game_session_a0067baec81a99670fc890082ca08aec4}\index{GameSession@{GameSession}!startGame@{startGame}}
+\index{startGame@{startGame}!GameSession@{GameSession}}
+\doxysubsubsection{\texorpdfstring{startGame()}{startGame()}}
+{\footnotesize\ttfamily \label{class_game_session_a0067baec81a99670fc890082ca08aec4} 
+bool Game\+Session\+::start\+Game (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_game}{IGame}} $>$}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Начать новую игру 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Указатель на игру \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если игра успешно начата, false в противном случае 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{gamesession_8h}{gamesession.\+h}}\end{DoxyCompactItemize}
